@@ -1,13 +1,16 @@
 #!/bin/bash
 
-touch lib/all.rb
 for FILE in `find ../selling-partner-api-models/models -name "*.json"`; do 
 	API_NAME=`echo $FILE | awk -F/ '{print $4}'`
-	swagger-codegen generate -i $FILE -l ruby -c config.json
-	echo "require 'amz_sp_api/sp_api_client'" >> lib/amz_sp_api.rb
-	echo "require 'amz_sp_api/sp_configuration'" >> lib/amz_sp_api.rb
-	sed 's/Configuration/SpConfiguration/g' lib/amz_sp_api.rb
-	mv lib/amz_sp_api.rb lib/${API_NAME}.rb
-	echo "require '${API_NAME}'" >> lib/all.rb
+	MODULE_NAME=`echo $API_NAME | perl -pe 's/(^|-)./uc($&)/ge;s/-//g'`
+
+	mkdir -p lib/$API_NAME
+	cp config.json lib/$API_NAME
+	sed -i '' "s/GEMNAME/${API_NAME}/g" lib/${API_NAME}/config.json
+	sed -i '' "s/MODULENAME/${MODULE_NAME}/g" lib/${API_NAME}/config.json
+
+	swagger-codegen generate -i $FILE -l ruby -c lib/${API_NAME}/config.json -o lib/$API_NAME
+
+	mv lib/${API_NAME}/lib/${API_NAME}/* lib/${API_NAME}
+	rm lib/${API_NAME}/*.gemspec
 done
-mv lib/all.rb lib/amz_sp_api.rb

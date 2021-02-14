@@ -1,6 +1,6 @@
 {
-  "gemName": "amz_sp_api",
-  "moduleName": "AmzSpApi",
+  "gemName": "GEMNAME",
+  "moduleName": "AmzSpApi::MODULENAME",
   "gemVersion": "0.1.0",
   "gemAuthor": "Eric Jensen",
   "gemAuthorEmail": "",

@@ -12,7 +12,7 @@ Swagger Codegen version: 3.0.24
 =end
 
 $:.push File.expand_path("../lib", __FILE__)
-require "amz_sp_api/version"
+require "version"
 
 Gem::Specification.new do |s|
   s.name        = "amz_sp_api"
@@ -33,7 +33,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rspec', '~> 3.6', '>= 3.6.0'
 
   s.files         = `find *`.split("\n").uniq.sort.select { |f| !f.empty? }
-  s.test_files    = `find spec/*`.split("\n")
   s.executables   = []
   s.require_paths = ["lib"]
 end
