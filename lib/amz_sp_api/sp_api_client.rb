@@ -16,7 +16,7 @@ module AmzSpApi
 
     def call_api(http_method, path, opts = {})
       unsigned_request = build_request(http_method, path, opts)
-      aws_headers = auth_headers(http_method, unsigned_request.url)
+      aws_headers = auth_headers(http_method, unsigned_request.url, unsigned_request.encoded_body)
       signed_opts = opts.merge(:header_params => aws_headers.merge(opts[:header_params] || {}))
       super(http_method, path, signed_opts)
     end
@@ -54,7 +54,7 @@ module AmzSpApi
       parsed
     end
 
-    def signed_request_headers(http_method, url)
+    def signed_request_headers(http_method, url, body)
       request_config = {
         service: SERVICE_NAME,
         region: config.aws_region
@@ -66,11 +66,11 @@ module AmzSpApi
         request_config[:secret_access_key] = config.aws_secret_access_key
       end
       signer = Aws::Sigv4::Signer.new(request_config)
-      signer.sign_request(http_method: http_method.to_s, url: url).headers
+      signer.sign_request(http_method: http_method.to_s, url: url, body: body).headers
     end
 
-    def auth_headers(http_method, url)
-      signed_request_headers(http_method, url).merge({
+    def auth_headers(http_method, url, body)
+      signed_request_headers(http_method, url, body).merge({
         'x-amz-access-token' => retrieve_lwa_access_token
       })
     end
