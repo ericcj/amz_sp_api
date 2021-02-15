@@ -1,3 +1,4 @@
+require 'amz_sp_api_version'
 require 'sp_api_client'
 require 'sp_configuration'
 

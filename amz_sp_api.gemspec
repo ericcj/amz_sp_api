@@ -12,7 +12,7 @@ Swagger Codegen version: 3.0.24
 =end
 
 $:.push File.expand_path("../lib", __FILE__)
-require "version"
+require "amz_sp_api_version"
 
 Gem::Specification.new do |s|
   s.name        = "amz_sp_api"
