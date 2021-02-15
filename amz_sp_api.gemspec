@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.homepage    = "https://github.com/ericcj/amz_sp_api"
   s.summary     = "Selling Partner APIs for Fulfillment Outbound Ruby Gem"
   s.description = "The Selling Partner API for Fulfillment Outbound lets you create applications that help a seller fulfill Multi-Channel Fulfillment orders using their inventory in Amazon's fulfillment network. You can get information on both potential and existing fulfillment orders."
-  s.license     = 'Apache 2.0'
+  s.license     = 'Apache-2.0'
   s.required_ruby_version = ">= 1.9"
 
   s.add_runtime_dependency 'typhoeus', '~> 1.0', '>= 1.0.1'
