@@ -27,7 +27,7 @@ or publish the gem to a gem hosting service, e.g. [RubyGems](https://rubygems.or
 
 Finally add this to the Gemfile:
 
-    gem 'amz_sp_api', '~> 0.1.0'
+    gem 'amz_sp_api', '~> 0.1'
 
 ### Install from Git
 
