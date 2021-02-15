@@ -29,6 +29,10 @@ module AmzSpApi
       self.region = @region
     end
 
+    def access_token_key
+      Digest::MD5.hexdigest("#{client_id} #{refresh_token}")
+    end
+
     def self.default
       @@default ||= SpConfiguration.new
     end
