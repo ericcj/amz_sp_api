@@ -4,6 +4,7 @@ require 'securerandom'
 require 'typhoeus'
 require 'aws-sigv4'
 
+require 'api_error'
 require 'api_client'
 
 module AmzSpApi
