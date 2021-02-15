@@ -52,8 +52,15 @@ module AmzSpApi
           'Content-Type' => 'application/x-www-form-urlencoded;charset=UTF-8'
         }
       )
-      parsed = JSON.parse(response.body)
-      fail ApiError.new("can't get LWA access token #{response.inspect}") unless parsed['access_token']
+      parsed = JSON.parse(response.body) if response.success?
+
+      unless parsed && parsed['access_token']
+        fail ApiError.new(:code => response.code,
+                          :response_headers => response.headers,
+                          :response_body => response.body),
+             response.status_message
+      end
+
       parsed
     end
 
