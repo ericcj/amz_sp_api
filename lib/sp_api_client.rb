@@ -21,12 +21,12 @@ module AmzSpApi
     private
 
     def retrieve_lwa_access_token
-      return request_lwa_access_token['access_token'] unless config.get_access_token
+      return request_lwa_access_token[:access_token] unless config.get_access_token
       stored_token = config.get_access_token.call(config.access_token_key)
       if stored_token.nil?
         new_token = request_lwa_access_token
         config.save_access_token.call(config.access_token_key, new_token) if config.save_access_token
-        return new_token['access_token']
+        return new_token[:access_token]
       else
         return stored_token
       end
@@ -41,7 +41,7 @@ module AmzSpApi
         :header_params => {
          'Content-Type' => 'application/x-www-form-urlencoded'
         },
-        :body =>  {
+        :form_params =>  {
           grant_type: 'refresh_token',
           refresh_token: config.refresh_token,
           client_id: config.client_id,
@@ -49,7 +49,7 @@ module AmzSpApi
         },
         :return_type => 'Object')
 
-      unless data && data['access_token']
+      unless data && data[:access_token]
         fail ApiError.new(:code => status_code,
                           :response_headers => headers,
                           :response_body => data)
