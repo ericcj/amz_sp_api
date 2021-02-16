@@ -39,7 +39,7 @@ module AmzSpApi
 
       data, status_code, headers = newself.super_call_api(:POST, '/auth/o2/token',
         :header_params => {
-         'Content-Type' => 'application/x-www-form-urlencoded;charset=UTF-8'
+         'Content-Type' => 'application/x-www-form-urlencoded'
         },
         :body =>  {
           grant_type: 'refresh_token',
