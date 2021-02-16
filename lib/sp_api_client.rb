@@ -1,7 +1,3 @@
-require 'uri'
-require 'securerandom'
-
-require 'typhoeus'
 require 'aws-sigv4'
 
 require 'api_error'
@@ -10,13 +6,11 @@ require 'api_client'
 module AmzSpApi
   class SpApiClient < ApiClient
 
-    ACCESS_TOKEN_URL = 'https://api.amazon.com/auth/o2/token'.freeze
-    SERVICE_NAME = 'execute-api'.freeze
-
     def initialize(config = SpConfiguration.default)
       super(config)
     end
 
+    alias_method :super_call_api, :call_api
     def call_api(http_method, path, opts = {})
       unsigned_request = build_request(http_method, path, opts)
       aws_headers = auth_headers(http_method, unsigned_request.url, unsigned_request.encoded_body)
@@ -39,34 +33,34 @@ module AmzSpApi
     end
 
     def request_lwa_access_token
-      body = {
-        grant_type: 'refresh_token',
-        refresh_token: config.refresh_token,
-        client_id: config.client_id,
-        client_secret: config.client_secret
-      }
-      response = Typhoeus.post(
-        ACCESS_TOKEN_URL,
-        body: URI.encode_www_form(body),
-        headers: {
-          'Content-Type' => 'application/x-www-form-urlencoded;charset=UTF-8'
-        }
-      )
-      parsed = JSON.parse(response.body) if response.success?
+      newself = self.dup
+      newself.config = config.dup
+      newself.config.host = 'api.amazon.com'
 
-      unless parsed && parsed['access_token']
-        fail ApiError.new(:code => response.code,
-                          :response_headers => response.headers,
-                          :response_body => response.body),
-             response.status_message
+      data, status_code, headers = newself.super_call_api(:POST, '/auth/o2/token',
+        :header_params => {
+         'Content-Type' => 'application/x-www-form-urlencoded;charset=UTF-8'
+        },
+        :body =>  {
+          grant_type: 'refresh_token',
+          refresh_token: config.refresh_token,
+          client_id: config.client_id,
+          client_secret: config.client_secret
+        },
+        :return_type => 'Object')
+
+      unless data && data['access_token']
+        fail ApiError.new(:code => status_code,
+                          :response_headers => headers,
+                          :response_body => data)
       end
 
-      parsed
+      data
     end
 
     def signed_request_headers(http_method, url, body)
       request_config = {
-        service: SERVICE_NAME,
+        service: 'execute-api',
         region: config.aws_region
       }
       if config.credentials_provider

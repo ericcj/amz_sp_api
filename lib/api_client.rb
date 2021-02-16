@@ -236,7 +236,7 @@ module AmzSpApi
         end
       else
         # models, e.g. Pet
-        AmzSpApi::FulfillmentOutboundApiModel.const_get(return_type).build_from_hash(data)
+        AmzSpApi.constants.map{|c| AmzSpApi.const_get(c)}.select{|sub| sub.kind_of?(Module)}.detect{|sub| sub.const_defined?(return_type)}.const_get(return_type)
       end
     end
 

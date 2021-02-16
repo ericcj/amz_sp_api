@@ -51,6 +51,7 @@ require 'fulfillment-outbound-api-model'
     config.aws_access_key_id = 
     config.aws_secret_access_key = 
     config.region = 'eu'
+    config.timeout = 20 # seconds
     # config.debugging = true
 
     # optional lambdas for caching LWA access token instead of requesting it each time, e.g.:
