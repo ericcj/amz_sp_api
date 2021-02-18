@@ -56,7 +56,7 @@ require 'fulfillment-outbound-api-model'
 
     # optional lambdas for caching LWA access token instead of requesting it each time, e.g.:
     config.save_access_token = -> (access_token_key, token) do
-      Rails.cache.write("SPAPI-TOKEN-#{access_token_key}", token[:access_token], expires_in: token[:expires_in] - 60, race_condition_ttl: 1.minute)
+      Rails.cache.write("SPAPI-TOKEN-#{access_token_key}", token[:access_token], expires_in: token[:expires_in] - 60)
     end
     config.get_access_token = -> (access_token_key) { Rails.cache.read("SPAPI-TOKEN-#{access_token_key}") }
   end
