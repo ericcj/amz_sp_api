@@ -8,32 +8,7 @@ Auto-generated documentation is nested here, but the references in https://githu
 
 ## Installation
 
-### Build a gem
-
-To build the Ruby code into a gem:
-
-```shell
-gem build amz_sp_api.gemspec
-```
-
-Then either install the gem locally:
-
-```shell
-gem install ./amz_sp_api-0.1.0.gem
-```
-(for development, run `gem install --dev ./amz_sp_api-0.1.0.gem` to install the development dependencies)
-
-or publish the gem to a gem hosting service, e.g. [RubyGems](https://rubygems.org/).
-
-Finally add this to the Gemfile:
-
-    gem 'amz_sp_api', '~> 0.1'
-
-### Install from Git
-
-If the Ruby gem is hosted at a git repository: https://github.com/ericcj/amz_sp_api, then add the following in the Gemfile:
-
-    gem 'amz_sp_api', :git => 'https://github.com/ericcj/amz_sp_api.git', branch: 'main'
+Add the gem to your Gemfile as per https://rubygems.org/gems/amz_sp_api
 
 ## Getting Started
 
