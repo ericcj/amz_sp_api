@@ -44,6 +44,10 @@ require 'fulfillment-outbound-api-model'
   end
 ```
 
+## Documentation
+
+This is a handy way to see all the API model class names and corresponding files you need to require for them, e.g. require 'finances-api-model' to use https://www.rubydoc.info/gems/amz_sp_api/AmzSpApi/FinancesApiModel/DefaultApi 
+
 ## Thanks
 
 to https://github.com/patterninc/muffin_man as the basis for [sp_api_client.rb](lib/sp_api_client.rb)
