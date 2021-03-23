@@ -23,8 +23,19 @@ require 'fulfillment-outbound-api-model'
     config.refresh_token = 
     config.client_id = 
     config.client_secret = 
+
+    # either use these:
     config.aws_access_key_id = 
     config.aws_secret_access_key = 
+
+    # OR config.credentials_provider which is passed along to https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/Sigv4/Signer.html, e.g.
+    # require 'aws-sdk-core'
+    # config.credentials_provider = Aws::STS::Client.new(
+    #     region: AmzSpApi::SpConfiguration::AWS_REGION_MAP['eu'],
+    #     access_key_id: ,
+    #     secret_access_key: 
+    #   ).assume_role(role_arn: , role_session_name: SecureRandom.uuid)
+
     config.region = 'eu'
     config.timeout = 20 # seconds
     # config.debugging = true
