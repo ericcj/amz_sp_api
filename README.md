@@ -59,6 +59,27 @@ require 'fulfillment-outbound-api-model'
 
 This is a handy way to see all the API model class names and corresponding files you need to require for them, e.g. require 'finances-api-model' to use https://www.rubydoc.info/gems/amz_sp_api/AmzSpApi/FinancesApiModel/DefaultApi 
 
+## Feeds
+
+This gem also offers encrypt/decrypt helper methods for feeds, but actually using that API as per https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/feeds-api-use-case-guide requires the following calls:
+
+```ruby
+feeds = AmzSpApi::FeedsApiModel::FeedsApi.new(AmzSpApi::SpApiClient.new)
+response = feeds.create_feed_document({"contentType" => content_type})
+feed_document_id = response&.payload&.dig(:feedDocumentId)
+url = response.payload[:url]
+encrypted = AmzSpApi.encrypt_feed(feed_content, response.payload)
+# PUT to url with lowercase "content-type" header, it's already pre-signed
+response = feeds.create_feed({"feedType" => feed_type, "marketplaceIds" => marketplace_ids, "inputFeedDocumentId" => feed_document_id})
+feed_id = response&.payload&.dig(:feedId)
+response = feeds.get_feed(feed_id)
+result_feed_document_id = response&.payload&.dig(:resultFeedDocumentId) # present once it is successful
+response = feeds.get_feed_document(result_feed_document_id)
+url = response&.payload&.dig(:url)
+# GET response&.payload&.dig(:url) into ciphertext, again it's pre-signed so no authorization needed
+AmzSpApi.decrypt_and_inflate_feed(ciphertext, response.payload)
+```
+
 ## Thanks
 
 to https://github.com/patterninc/muffin_man as the basis for [sp_api_client.rb](lib/sp_api_client.rb)
