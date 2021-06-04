@@ -1,4 +1,5 @@
 require 'amz_sp_api_version'
+require 'api_error'
 require 'sp_api_client'
 require 'sp_configuration'
 
@@ -16,37 +17,43 @@ module AmzSpApi
       end
     end
 
-    def encrypt_feed(feed_content, feed_document_response_payload)
-      cipher = feed_cipher(feed_document_response_payload, encrypt: true)
+    def encrypt_feed(feed_content, document_response_payload)
+      cipher = document_cipher(document_response_payload, encrypt: true)
       cipher.update(feed_content) + cipher.final
     end
 
-    def decrypt_and_inflate_feed(ciphertext, feed_document_response_payload)
-      cipher = feed_cipher(feed_document_response_payload, encrypt: false)
+    def decrypt_and_inflate_document(ciphertext, document_response_payload)
+      body = if cipher = document_cipher(document_response_payload, encrypt: false)
+        cipher.update(ciphertext) + cipher.final
+      else
+        ciphertext
+      end
 
-      compression = feed_document_response_payload[:compressionAlgorithm]
-      raise "unknown compressionAlgorithm #{compression}" if compression && compression != "GZIP"
+      inflate_document(body, document_response_payload)
+    end
+    alias_method :decrypt_and_inflate_feed, :decrypt_and_inflate_document
 
-      result = cipher.update(ciphertext) + cipher.final
-      result = Zlib::Inflate.inflate(result) if compression
-      result
+    def inflate_document(body, document_response_payload)
+      compression = document_response_payload[:compressionAlgorithm]
+      raise AmzSpApi::ApiError.new("unknown compressionAlgorithm #{compression}") if compression && compression != "GZIP"
+      compression ? Zlib::Inflate.inflate(body) : body
     end
 
     # from https://github.com/amzn/selling-partner-api-models/blob/main/clients/sellingpartner-api-documents-helper-java/src/main/java/com/amazon/spapi/documents/impl/AESCryptoStreamFactory.java
-    def feed_cipher(response, encrypt:)
-      key = Base64.decode64(response.dig(:encryptionDetails, :key))
+    def document_cipher(response, encrypt:)
+      if key = Base64.decode64(response.dig(:encryptionDetails, :key))
+        cipher = case response.dig(:encryptionDetails, :standard)
+        when "AES"
+          OpenSSL::Cipher.new("AES-#{key.size * 8}-CBC")
+        else
+          raise AmzSpApi::ApiError.new("unknown encryption standard #{response.inspect}")
+        end
 
-      cipher = case response.dig(:encryptionDetails, :standard)
-      when "AES"
-        OpenSSL::Cipher.new("AES-#{key.size * 8}-CBC")
-      else
-        raise "unknown encryption standard #{response.inspect}"
+        encrypt ? cipher.encrypt : cipher.decrypt
+        cipher.key = key
+        cipher.iv = Base64.decode64(response.dig(:encryptionDetails, :initializationVector))
+        cipher
       end
-
-      encrypt ? cipher.encrypt : cipher.decrypt
-      cipher.key = key
-      cipher.iv = Base64.decode64(response.dig(:encryptionDetails, :initializationVector))
-      cipher
     end
   end
 end
