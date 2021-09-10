@@ -41,7 +41,8 @@ module AmzSpApi
 
     # from https://github.com/amzn/selling-partner-api-models/blob/main/clients/sellingpartner-api-documents-helper-java/src/main/java/com/amazon/spapi/documents/impl/AESCryptoStreamFactory.java
     def document_cipher(response, encrypt:)
-      if key = Base64.decode64(response.dig(:encryptionDetails, :key))
+      if key = response.dig(:encryptionDetails, :key)
+        key = Base64.decode64(key)
         cipher = case response.dig(:encryptionDetails, :standard)
         when "AES"
           OpenSSL::Cipher.new("AES-#{key.size * 8}-CBC")
