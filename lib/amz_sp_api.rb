@@ -35,8 +35,9 @@ module AmzSpApi
 
     def inflate_document(body, document_response_payload)
       compression = document_response_payload[:compressionAlgorithm]
-      raise AmzSpApi::ApiError.new("unknown compressionAlgorithm #{compression}") if compression && compression != "GZIP"
-      compression ? Zlib::Inflate.inflate(body) : body
+      return body unless compression
+      raise AmzSpApi::ApiError.new("unknown compressionAlgorithm #{compression}") if compression != "GZIP"
+      Zlib.gunzip(body)
     end
 
     # from https://github.com/amzn/selling-partner-api-models/blob/main/clients/sellingpartner-api-documents-helper-java/src/main/java/com/amazon/spapi/documents/impl/AESCryptoStreamFactory.java
