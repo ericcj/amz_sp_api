@@ -3,8 +3,13 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**identifiers** | [**IdentifierType**](IdentifierType.md) |  | 
-**attribute_sets** | [**AttributeSetList**](AttributeSetList.md) |  | [optional] 
-**relationships** | [**RelationshipList**](RelationshipList.md) |  | [optional] 
-**sales_rankings** | [**SalesRankList**](SalesRankList.md) |  | [optional] 
+**asin** | [**ItemAsin**](ItemAsin.md) |  | 
+**attributes** | [**ItemAttributes**](ItemAttributes.md) |  | [optional] 
+**identifiers** | [**ItemIdentifiers**](ItemIdentifiers.md) |  | [optional] 
+**images** | [**ItemImages**](ItemImages.md) |  | [optional] 
+**product_types** | [**ItemProductTypes**](ItemProductTypes.md) |  | [optional] 
+**sales_ranks** | [**ItemSalesRanks**](ItemSalesRanks.md) |  | [optional] 
+**summaries** | [**ItemSummaries**](ItemSummaries.md) |  | [optional] 
+**variations** | [**ItemVariations**](ItemVariations.md) |  | [optional] 
+**vendor_details** | [**ItemVendorDetails**](ItemVendorDetails.md) |  | [optional] 
 
