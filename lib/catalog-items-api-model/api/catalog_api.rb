@@ -89,18 +89,18 @@ module AmzSpApi::CatalogItemsApiModel
     # Retrieves details for multiple items in the Amazon catalog.  **Usage Plans:**  | Plan type | Rate (requests per second) | Burst | | ---- | ---- | ---- | |Default| 5 | 5 | |Selling partner specific| Variable | Variable |  The x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were applied to the requested operation. Rate limits for some selling partners will vary from the default rate and burst shown in the table above. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/usage-plans-rate-limits/Usage-Plans-and-Rate-Limits.md).
     # @param identifiers A comma-delimited list of item identifiers.
     # @param identifiers_type The type of item identifiers in the `identifiers` parameter.
-    # @param marketplace_ids A comma-delimited list of Amazon marketplace identifiers. Data sets in the response contain data only for the specified marketplaces.
+    # @param marketplace_id Amazon marketplace identifier. Data sets in the response contain data only for the specified marketplaces.
     # @param [Hash] opts the optional parameters
     # @option opts [Array<String>] :included_data A comma-delimited list of data sets to include in the response. Default: summaries.
     # @option opts [String] :locale Locale for retrieving localized summaries. Defaults to the primary locale of the marketplace.
     # @return [Array<(ItemSearchResults, Integer, Hash)>] Item data, response status code and response headers
-    def get_catalog_items_20220401_with_http_info(marketplace_ids, identifiers, identifiers_type = 'ASIN', opts = {})
+    def get_catalog_items_20220401_with_http_info(marketplace_id, identifiers, identifiers_type = 'ASIN', opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CatalogApi.get_catalog_item(2022-04-01) ...'
       end
-      # verify the required parameter 'marketplace_ids' is set
-      if @api_client.config.client_side_validation && marketplace_ids.nil?
-        fail ArgumentError, "Missing the required parameter 'marketplace_ids' when calling CatalogApi.get_catalog_item(2022-04-01)"
+      # verify the required parameter 'marketplace_id' is set
+      if @api_client.config.client_side_validation && marketplace_id.nil?
+        fail ArgumentError, "Missing the required parameter 'marketplace_id' when calling CatalogApi.get_catalog_item(2022-04-01)"
       end
       # verify the required parameter 'identifiers' is set
       if @api_client.config.client_side_validation && identifiers.nil?
@@ -114,7 +114,7 @@ module AmzSpApi::CatalogItemsApiModel
 
       # query parameters
       query_params = opts[:query_params] || {}
-      query_params[:'marketplaceIds'] = marketplace_ids.compact.uniq.join(',')
+      query_params[:'marketplaceIds'] = marketplace_id
       query_params[:'identifiers'] = identifiers.compact.uniq.join(',')
       query_params[:'identifiersType'] = identifiers_type
       query_params[:'includedData'] = @api_client.build_collection_param(opts[:'included_data'], :csv) if !opts[:'included_data'].nil?
