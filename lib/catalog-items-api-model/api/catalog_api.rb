@@ -102,7 +102,7 @@ module AmzSpApi::CatalogItemsApiModel
       if @api_client.config.client_side_validation && marketplace_id.nil?
         fail ArgumentError, "Missing the required parameter 'marketplace_id' when calling CatalogApi.get_catalog_item(2022-04-01)"
       end
-      if @api_client.config.client_side_validation && marketplace_id.size > 1
+      if @api_client.config.client_side_validation && marketplace_id.is_a?(Array)
         fail ArgumentError, "Provide only one 'marketplace_id' value in CatalogApi.get_catalog_item(2022-04-01)"
       end
       # verify the required parameter 'identifiers' is set
