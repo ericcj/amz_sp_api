@@ -106,7 +106,7 @@ module AmzSpApi::CatalogItemsApiModel
       if @api_client.config.client_side_validation && identifiers.nil?
         fail ArgumentError, "Missing the required parameter 'identifiers' when calling CatalogApi.get_catalog_item(2022-04-01)"
       end
-      if @api_client.config.client_side_validation && opts[:'included_data'] && !opts[:'included_data'].all? { |item| ['attributes', 'identifiers', 'images', 'productTypes', 'salesRanks', 'summaries', 'variations', 'vendorDetails'].include?(item) }
+      if @api_client.config.client_side_validation && opts[:'included_data'] && !opts[:'included_data'].all? { |item| ['attributes', 'identifiers', 'images', 'productTypes', 'salesRanks', 'summaries', 'relations', 'vendorDetails'].include?(item) }
         fail ArgumentError, 'invalid value for "included_data", must include one of attributes, identifiers, images, productTypes, salesRanks, summaries, variations, vendorDetails'
       end
       # resource path
