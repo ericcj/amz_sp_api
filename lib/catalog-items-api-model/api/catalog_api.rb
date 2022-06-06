@@ -102,6 +102,9 @@ module AmzSpApi::CatalogItemsApiModel
       if @api_client.config.client_side_validation && marketplace_id.nil?
         fail ArgumentError, "Missing the required parameter 'marketplace_id' when calling CatalogApi.get_catalog_item(2022-04-01)"
       end
+      if @api_client.config.client_side_validation && marketplace_id.size > 1
+        fail ArgumentError, "Provide only one 'marketplace_id' value in CatalogApi.get_catalog_item(2022-04-01)"
+      end
       # verify the required parameter 'identifiers' is set
       if @api_client.config.client_side_validation && identifiers.nil?
         fail ArgumentError, "Missing the required parameter 'identifiers' when calling CatalogApi.get_catalog_item(2022-04-01)"
@@ -115,7 +118,7 @@ module AmzSpApi::CatalogItemsApiModel
       # query parameters
       query_params = opts[:query_params] || {}
       query_params[:'marketplaceIds'] = marketplace_id
-      query_params[:'identifiers'] = identifiers.compact.uniq.join(',')
+      query_params[:'identifiers'] = @api_client.build_collection_param(identifiers.uniq, :csv)
       query_params[:'identifiersType'] = identifiers_type
       query_params[:'includedData'] = @api_client.build_collection_param(opts[:'included_data'], :csv) if !opts[:'included_data'].nil?
       query_params[:'locale'] = opts[:'locale'] if !opts[:'locale'].nil?
