@@ -123,6 +123,7 @@ module AmzSpApi::CatalogItemsApiModel
       query_params[:'includedData'] = @api_client.build_collection_param(opts[:'included_data'], :csv) if !opts[:'included_data'].nil?
       query_params[:'locale'] = opts[:'locale'] if !opts[:'locale'].nil?
       query_params[:'pageToken'] = opts[:'page_token'] if !opts[:'page_token'].nil?
+      query_params[:'pageSize'] = opts[:'page_size'] if !opts[:'page_size'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
