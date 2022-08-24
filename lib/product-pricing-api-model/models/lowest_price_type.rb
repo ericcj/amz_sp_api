@@ -19,6 +19,13 @@ module AmzSpApi::ProductPricingApiModel
     # Indicates whether the item is fulfilled by Amazon or by the seller.
     attr_accessor :fulfillment_channel
 
+    attr_accessor :offer_type
+
+    # Indicates at what quantity this price becomes active.
+    attr_accessor :quantity_tier
+
+    attr_accessor :quantity_discount_type
+
     attr_accessor :landed_price
 
     attr_accessor :listing_price
@@ -32,6 +39,9 @@ module AmzSpApi::ProductPricingApiModel
       {
         :'condition' => :'condition',
         :'fulfillment_channel' => :'fulfillmentChannel',
+        :'offer_type' => :'offerType',
+        :'quantity_tier' => :'quantityTier',
+        :'quantity_discount_type' => :'quantityDiscountType',
         :'landed_price' => :'LandedPrice',
         :'listing_price' => :'ListingPrice',
         :'shipping' => :'Shipping',
@@ -44,6 +54,9 @@ module AmzSpApi::ProductPricingApiModel
       {
         :'condition' => :'Object',
         :'fulfillment_channel' => :'Object',
+        :'offer_type' => :'Object',
+        :'quantity_tier' => :'Object',
+        :'quantity_discount_type' => :'Object',
         :'landed_price' => :'Object',
         :'listing_price' => :'Object',
         :'shipping' => :'Object',
@@ -78,6 +91,18 @@ module AmzSpApi::ProductPricingApiModel
 
       if attributes.key?(:'fulfillment_channel')
         self.fulfillment_channel = attributes[:'fulfillment_channel']
+      end
+
+      if attributes.key?(:'offer_type')
+        self.offer_type = attributes[:'offer_type']
+      end
+
+      if attributes.key?(:'quantity_tier')
+        self.quantity_tier = attributes[:'quantity_tier']
+      end
+
+      if attributes.key?(:'quantity_discount_type')
+        self.quantity_discount_type = attributes[:'quantity_discount_type']
       end
 
       if attributes.key?(:'landed_price')
@@ -142,6 +167,9 @@ module AmzSpApi::ProductPricingApiModel
       self.class == o.class &&
           condition == o.condition &&
           fulfillment_channel == o.fulfillment_channel &&
+          offer_type == o.offer_type &&
+          quantity_tier == o.quantity_tier &&
+          quantity_discount_type == o.quantity_discount_type &&
           landed_price == o.landed_price &&
           listing_price == o.listing_price &&
           shipping == o.shipping &&
@@ -157,7 +185,7 @@ module AmzSpApi::ProductPricingApiModel
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [condition, fulfillment_channel, landed_price, listing_price, shipping, points].hash
+      [condition, fulfillment_channel, offer_type, quantity_tier, quantity_discount_type, landed_price, listing_price, shipping, points].hash
     end
 
     # Builds the object from hash

@@ -292,7 +292,7 @@ module AmzSpApi::MerchantFulfillmentApiModel
       end
       return data, status_code, headers
     end
-    # Returns a list of shipping service offers that satisfy the specified shipment request details.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  For more information, see \"Usage Plans and Rate Limits\" in the Selling Partner API documentation.
+    # Returns a list of shipping service offers that satisfy the specified shipment request details.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 10 |  For more information, see \"Usage Plans and Rate Limits\" in the Selling Partner API documentation.
     # @param body 
     # @param [Hash] opts the optional parameters
     # @return [GetEligibleShipmentServicesResponse]
@@ -301,7 +301,7 @@ module AmzSpApi::MerchantFulfillmentApiModel
       data
     end
 
-    # Returns a list of shipping service offers that satisfy the specified shipment request details.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+    # Returns a list of shipping service offers that satisfy the specified shipment request details.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 10 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
     # @param body 
     # @param [Hash] opts the optional parameters
     # @return [Array<(GetEligibleShipmentServicesResponse, Integer, Hash)>] GetEligibleShipmentServicesResponse data, response status code and response headers

@@ -20,7 +20,6 @@ module AmzSpApi::ProductFeesApiModel
     # The seller identifier.
     attr_accessor :seller_id
 
-    # The type of item identifier specified.
     attr_accessor :id_type
 
     # The item identifier.

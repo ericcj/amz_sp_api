@@ -16,6 +16,9 @@ module AmzSpApi::FinancesApiModel
   class RemovalShipmentEvent
     attr_accessor :posted_date
 
+    # The merchant removal orderId.
+    attr_accessor :merchant_order_id
+
     # The identifier for the removal shipment order.
     attr_accessor :order_id
 
@@ -28,6 +31,7 @@ module AmzSpApi::FinancesApiModel
     def self.attribute_map
       {
         :'posted_date' => :'PostedDate',
+        :'merchant_order_id' => :'MerchantOrderId',
         :'order_id' => :'OrderId',
         :'transaction_type' => :'TransactionType',
         :'removal_shipment_item_list' => :'RemovalShipmentItemList'
@@ -38,6 +42,7 @@ module AmzSpApi::FinancesApiModel
     def self.openapi_types
       {
         :'posted_date' => :'Object',
+        :'merchant_order_id' => :'Object',
         :'order_id' => :'Object',
         :'transaction_type' => :'Object',
         :'removal_shipment_item_list' => :'Object'
@@ -67,6 +72,10 @@ module AmzSpApi::FinancesApiModel
 
       if attributes.key?(:'posted_date')
         self.posted_date = attributes[:'posted_date']
+      end
+
+      if attributes.key?(:'merchant_order_id')
+        self.merchant_order_id = attributes[:'merchant_order_id']
       end
 
       if attributes.key?(:'order_id')
@@ -101,6 +110,7 @@ module AmzSpApi::FinancesApiModel
       return true if self.equal?(o)
       self.class == o.class &&
           posted_date == o.posted_date &&
+          merchant_order_id == o.merchant_order_id &&
           order_id == o.order_id &&
           transaction_type == o.transaction_type &&
           removal_shipment_item_list == o.removal_shipment_item_list
@@ -115,7 +125,7 @@ module AmzSpApi::FinancesApiModel
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [posted_date, order_id, transaction_type, removal_shipment_item_list].hash
+      [posted_date, merchant_order_id, order_id, transaction_type, removal_shipment_item_list].hash
     end
 
     # Builds the object from hash

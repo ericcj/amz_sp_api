@@ -12,7 +12,7 @@ Swagger Codegen version: 3.0.24
 require 'date'
 
 module AmzSpApi::SalesApiModel
-  # A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation. <br>**Pattern** : `^-?(0|([1-9]\\d*))(\\.\\d+)?([eE][+-]?\\d+)?$`.
+  # A decimal number with no loss of precision. Useful when precision loss is unnaceptable, as with currencies. Follows RFC7159 for number representation.
   class Decimal
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map

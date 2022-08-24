@@ -13,9 +13,15 @@ require 'date'
 
 module AmzSpApi::ProductPricingApiModel
   class OfferType
+    attr_accessor :offer_type
+
     attr_accessor :buying_price
 
     attr_accessor :regular_price
+
+    attr_accessor :business_price
+
+    attr_accessor :quantity_discount_prices
 
     # The fulfillment channel for the offer listing. Possible values:  * Amazon - Fulfilled by Amazon. * Merchant - Fulfilled by the seller.
     attr_accessor :fulfillment_channel
@@ -32,8 +38,11 @@ module AmzSpApi::ProductPricingApiModel
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'offer_type' => :'offerType',
         :'buying_price' => :'BuyingPrice',
         :'regular_price' => :'RegularPrice',
+        :'business_price' => :'businessPrice',
+        :'quantity_discount_prices' => :'quantityDiscountPrices',
         :'fulfillment_channel' => :'FulfillmentChannel',
         :'item_condition' => :'ItemCondition',
         :'item_sub_condition' => :'ItemSubCondition',
@@ -44,8 +53,11 @@ module AmzSpApi::ProductPricingApiModel
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'offer_type' => :'Object',
         :'buying_price' => :'Object',
         :'regular_price' => :'Object',
+        :'business_price' => :'Object',
+        :'quantity_discount_prices' => :'Object',
         :'fulfillment_channel' => :'Object',
         :'item_condition' => :'Object',
         :'item_sub_condition' => :'Object',
@@ -74,12 +86,26 @@ module AmzSpApi::ProductPricingApiModel
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'offer_type')
+        self.offer_type = attributes[:'offer_type']
+      end
+
       if attributes.key?(:'buying_price')
         self.buying_price = attributes[:'buying_price']
       end
 
       if attributes.key?(:'regular_price')
         self.regular_price = attributes[:'regular_price']
+      end
+
+      if attributes.key?(:'business_price')
+        self.business_price = attributes[:'business_price']
+      end
+
+      if attributes.key?(:'quantity_discount_prices')
+        if (value = attributes[:'quantity_discount_prices']).is_a?(Array)
+          self.quantity_discount_prices = value
+        end
       end
 
       if attributes.key?(:'fulfillment_channel')
@@ -147,8 +173,11 @@ module AmzSpApi::ProductPricingApiModel
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          offer_type == o.offer_type &&
           buying_price == o.buying_price &&
           regular_price == o.regular_price &&
+          business_price == o.business_price &&
+          quantity_discount_prices == o.quantity_discount_prices &&
           fulfillment_channel == o.fulfillment_channel &&
           item_condition == o.item_condition &&
           item_sub_condition == o.item_sub_condition &&
@@ -164,7 +193,7 @@ module AmzSpApi::ProductPricingApiModel
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [buying_price, regular_price, fulfillment_channel, item_condition, item_sub_condition, seller_sku].hash
+      [offer_type, buying_price, regular_price, business_price, quantity_discount_prices, fulfillment_channel, item_condition, item_sub_condition, seller_sku].hash
     end
 
     # Builds the object from hash

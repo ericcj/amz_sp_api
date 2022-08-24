@@ -1,7 +1,7 @@
 =begin
 #Selling Partner API for Services
 
-#With the Services API, you can build applications that help service providers get and modify their service orders.
+#With the Services API, you can build applications that help service providers get and modify their service orders and manage their resources.
 
 OpenAPI spec version: v1
 
@@ -90,6 +90,12 @@ describe 'ServiceJob' do
   end
 
   describe 'test attribute "marketplace_id"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  describe 'test attribute "store_id"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

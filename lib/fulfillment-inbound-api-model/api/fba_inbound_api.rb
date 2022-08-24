@@ -433,6 +433,8 @@ module AmzSpApi::FulfillmentInboundApiModel
     # @option opts [Integer] :number_of_packages The number of packages in the shipment.
     # @option opts [Array<String>] :package_labels_to_print A list of identifiers that specify packages for which you want package labels printed.  Must match CartonId values previously passed using the FBA Inbound Shipment Carton Information Feed. If not, the operation returns the IncorrectPackageIdentifier error code.
     # @option opts [Integer] :number_of_pallets The number of pallets in the shipment. This returns four identical labels for each pallet.
+    # @option opts [Integer] :page_size The page size for paginating through the total packages&#x27; labels. This is a required parameter for Non-Partnered LTL Shipments. Max value:1000.
+    # @option opts [Integer] :page_start_index The page start index for paginating through the total packages&#x27; labels. This is a required parameter for Non-Partnered LTL Shipments.
     # @return [GetLabelsResponse]
     def get_labels(shipment_id, page_type, label_type, opts = {})
       data, _status_code, _headers = get_labels_with_http_info(shipment_id, page_type, label_type, opts)
@@ -447,6 +449,8 @@ module AmzSpApi::FulfillmentInboundApiModel
     # @option opts [Integer] :number_of_packages The number of packages in the shipment.
     # @option opts [Array<String>] :package_labels_to_print A list of identifiers that specify packages for which you want package labels printed.  Must match CartonId values previously passed using the FBA Inbound Shipment Carton Information Feed. If not, the operation returns the IncorrectPackageIdentifier error code.
     # @option opts [Integer] :number_of_pallets The number of pallets in the shipment. This returns four identical labels for each pallet.
+    # @option opts [Integer] :page_size The page size for paginating through the total packages&#x27; labels. This is a required parameter for Non-Partnered LTL Shipments. Max value:1000.
+    # @option opts [Integer] :page_start_index The page start index for paginating through the total packages&#x27; labels. This is a required parameter for Non-Partnered LTL Shipments.
     # @return [Array<(GetLabelsResponse, Integer, Hash)>] GetLabelsResponse data, response status code and response headers
     def get_labels_with_http_info(shipment_id, page_type, label_type, opts = {})
       if @api_client.config.debugging
@@ -469,8 +473,8 @@ module AmzSpApi::FulfillmentInboundApiModel
         fail ArgumentError, "Missing the required parameter 'label_type' when calling FbaInboundApi.get_labels"
       end
       # verify enum value
-      if @api_client.config.client_side_validation && !['DEFAULT', 'UNIQUE', 'PALLET'].include?(label_type)
-        fail ArgumentError, "invalid value for 'label_type', must be one of DEFAULT, UNIQUE, PALLET"
+      if @api_client.config.client_side_validation && !['BARCODE_2D', 'UNIQUE', 'PALLET'].include?(label_type)
+        fail ArgumentError, "invalid value for 'label_type', must be one of BARCODE_2D, UNIQUE, PALLET"
       end
       # resource path
       local_var_path = '/fba/inbound/v0/shipments/{shipmentId}/labels'.sub('{' + 'shipmentId' + '}', shipment_id.to_s)
@@ -482,6 +486,8 @@ module AmzSpApi::FulfillmentInboundApiModel
       query_params[:'NumberOfPackages'] = opts[:'number_of_packages'] if !opts[:'number_of_packages'].nil?
       query_params[:'PackageLabelsToPrint'] = @api_client.build_collection_param(opts[:'package_labels_to_print'], :csv) if !opts[:'package_labels_to_print'].nil?
       query_params[:'NumberOfPallets'] = opts[:'number_of_pallets'] if !opts[:'number_of_pallets'].nil?
+      query_params[:'PageSize'] = opts[:'page_size'] if !opts[:'page_size'].nil?
+      query_params[:'PageStartIndex'] = opts[:'page_start_index'] if !opts[:'page_start_index'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -968,7 +974,7 @@ module AmzSpApi::FulfillmentInboundApiModel
       end
       return data, status_code, headers
     end
-    # Adds, updates, or removes items from the inbound shipment identified by the specified shipment identifier.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  For more information, see \"Usage Plans and Rate Limits\" in the Selling Partner API documentation.
+    # Updates or removes items from the inbound shipment identified by the specified shipment identifier. Adding new items is not supported.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  For more information, see \"Usage Plans and Rate Limits\" in the Selling Partner API documentation.
     # @param body 
     # @param shipment_id A shipment identifier originally returned by the createInboundShipmentPlan operation.
     # @param [Hash] opts the optional parameters
@@ -978,7 +984,7 @@ module AmzSpApi::FulfillmentInboundApiModel
       data
     end
 
-    # Adds, updates, or removes items from the inbound shipment identified by the specified shipment identifier.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+    # Updates or removes items from the inbound shipment identified by the specified shipment identifier. Adding new items is not supported.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
     # @param body 
     # @param shipment_id A shipment identifier originally returned by the createInboundShipmentPlan operation.
     # @param [Hash] opts the optional parameters

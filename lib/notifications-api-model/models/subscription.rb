@@ -1,7 +1,7 @@
 =begin
 #Selling Partner API for Notifications
 
-#The Selling Partner API for Notifications lets you subscribe to notifications that are relevant to a selling partner's business. Using this API you can create a destination to receive notifications, subscribe to notifications, delete notification subscriptions, and more.
+#The Selling Partner API for Notifications lets you subscribe to notifications that are relevant to a selling partner's business. Using this API you can create a destination to receive notifications, subscribe to notifications, delete notification subscriptions, and more.  For more information, see the [Notifications Use Case Guide](doc:notifications-api-v1-use-case-guide).
 
 OpenAPI spec version: v1
 
@@ -23,12 +23,15 @@ module AmzSpApi::NotificationsApiModel
     # The identifier for the destination where notifications will be delivered.
     attr_accessor :destination_id
 
+    attr_accessor :processing_directive
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'subscription_id' => :'subscriptionId',
         :'payload_version' => :'payloadVersion',
-        :'destination_id' => :'destinationId'
+        :'destination_id' => :'destinationId',
+        :'processing_directive' => :'processingDirective'
       }
     end
 
@@ -37,7 +40,8 @@ module AmzSpApi::NotificationsApiModel
       {
         :'subscription_id' => :'Object',
         :'payload_version' => :'Object',
-        :'destination_id' => :'Object'
+        :'destination_id' => :'Object',
+        :'processing_directive' => :'Object'
       }
     end
 
@@ -72,6 +76,10 @@ module AmzSpApi::NotificationsApiModel
 
       if attributes.key?(:'destination_id')
         self.destination_id = attributes[:'destination_id']
+      end
+
+      if attributes.key?(:'processing_directive')
+        self.processing_directive = attributes[:'processing_directive']
       end
     end
 
@@ -110,7 +118,8 @@ module AmzSpApi::NotificationsApiModel
       self.class == o.class &&
           subscription_id == o.subscription_id &&
           payload_version == o.payload_version &&
-          destination_id == o.destination_id
+          destination_id == o.destination_id &&
+          processing_directive == o.processing_directive
     end
 
     # @see the `==` method
@@ -122,7 +131,7 @@ module AmzSpApi::NotificationsApiModel
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [subscription_id, payload_version, destination_id].hash
+      [subscription_id, payload_version, destination_id, processing_directive].hash
     end
 
     # Builds the object from hash

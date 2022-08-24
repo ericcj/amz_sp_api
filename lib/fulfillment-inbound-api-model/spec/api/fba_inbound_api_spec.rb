@@ -122,6 +122,8 @@ describe 'FbaInboundApi' do
   # @option opts [Integer] :number_of_packages The number of packages in the shipment.
   # @option opts [Array<String>] :package_labels_to_print A list of identifiers that specify packages for which you want package labels printed.  Must match CartonId values previously passed using the FBA Inbound Shipment Carton Information Feed. If not, the operation returns the IncorrectPackageIdentifier error code.
   # @option opts [Integer] :number_of_pallets The number of pallets in the shipment. This returns four identical labels for each pallet.
+  # @option opts [Integer] :page_size The page size for paginating through the total packages&#x27; labels. This is a required parameter for Non-Partnered LTL Shipments. Max value:1000.
+  # @option opts [Integer] :page_start_index The page start index for paginating through the total packages&#x27; labels. This is a required parameter for Non-Partnered LTL Shipments.
   # @return [GetLabelsResponse]
   describe 'get_labels test' do
     it 'should work' do
@@ -222,7 +224,7 @@ describe 'FbaInboundApi' do
   end
 
   # unit tests for update_inbound_shipment
-  # Adds, updates, or removes items from the inbound shipment identified by the specified shipment identifier.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+  # Updates or removes items from the inbound shipment identified by the specified shipment identifier. Adding new items is not supported.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
   # @param body 
   # @param shipment_id A shipment identifier originally returned by the createInboundShipmentPlan operation.
   # @param [Hash] opts the optional parameters

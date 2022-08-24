@@ -20,7 +20,7 @@ module AmzSpApi::OrdersApiModel
     # The anonymized email address of the buyer.
     attr_accessor :buyer_email
 
-    # The name of the buyer.
+    # The buyer name or the recipient name.
     attr_accessor :buyer_name
 
     # The county of the buyer.

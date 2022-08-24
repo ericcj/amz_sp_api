@@ -1,7 +1,7 @@
 =begin
 #Selling Partner API for Services
 
-#With the Services API, you can build applications that help service providers get and modify their service orders.
+#With the Services API, you can build applications that help service providers get and modify their service orders and manage their resources.
 
 OpenAPI spec version: v1
 
@@ -14,10 +14,10 @@ require 'date'
 module AmzSpApi::ServicesApiModel
   # Promised delivery information for the item.
   class ItemDeliveryPromise
-    # The date and time of the start of the promised delivery window, in ISO 8601 format.
+    # The date and time of the start of the promised delivery window in ISO 8601 format.
     attr_accessor :start_time
 
-    # The date and time of the end of the promised delivery window, in ISO 8601 format.
+    # The date and time of the end of the promised delivery window in ISO 8601 format.
     attr_accessor :end_time
 
     # Attribute mapping from ruby-style variable name to JSON key.

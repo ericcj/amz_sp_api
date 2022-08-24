@@ -4,18 +4,18 @@ All URIs are relative to *https://sellingpartnerapi-na.amazon.com/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**cancel_report**](ReportsApi.md#cancel_report) | **DELETE** /reports/2020-09-04/reports/{reportId} | 
-[**cancel_report_schedule**](ReportsApi.md#cancel_report_schedule) | **DELETE** /reports/2020-09-04/schedules/{reportScheduleId} | 
-[**create_report**](ReportsApi.md#create_report) | **POST** /reports/2020-09-04/reports | 
-[**create_report_schedule**](ReportsApi.md#create_report_schedule) | **POST** /reports/2020-09-04/schedules | 
-[**get_report**](ReportsApi.md#get_report) | **GET** /reports/2020-09-04/reports/{reportId} | 
-[**get_report_document**](ReportsApi.md#get_report_document) | **GET** /reports/2020-09-04/documents/{reportDocumentId} | 
-[**get_report_schedule**](ReportsApi.md#get_report_schedule) | **GET** /reports/2020-09-04/schedules/{reportScheduleId} | 
-[**get_report_schedules**](ReportsApi.md#get_report_schedules) | **GET** /reports/2020-09-04/schedules | 
-[**get_reports**](ReportsApi.md#get_reports) | **GET** /reports/2020-09-04/reports | 
+[**cancel_report**](ReportsApi.md#cancel_report) | **DELETE** /reports/2021-06-30/reports/{reportId} | 
+[**cancel_report_schedule**](ReportsApi.md#cancel_report_schedule) | **DELETE** /reports/2021-06-30/schedules/{reportScheduleId} | 
+[**create_report**](ReportsApi.md#create_report) | **POST** /reports/2021-06-30/reports | 
+[**create_report_schedule**](ReportsApi.md#create_report_schedule) | **POST** /reports/2021-06-30/schedules | 
+[**get_report**](ReportsApi.md#get_report) | **GET** /reports/2021-06-30/reports/{reportId} | 
+[**get_report_document**](ReportsApi.md#get_report_document) | **GET** /reports/2021-06-30/documents/{reportDocumentId} | 
+[**get_report_schedule**](ReportsApi.md#get_report_schedule) | **GET** /reports/2021-06-30/schedules/{reportScheduleId} | 
+[**get_report_schedules**](ReportsApi.md#get_report_schedules) | **GET** /reports/2021-06-30/schedules | 
+[**get_reports**](ReportsApi.md#get_reports) | **GET** /reports/2021-06-30/reports | 
 
 # **cancel_report**
-> CancelReportResponse cancel_report(report_id)
+> cancel_report(report_id)
 
 
 
@@ -31,8 +31,7 @@ report_id = 'report_id_example' # String | The identifier for the report. This i
 
 
 begin
-  result = api_instance.cancel_report(report_id)
-  p result
+  api_instance.cancel_report(report_id)
 rescue AmzSpApi::ReportsApiModel::ApiError => e
   puts "Exception when calling ReportsApi->cancel_report: #{e}"
 end
@@ -46,7 +45,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CancelReportResponse**](CancelReportResponse.md)
+nil (empty response body)
 
 ### Authorization
 
@@ -60,7 +59,7 @@ No authorization required
 
 
 # **cancel_report_schedule**
-> CancelReportScheduleResponse cancel_report_schedule(report_schedule_id)
+> cancel_report_schedule(report_schedule_id)
 
 
 
@@ -76,8 +75,7 @@ report_schedule_id = 'report_schedule_id_example' # String | The identifier for 
 
 
 begin
-  result = api_instance.cancel_report_schedule(report_schedule_id)
-  p result
+  api_instance.cancel_report_schedule(report_schedule_id)
 rescue AmzSpApi::ReportsApiModel::ApiError => e
   puts "Exception when calling ReportsApi->cancel_report_schedule: #{e}"
 end
@@ -91,7 +89,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CancelReportScheduleResponse**](CancelReportScheduleResponse.md)
+nil (empty response body)
 
 ### Authorization
 
@@ -195,7 +193,7 @@ No authorization required
 
 
 # **get_report**
-> GetReportResponse get_report(report_id)
+> Report get_report(report_id)
 
 
 
@@ -226,7 +224,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetReportResponse**](GetReportResponse.md)
+[**Report**](Report.md)
 
 ### Authorization
 
@@ -240,11 +238,11 @@ No authorization required
 
 
 # **get_report_document**
-> GetReportDocumentResponse get_report_document(report_document_id)
+> ReportDocument get_report_document(report_document_id)
 
 
 
-Returns the information required for retrieving a report document's contents. This includes a presigned URL for the report document as well as the information required to decrypt the document's contents.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 15 |  For more information, see \"Usage Plans and Rate Limits\" in the Selling Partner API documentation.
+Returns the information required for retrieving a report document's contents.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 15 |  For more information, see \"Usage Plans and Rate Limits\" in the Selling Partner API documentation.
 
 ### Example
 ```ruby
@@ -271,7 +269,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetReportDocumentResponse**](GetReportDocumentResponse.md)
+[**ReportDocument**](ReportDocument.md)
 
 ### Authorization
 
@@ -285,7 +283,7 @@ No authorization required
 
 
 # **get_report_schedule**
-> GetReportScheduleResponse get_report_schedule(report_schedule_id)
+> ReportSchedule get_report_schedule(report_schedule_id)
 
 
 
@@ -316,7 +314,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetReportScheduleResponse**](GetReportScheduleResponse.md)
+[**ReportSchedule**](ReportSchedule.md)
 
 ### Authorization
 
@@ -330,7 +328,7 @@ No authorization required
 
 
 # **get_report_schedules**
-> GetReportSchedulesResponse get_report_schedules(report_types)
+> ReportScheduleList get_report_schedules(report_types)
 
 
 
@@ -361,7 +359,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetReportSchedulesResponse**](GetReportSchedulesResponse.md)
+[**ReportScheduleList**](ReportScheduleList.md)
 
 ### Authorization
 

@@ -48,6 +48,8 @@ require 'messaging-api-model/models/get_messaging_actions_for_order_response__em
 require 'messaging-api-model/models/get_messaging_actions_for_order_response__links'
 require 'messaging-api-model/models/get_schema_response'
 require 'messaging-api-model/models/get_schema_response__links'
+require 'messaging-api-model/models/invoice_request'
+require 'messaging-api-model/models/invoice_response'
 require 'messaging-api-model/models/link_object'
 require 'messaging-api-model/models/messaging_action'
 require 'messaging-api-model/models/schema'

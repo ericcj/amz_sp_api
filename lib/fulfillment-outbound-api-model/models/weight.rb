@@ -107,7 +107,7 @@ module AmzSpApi::FulfillmentOutboundApiModel
     # @return true if the model is valid
     def valid?
       return false if @unit.nil?
-      unit_validator = EnumAttributeValidator.new('Object', ['KG', 'LB'])
+      unit_validator = EnumAttributeValidator.new('Object', ['KG', 'KILOGRAMS', 'LB', 'POUNDS'])
       return false unless unit_validator.valid?(@unit)
       return false if @value.nil?
       true
@@ -116,7 +116,7 @@ module AmzSpApi::FulfillmentOutboundApiModel
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] unit Object to be assigned
     def unit=(unit)
-      validator = EnumAttributeValidator.new('Object', ['KG', 'LB'])
+      validator = EnumAttributeValidator.new('Object', ['KG', 'KILOGRAMS', 'LB', 'POUNDS'])
       unless validator.valid?(unit)
         fail ArgumentError, "invalid value for \"unit\", must be one of #{validator.allowable_values}."
       end

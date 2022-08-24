@@ -367,7 +367,9 @@ label_type = 'label_type_example' # String | The type of labels requested.
 opts = { 
   number_of_packages: 56, # Integer | The number of packages in the shipment.
   package_labels_to_print: ['package_labels_to_print_example'], # Array<String> | A list of identifiers that specify packages for which you want package labels printed.  Must match CartonId values previously passed using the FBA Inbound Shipment Carton Information Feed. If not, the operation returns the IncorrectPackageIdentifier error code.
-  number_of_pallets: 56 # Integer | The number of pallets in the shipment. This returns four identical labels for each pallet.
+  number_of_pallets: 56, # Integer | The number of pallets in the shipment. This returns four identical labels for each pallet.
+  page_size: 56, # Integer | The page size for paginating through the total packages' labels. This is a required parameter for Non-Partnered LTL Shipments. Max value:1000.
+  page_start_index: 56 # Integer | The page start index for paginating through the total packages' labels. This is a required parameter for Non-Partnered LTL Shipments.
 }
 
 begin
@@ -388,6 +390,8 @@ Name | Type | Description  | Notes
  **number_of_packages** | **Integer**| The number of packages in the shipment. | [optional] 
  **package_labels_to_print** | [**Array&lt;String&gt;**](String.md)| A list of identifiers that specify packages for which you want package labels printed.  Must match CartonId values previously passed using the FBA Inbound Shipment Carton Information Feed. If not, the operation returns the IncorrectPackageIdentifier error code. | [optional] 
  **number_of_pallets** | **Integer**| The number of pallets in the shipment. This returns four identical labels for each pallet. | [optional] 
+ **page_size** | **Integer**| The page size for paginating through the total packages&#x27; labels. This is a required parameter for Non-Partnered LTL Shipments. Max value:1000. | [optional] 
+ **page_start_index** | **Integer**| The page start index for paginating through the total packages&#x27; labels. This is a required parameter for Non-Partnered LTL Shipments. | [optional] 
 
 ### Return type
 
@@ -757,7 +761,7 @@ No authorization required
 
 
 
-Adds, updates, or removes items from the inbound shipment identified by the specified shipment identifier.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  For more information, see \"Usage Plans and Rate Limits\" in the Selling Partner API documentation.
+Updates or removes items from the inbound shipment identified by the specified shipment identifier. Adding new items is not supported.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  For more information, see \"Usage Plans and Rate Limits\" in the Selling Partner API documentation.
 
 ### Example
 ```ruby
