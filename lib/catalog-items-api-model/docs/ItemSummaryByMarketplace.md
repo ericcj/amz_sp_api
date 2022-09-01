@@ -15,5 +15,6 @@ Name | Type | Description | Notes
 **part_number** | **String** | Part number associated with an Amazon catalog item. | [optional] 
 **size** | **String** | Name of the size associated with an Amazon catalog item. | [optional] 
 **style** | **String** | Name of the style associated with an Amazon catalog item. | [optional] 
-**website_display_group** | **String** | Name of the website display group associated with an Amazon catalog item. | [optional] 
+**website_display_group** | **String** | Identifier of the website display group associated with an Amazon catalog item. | [optional] 
+**website_display_group_name** | **String** | Display name of the website display group associated with an Amazon catalog item. | [optional] 
 

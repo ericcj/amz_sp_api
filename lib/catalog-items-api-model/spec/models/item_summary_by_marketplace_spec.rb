@@ -113,4 +113,10 @@ describe 'ItemSummaryByMarketplace' do
     end
   end
 
+  describe 'test attribute "website_display_group_name"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
 end

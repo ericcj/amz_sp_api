@@ -49,8 +49,11 @@ module AmzSpApi::CatalogItemsApiModel
     # Name of the style associated with an Amazon catalog item.
     attr_accessor :style
 
-    # Name of the website display group associated with an Amazon catalog item.
+    # Identifier of the website display group associated with an Amazon catalog item.
     attr_accessor :website_display_group
+
+    # Display name of the website display group associated with an Amazon catalog item.
+    attr_accessor :website_display_group_name
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -89,7 +92,8 @@ module AmzSpApi::CatalogItemsApiModel
         :'part_number' => :'partNumber',
         :'size' => :'size',
         :'style' => :'style',
-        :'website_display_group' => :'websiteDisplayGroup'
+        :'website_display_group' => :'websiteDisplayGroup',
+        :'website_display_group_name' => :'websiteDisplayGroupName'
       }
     end
 
@@ -108,7 +112,8 @@ module AmzSpApi::CatalogItemsApiModel
         :'part_number' => :'Object',
         :'size' => :'Object',
         :'style' => :'Object',
-        :'website_display_group' => :'Object'
+        :'website_display_group' => :'Object',
+        :'website_display_group_name' => :'Object'
       }
     end
 
@@ -184,6 +189,10 @@ module AmzSpApi::CatalogItemsApiModel
       if attributes.key?(:'website_display_group')
         self.website_display_group = attributes[:'website_display_group']
       end
+
+      if attributes.key?(:'website_display_group_name')
+        self.website_display_group_name = attributes[:'website_display_group_name']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -233,7 +242,8 @@ module AmzSpApi::CatalogItemsApiModel
           part_number == o.part_number &&
           size == o.size &&
           style == o.style &&
-          website_display_group == o.website_display_group
+          website_display_group == o.website_display_group &&
+          website_display_group_name == o.website_display_group_name
     end
 
     # @see the `==` method
@@ -245,7 +255,7 @@ module AmzSpApi::CatalogItemsApiModel
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [marketplace_id, brand, browse_classification, color, item_classification, item_name, manufacturer, model_number, package_quantity, part_number, size, style, website_display_group].hash
+      [marketplace_id, brand, browse_classification, color, item_classification, item_name, manufacturer, model_number, package_quantity, part_number, size, style, website_display_group, website_display_group_name].hash
     end
 
     # Builds the object from hash
