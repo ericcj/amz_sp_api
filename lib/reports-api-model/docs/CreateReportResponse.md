@@ -3,6 +3,5 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**payload** | [**CreateReportResult**](CreateReportResult.md) |  | [optional] 
-**errors** | [**ErrorList**](ErrorList.md) |  | [optional] 
+**report_id** | **String** | The identifier for the report. This identifier is unique only in combination with a seller ID. | 
 

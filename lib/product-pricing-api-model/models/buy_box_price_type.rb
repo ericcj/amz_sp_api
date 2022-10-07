@@ -16,6 +16,13 @@ module AmzSpApi::ProductPricingApiModel
     # Indicates the condition of the item. For example: New, Used, Collectible, Refurbished, or Club.
     attr_accessor :condition
 
+    attr_accessor :offer_type
+
+    # Indicates at what quantity this price becomes active.
+    attr_accessor :quantity_tier
+
+    attr_accessor :quantity_discount_type
+
     attr_accessor :landed_price
 
     attr_accessor :listing_price
@@ -24,14 +31,21 @@ module AmzSpApi::ProductPricingApiModel
 
     attr_accessor :points
 
+    # The seller identifier for the offer.
+    attr_accessor :seller_id
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'condition' => :'condition',
+        :'offer_type' => :'offerType',
+        :'quantity_tier' => :'quantityTier',
+        :'quantity_discount_type' => :'quantityDiscountType',
         :'landed_price' => :'LandedPrice',
         :'listing_price' => :'ListingPrice',
         :'shipping' => :'Shipping',
-        :'points' => :'Points'
+        :'points' => :'Points',
+        :'seller_id' => :'sellerId'
       }
     end
 
@@ -39,10 +53,14 @@ module AmzSpApi::ProductPricingApiModel
     def self.openapi_types
       {
         :'condition' => :'Object',
+        :'offer_type' => :'Object',
+        :'quantity_tier' => :'Object',
+        :'quantity_discount_type' => :'Object',
         :'landed_price' => :'Object',
         :'listing_price' => :'Object',
         :'shipping' => :'Object',
-        :'points' => :'Object'
+        :'points' => :'Object',
+        :'seller_id' => :'Object'
       }
     end
 
@@ -71,6 +89,18 @@ module AmzSpApi::ProductPricingApiModel
         self.condition = attributes[:'condition']
       end
 
+      if attributes.key?(:'offer_type')
+        self.offer_type = attributes[:'offer_type']
+      end
+
+      if attributes.key?(:'quantity_tier')
+        self.quantity_tier = attributes[:'quantity_tier']
+      end
+
+      if attributes.key?(:'quantity_discount_type')
+        self.quantity_discount_type = attributes[:'quantity_discount_type']
+      end
+
       if attributes.key?(:'landed_price')
         self.landed_price = attributes[:'landed_price']
       end
@@ -85,6 +115,10 @@ module AmzSpApi::ProductPricingApiModel
 
       if attributes.key?(:'points')
         self.points = attributes[:'points']
+      end
+
+      if attributes.key?(:'seller_id')
+        self.seller_id = attributes[:'seller_id']
       end
     end
 
@@ -127,10 +161,14 @@ module AmzSpApi::ProductPricingApiModel
       return true if self.equal?(o)
       self.class == o.class &&
           condition == o.condition &&
+          offer_type == o.offer_type &&
+          quantity_tier == o.quantity_tier &&
+          quantity_discount_type == o.quantity_discount_type &&
           landed_price == o.landed_price &&
           listing_price == o.listing_price &&
           shipping == o.shipping &&
-          points == o.points
+          points == o.points &&
+          seller_id == o.seller_id
     end
 
     # @see the `==` method
@@ -142,7 +180,7 @@ module AmzSpApi::ProductPricingApiModel
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [condition, landed_price, listing_price, shipping, points].hash
+      [condition, offer_type, quantity_tier, quantity_discount_type, landed_price, listing_price, shipping, points, seller_id].hash
     end
 
     # Builds the object from hash

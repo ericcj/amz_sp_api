@@ -1,7 +1,7 @@
 =begin
 #Selling Partner API for Services
 
-#With the Services API, you can build applications that help service providers get and modify their service orders.
+#With the Services API, you can build applications that help service providers get and modify their service orders and manage their resources.
 
 OpenAPI spec version: v1
 
@@ -16,7 +16,7 @@ module AmzSpApi::ServicesApiModel
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-    # Adds an appointment to the service job indicated by the service job identifier you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  For more information, see \"Usage Plans and Rate Limits\" in the Selling Partner API documentation.
+    # Adds an appointment to the service job indicated by the service job identifier specified.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
     # @param body Add appointment operation input details.
     # @param service_job_id An Amazon defined service job identifier.
     # @param [Hash] opts the optional parameters
@@ -26,7 +26,7 @@ module AmzSpApi::ServicesApiModel
       data
     end
 
-    # Adds an appointment to the service job indicated by the service job identifier you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+    # Adds an appointment to the service job indicated by the service job identifier specified.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
     # @param body Add appointment operation input details.
     # @param service_job_id An Amazon defined service job identifier.
     # @param [Hash] opts the optional parameters
@@ -78,7 +78,136 @@ module AmzSpApi::ServicesApiModel
       end
       return data, status_code, headers
     end
-    # Cancels the service job indicated by the service job identifier you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  For more information, see \"Usage Plans and Rate Limits\" in the Selling Partner API documentation.
+    # Assigns new resource(s) or overwrite/update the existing one(s) to a service job appointment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 2 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+    # @param body 
+    # @param service_job_id An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API.
+    # @param appointment_id An Amazon-defined identifier of active service job appointment.
+    # @param [Hash] opts the optional parameters
+    # @return [AssignAppointmentResourcesResponse]
+    def assign_appointment_resources(body, service_job_id, appointment_id, opts = {})
+      data, _status_code, _headers = assign_appointment_resources_with_http_info(body, service_job_id, appointment_id, opts)
+      data
+    end
+
+    # Assigns new resource(s) or overwrite/update the existing one(s) to a service job appointment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+    # @param body 
+    # @param service_job_id An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API.
+    # @param appointment_id An Amazon-defined identifier of active service job appointment.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AssignAppointmentResourcesResponse, Integer, Hash)>] AssignAppointmentResourcesResponse data, response status code and response headers
+    def assign_appointment_resources_with_http_info(body, service_job_id, appointment_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ServiceApi.assign_appointment_resources ...'
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling ServiceApi.assign_appointment_resources"
+      end
+      # verify the required parameter 'service_job_id' is set
+      if @api_client.config.client_side_validation && service_job_id.nil?
+        fail ArgumentError, "Missing the required parameter 'service_job_id' when calling ServiceApi.assign_appointment_resources"
+      end
+      # verify the required parameter 'appointment_id' is set
+      if @api_client.config.client_side_validation && appointment_id.nil?
+        fail ArgumentError, "Missing the required parameter 'appointment_id' when calling ServiceApi.assign_appointment_resources"
+      end
+      # resource path
+      local_var_path = '/service/v1/serviceJobs/{serviceJobId}/appointments/{appointmentId}/resources'.sub('{' + 'serviceJobId' + '}', service_job_id.to_s).sub('{' + 'appointmentId' + '}', appointment_id.to_s)
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:body] || @api_client.object_to_http_body(body) 
+
+      return_type = opts[:return_type] || 'AssignAppointmentResourcesResponse' 
+
+      auth_names = opts[:auth_names] || []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type)
+
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ServiceApi#assign_appointment_resources\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Cancel a reservation.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+    # @param reservation_id Reservation Identifier
+    # @param marketplace_ids An identifier for the marketplace in which the resource operates.
+    # @param [Hash] opts the optional parameters
+    # @return [CancelReservationResponse]
+    def cancel_reservation(reservation_id, marketplace_ids, opts = {})
+      data, _status_code, _headers = cancel_reservation_with_http_info(reservation_id, marketplace_ids, opts)
+      data
+    end
+
+    # Cancel a reservation.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+    # @param reservation_id Reservation Identifier
+    # @param marketplace_ids An identifier for the marketplace in which the resource operates.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CancelReservationResponse, Integer, Hash)>] CancelReservationResponse data, response status code and response headers
+    def cancel_reservation_with_http_info(reservation_id, marketplace_ids, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ServiceApi.cancel_reservation ...'
+      end
+      # verify the required parameter 'reservation_id' is set
+      if @api_client.config.client_side_validation && reservation_id.nil?
+        fail ArgumentError, "Missing the required parameter 'reservation_id' when calling ServiceApi.cancel_reservation"
+      end
+      # verify the required parameter 'marketplace_ids' is set
+      if @api_client.config.client_side_validation && marketplace_ids.nil?
+        fail ArgumentError, "Missing the required parameter 'marketplace_ids' when calling ServiceApi.cancel_reservation"
+      end
+      # resource path
+      local_var_path = '/service/v1/reservation/{reservationId}'.sub('{' + 'reservationId' + '}', reservation_id.to_s)
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'marketplaceIds'] = @api_client.build_collection_param(marketplace_ids, :csv)
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:body] 
+
+      return_type = opts[:return_type] || 'CancelReservationResponse' 
+
+      auth_names = opts[:auth_names] || []
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type)
+
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ServiceApi#cancel_reservation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Cancels the service job indicated by the service job identifier specified.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
     # @param service_job_id An Amazon defined service job identifier.
     # @param cancellation_reason_code A cancel reason code that specifies the reason for cancelling a service job.
     # @param [Hash] opts the optional parameters
@@ -88,7 +217,7 @@ module AmzSpApi::ServicesApiModel
       data
     end
 
-    # Cancels the service job indicated by the service job identifier you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+    # Cancels the service job indicated by the service job identifier specified.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
     # @param service_job_id An Amazon defined service job identifier.
     # @param cancellation_reason_code A cancel reason code that specifies the reason for cancelling a service job.
     # @param [Hash] opts the optional parameters
@@ -139,7 +268,7 @@ module AmzSpApi::ServicesApiModel
       end
       return data, status_code, headers
     end
-    # Completes the service job indicated by the service job identifier you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  For more information, see \"Usage Plans and Rate Limits\" in the Selling Partner API documentation.
+    # Completes the service job indicated by the service job identifier specified.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
     # @param service_job_id An Amazon defined service job identifier.
     # @param [Hash] opts the optional parameters
     # @return [CompleteServiceJobByServiceJobIdResponse]
@@ -148,7 +277,7 @@ module AmzSpApi::ServicesApiModel
       data
     end
 
-    # Completes the service job indicated by the service job identifier you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+    # Completes the service job indicated by the service job identifier specified.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
     # @param service_job_id An Amazon defined service job identifier.
     # @param [Hash] opts the optional parameters
     # @return [Array<(CompleteServiceJobByServiceJobIdResponse, Integer, Hash)>] CompleteServiceJobByServiceJobIdResponse data, response status code and response headers
@@ -193,7 +322,412 @@ module AmzSpApi::ServicesApiModel
       end
       return data, status_code, headers
     end
-    # Gets service job details for the service job indicated by the service job identifier you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 20 | 40 |  For more information, see \"Usage Plans and Rate Limits\" in the Selling Partner API documentation.
+    # Create a reservation.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+    # @param body Reservation details
+    # @param marketplace_ids An identifier for the marketplace in which the resource operates.
+    # @param [Hash] opts the optional parameters
+    # @return [CreateReservationResponse]
+    def create_reservation(body, marketplace_ids, opts = {})
+      data, _status_code, _headers = create_reservation_with_http_info(body, marketplace_ids, opts)
+      data
+    end
+
+    # Create a reservation.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+    # @param body Reservation details
+    # @param marketplace_ids An identifier for the marketplace in which the resource operates.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CreateReservationResponse, Integer, Hash)>] CreateReservationResponse data, response status code and response headers
+    def create_reservation_with_http_info(body, marketplace_ids, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ServiceApi.create_reservation ...'
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling ServiceApi.create_reservation"
+      end
+      # verify the required parameter 'marketplace_ids' is set
+      if @api_client.config.client_side_validation && marketplace_ids.nil?
+        fail ArgumentError, "Missing the required parameter 'marketplace_ids' when calling ServiceApi.create_reservation"
+      end
+      # resource path
+      local_var_path = '/service/v1/reservation'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'marketplaceIds'] = @api_client.build_collection_param(marketplace_ids, :csv)
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:body] || @api_client.object_to_http_body(body) 
+
+      return_type = opts[:return_type] || 'CreateReservationResponse' 
+
+      auth_names = opts[:auth_names] || []
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type)
+
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ServiceApi#create_reservation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Creates an upload destination.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+    # @param body Upload document operation input details.
+    # @param [Hash] opts the optional parameters
+    # @return [CreateServiceDocumentUploadDestination]
+    def create_service_document_upload_destination(body, opts = {})
+      data, _status_code, _headers = create_service_document_upload_destination_with_http_info(body, opts)
+      data
+    end
+
+    # Creates an upload destination.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+    # @param body Upload document operation input details.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CreateServiceDocumentUploadDestination, Integer, Hash)>] CreateServiceDocumentUploadDestination data, response status code and response headers
+    def create_service_document_upload_destination_with_http_info(body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ServiceApi.create_service_document_upload_destination ...'
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling ServiceApi.create_service_document_upload_destination"
+      end
+      # resource path
+      local_var_path = '/service/v1/documents'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:body] || @api_client.object_to_http_body(body) 
+
+      return_type = opts[:return_type] || 'CreateServiceDocumentUploadDestination' 
+
+      auth_names = opts[:auth_names] || []
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type)
+
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ServiceApi#create_service_document_upload_destination\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Gets appointment slots as per the service context specified.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 20 | 40 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+    # @param asin ASIN associated with the service.
+    # @param store_id Store identifier defining the region scope to retrive appointment slots.
+    # @param marketplace_ids An identifier for the marketplace for which appointment slots are queried
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :start_time A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration.
+    # @option opts [String] :end_time A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days.
+    # @return [GetAppointmentSlotsResponse]
+    def get_appointment_slots(asin, store_id, marketplace_ids, opts = {})
+      data, _status_code, _headers = get_appointment_slots_with_http_info(asin, store_id, marketplace_ids, opts)
+      data
+    end
+
+    # Gets appointment slots as per the service context specified.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 20 | 40 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+    # @param asin ASIN associated with the service.
+    # @param store_id Store identifier defining the region scope to retrive appointment slots.
+    # @param marketplace_ids An identifier for the marketplace for which appointment slots are queried
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :start_time A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration.
+    # @option opts [String] :end_time A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days.
+    # @return [Array<(GetAppointmentSlotsResponse, Integer, Hash)>] GetAppointmentSlotsResponse data, response status code and response headers
+    def get_appointment_slots_with_http_info(asin, store_id, marketplace_ids, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ServiceApi.get_appointment_slots ...'
+      end
+      # verify the required parameter 'asin' is set
+      if @api_client.config.client_side_validation && asin.nil?
+        fail ArgumentError, "Missing the required parameter 'asin' when calling ServiceApi.get_appointment_slots"
+      end
+      # verify the required parameter 'store_id' is set
+      if @api_client.config.client_side_validation && store_id.nil?
+        fail ArgumentError, "Missing the required parameter 'store_id' when calling ServiceApi.get_appointment_slots"
+      end
+      # verify the required parameter 'marketplace_ids' is set
+      if @api_client.config.client_side_validation && marketplace_ids.nil?
+        fail ArgumentError, "Missing the required parameter 'marketplace_ids' when calling ServiceApi.get_appointment_slots"
+      end
+      # resource path
+      local_var_path = '/service/v1/appointmentSlots'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'asin'] = asin
+      query_params[:'storeId'] = store_id
+      query_params[:'marketplaceIds'] = @api_client.build_collection_param(marketplace_ids, :csv)
+      query_params[:'startTime'] = opts[:'start_time'] if !opts[:'start_time'].nil?
+      query_params[:'endTime'] = opts[:'end_time'] if !opts[:'end_time'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:body] 
+
+      return_type = opts[:return_type] || 'GetAppointmentSlotsResponse' 
+
+      auth_names = opts[:auth_names] || []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type)
+
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ServiceApi#get_appointment_slots\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Gets appointment slots for the service associated with the service job id specified.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+    # @param service_job_id A service job identifier to retrive appointment slots for associated service.
+    # @param marketplace_ids An identifier for the marketplace in which the resource operates.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :start_time A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration.
+    # @option opts [String] :end_time A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days.
+    # @return [GetAppointmentSlotsResponse]
+    def get_appointmment_slots_by_job_id(service_job_id, marketplace_ids, opts = {})
+      data, _status_code, _headers = get_appointmment_slots_by_job_id_with_http_info(service_job_id, marketplace_ids, opts)
+      data
+    end
+
+    # Gets appointment slots for the service associated with the service job id specified.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+    # @param service_job_id A service job identifier to retrive appointment slots for associated service.
+    # @param marketplace_ids An identifier for the marketplace in which the resource operates.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :start_time A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration.
+    # @option opts [String] :end_time A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days.
+    # @return [Array<(GetAppointmentSlotsResponse, Integer, Hash)>] GetAppointmentSlotsResponse data, response status code and response headers
+    def get_appointmment_slots_by_job_id_with_http_info(service_job_id, marketplace_ids, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ServiceApi.get_appointmment_slots_by_job_id ...'
+      end
+      # verify the required parameter 'service_job_id' is set
+      if @api_client.config.client_side_validation && service_job_id.nil?
+        fail ArgumentError, "Missing the required parameter 'service_job_id' when calling ServiceApi.get_appointmment_slots_by_job_id"
+      end
+      # verify the required parameter 'marketplace_ids' is set
+      if @api_client.config.client_side_validation && marketplace_ids.nil?
+        fail ArgumentError, "Missing the required parameter 'marketplace_ids' when calling ServiceApi.get_appointmment_slots_by_job_id"
+      end
+      # resource path
+      local_var_path = '/service/v1/serviceJobs/{serviceJobId}/appointmentSlots'.sub('{' + 'serviceJobId' + '}', service_job_id.to_s)
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'marketplaceIds'] = @api_client.build_collection_param(marketplace_ids, :csv)
+      query_params[:'startTime'] = opts[:'start_time'] if !opts[:'start_time'].nil?
+      query_params[:'endTime'] = opts[:'end_time'] if !opts[:'end_time'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:body] 
+
+      return_type = opts[:return_type] || 'GetAppointmentSlotsResponse' 
+
+      auth_names = opts[:auth_names] || []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type)
+
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ServiceApi#get_appointmment_slots_by_job_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Provides capacity in fixed-size slots.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+    # @param body Request body.
+    # @param marketplace_ids An identifier for the marketplace in which the resource operates.
+    # @param resource_id Resource Identifier.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :next_page_token Next page token returned in the response of your previous request.
+    # @return [FixedSlotCapacity]
+    def get_fixed_slot_capacity(body, marketplace_ids, resource_id, opts = {})
+      data, _status_code, _headers = get_fixed_slot_capacity_with_http_info(body, marketplace_ids, resource_id, opts)
+      data
+    end
+
+    # Provides capacity in fixed-size slots.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+    # @param body Request body.
+    # @param marketplace_ids An identifier for the marketplace in which the resource operates.
+    # @param resource_id Resource Identifier.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :next_page_token Next page token returned in the response of your previous request.
+    # @return [Array<(FixedSlotCapacity, Integer, Hash)>] FixedSlotCapacity data, response status code and response headers
+    def get_fixed_slot_capacity_with_http_info(body, marketplace_ids, resource_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ServiceApi.get_fixed_slot_capacity ...'
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling ServiceApi.get_fixed_slot_capacity"
+      end
+      # verify the required parameter 'marketplace_ids' is set
+      if @api_client.config.client_side_validation && marketplace_ids.nil?
+        fail ArgumentError, "Missing the required parameter 'marketplace_ids' when calling ServiceApi.get_fixed_slot_capacity"
+      end
+      # verify the required parameter 'resource_id' is set
+      if @api_client.config.client_side_validation && resource_id.nil?
+        fail ArgumentError, "Missing the required parameter 'resource_id' when calling ServiceApi.get_fixed_slot_capacity"
+      end
+      # resource path
+      local_var_path = '/service/v1/serviceResources/{resourceId}/capacity/fixed'.sub('{' + 'resourceId' + '}', resource_id.to_s)
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'marketplaceIds'] = @api_client.build_collection_param(marketplace_ids, :csv)
+      query_params[:'nextPageToken'] = opts[:'next_page_token'] if !opts[:'next_page_token'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:body] || @api_client.object_to_http_body(body) 
+
+      return_type = opts[:return_type] || 'FixedSlotCapacity' 
+
+      auth_names = opts[:auth_names] || []
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type)
+
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ServiceApi#get_fixed_slot_capacity\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Provides capacity slots in a format similar to availability records.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+    # @param body Request body.
+    # @param marketplace_ids An identifier for the marketplace in which the resource operates.
+    # @param resource_id Resource Identifier.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :next_page_token Next page token returned in the response of your previous request.
+    # @return [RangeSlotCapacity]
+    def get_range_slot_capacity(body, marketplace_ids, resource_id, opts = {})
+      data, _status_code, _headers = get_range_slot_capacity_with_http_info(body, marketplace_ids, resource_id, opts)
+      data
+    end
+
+    # Provides capacity slots in a format similar to availability records.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+    # @param body Request body.
+    # @param marketplace_ids An identifier for the marketplace in which the resource operates.
+    # @param resource_id Resource Identifier.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :next_page_token Next page token returned in the response of your previous request.
+    # @return [Array<(RangeSlotCapacity, Integer, Hash)>] RangeSlotCapacity data, response status code and response headers
+    def get_range_slot_capacity_with_http_info(body, marketplace_ids, resource_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ServiceApi.get_range_slot_capacity ...'
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling ServiceApi.get_range_slot_capacity"
+      end
+      # verify the required parameter 'marketplace_ids' is set
+      if @api_client.config.client_side_validation && marketplace_ids.nil?
+        fail ArgumentError, "Missing the required parameter 'marketplace_ids' when calling ServiceApi.get_range_slot_capacity"
+      end
+      # verify the required parameter 'resource_id' is set
+      if @api_client.config.client_side_validation && resource_id.nil?
+        fail ArgumentError, "Missing the required parameter 'resource_id' when calling ServiceApi.get_range_slot_capacity"
+      end
+      # resource path
+      local_var_path = '/service/v1/serviceResources/{resourceId}/capacity/range'.sub('{' + 'resourceId' + '}', resource_id.to_s)
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'marketplaceIds'] = @api_client.build_collection_param(marketplace_ids, :csv)
+      query_params[:'nextPageToken'] = opts[:'next_page_token'] if !opts[:'next_page_token'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:body] || @api_client.object_to_http_body(body) 
+
+      return_type = opts[:return_type] || 'RangeSlotCapacity' 
+
+      auth_names = opts[:auth_names] || []
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type)
+
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ServiceApi#get_range_slot_capacity\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Gets details of service job indicated by the provided `serviceJobID`.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 20 | 40 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
     # @param service_job_id A service job identifier.
     # @param [Hash] opts the optional parameters
     # @return [GetServiceJobByServiceJobIdResponse]
@@ -202,7 +736,7 @@ module AmzSpApi::ServicesApiModel
       data
     end
 
-    # Gets service job details for the service job indicated by the service job identifier you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 20 | 40 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+    # Gets details of service job indicated by the provided &#x60;serviceJobID&#x60;.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 20 | 40 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
     # @param service_job_id A service job identifier.
     # @param [Hash] opts the optional parameters
     # @return [Array<(GetServiceJobByServiceJobIdResponse, Integer, Hash)>] GetServiceJobByServiceJobIdResponse data, response status code and response headers
@@ -247,42 +781,48 @@ module AmzSpApi::ServicesApiModel
       end
       return data, status_code, headers
     end
-    # Gets service job details for the specified filter query.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 40 |  For more information, see \"Usage Plans and Rate Limits\" in the Selling Partner API documentation.
-    # @param marketplace_ids Used to select jobs that were placed in the specified marketplaces. 
+    # Gets service job details for the specified filter query.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 40 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+    # @param marketplace_ids Used to select jobs that were placed in the specified marketplaces.
     # @param [Hash] opts the optional parameters
-    # @option opts [Array<String>] :service_order_ids List of service order ids for the query you want to perform.Max values supported 20. 
+    # @option opts [Array<String>] :service_order_ids List of service order ids for the query you want to perform.Max values supported 20.
     # @option opts [Array<String>] :service_job_status A list of one or more job status by which to filter the list of jobs.
     # @option opts [String] :page_token String returned in the response of your previous request.
-    # @option opts [Integer] :page_size A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20.  (default to 20)
+    # @option opts [Integer] :page_size A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20. (default to 20)
     # @option opts [String] :sort_field Sort fields on which you want to sort the output.
     # @option opts [String] :sort_order Sort order for the query you want to perform.
-    # @option opts [String] :created_after A date used for selecting jobs created after (or at) a specified time must be in ISO 8601 format. Required if LastUpdatedAfter is not specified.Specifying both CreatedAfter and LastUpdatedAfter returns an error. 
-    # @option opts [String] :created_before A date used for selecting jobs created before (or at) a specified time must be in ISO 8601 format. 
-    # @option opts [String] :last_updated_after A date used for selecting jobs updated after (or at) a specified time must be in ISO 8601 format. Required if createdAfter is not specified.Specifying both CreatedAfter and LastUpdatedAfter returns an error. 
-    # @option opts [String] :last_updated_before A date used for selecting jobs updated before (or at) a specified time must be in ISO 8601 format. 
-    # @option opts [String] :schedule_start_date A date used for filtering jobs schedule after (or at) a specified time must be in ISO 8601 format. schedule end date should not be earlier than schedule start date. 
-    # @option opts [String] :schedule_end_date A date used for filtering jobs schedule before (or at) a specified time must be in ISO 8601 format. schedule end date should not be earlier than schedule start date. 
+    # @option opts [String] :created_after A date used for selecting jobs created at or after a specified time. Must be in ISO 8601 format. Required if &#x60;LastUpdatedAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error.
+    # @option opts [String] :created_before A date used for selecting jobs created at or before a specified time. Must be in ISO 8601 format.
+    # @option opts [String] :last_updated_after A date used for selecting jobs updated at or after a specified time. Must be in ISO 8601 format. Required if &#x60;createdAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error.
+    # @option opts [String] :last_updated_before A date used for selecting jobs updated at or before a specified time. Must be in ISO 8601 format.
+    # @option opts [String] :schedule_start_date A date used for filtering jobs schedules at or after a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date.
+    # @option opts [String] :schedule_end_date A date used for filtering jobs schedules at or before a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date.
+    # @option opts [Array<String>] :asins List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20.
+    # @option opts [Array<String>] :required_skills A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20.
+    # @option opts [Array<String>] :store_ids List of Amazon-defined identifiers for the region scope. Max values supported is 50.
     # @return [GetServiceJobsResponse]
     def get_service_jobs(marketplace_ids, opts = {})
       data, _status_code, _headers = get_service_jobs_with_http_info(marketplace_ids, opts)
       data
     end
 
-    # Gets service job details for the specified filter query.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 40 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
-    # @param marketplace_ids Used to select jobs that were placed in the specified marketplaces. 
+    # Gets service job details for the specified filter query.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 40 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+    # @param marketplace_ids Used to select jobs that were placed in the specified marketplaces.
     # @param [Hash] opts the optional parameters
-    # @option opts [Array<String>] :service_order_ids List of service order ids for the query you want to perform.Max values supported 20. 
+    # @option opts [Array<String>] :service_order_ids List of service order ids for the query you want to perform.Max values supported 20.
     # @option opts [Array<String>] :service_job_status A list of one or more job status by which to filter the list of jobs.
     # @option opts [String] :page_token String returned in the response of your previous request.
-    # @option opts [Integer] :page_size A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20. 
+    # @option opts [Integer] :page_size A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20.
     # @option opts [String] :sort_field Sort fields on which you want to sort the output.
     # @option opts [String] :sort_order Sort order for the query you want to perform.
-    # @option opts [String] :created_after A date used for selecting jobs created after (or at) a specified time must be in ISO 8601 format. Required if LastUpdatedAfter is not specified.Specifying both CreatedAfter and LastUpdatedAfter returns an error. 
-    # @option opts [String] :created_before A date used for selecting jobs created before (or at) a specified time must be in ISO 8601 format. 
-    # @option opts [String] :last_updated_after A date used for selecting jobs updated after (or at) a specified time must be in ISO 8601 format. Required if createdAfter is not specified.Specifying both CreatedAfter and LastUpdatedAfter returns an error. 
-    # @option opts [String] :last_updated_before A date used for selecting jobs updated before (or at) a specified time must be in ISO 8601 format. 
-    # @option opts [String] :schedule_start_date A date used for filtering jobs schedule after (or at) a specified time must be in ISO 8601 format. schedule end date should not be earlier than schedule start date. 
-    # @option opts [String] :schedule_end_date A date used for filtering jobs schedule before (or at) a specified time must be in ISO 8601 format. schedule end date should not be earlier than schedule start date. 
+    # @option opts [String] :created_after A date used for selecting jobs created at or after a specified time. Must be in ISO 8601 format. Required if &#x60;LastUpdatedAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error.
+    # @option opts [String] :created_before A date used for selecting jobs created at or before a specified time. Must be in ISO 8601 format.
+    # @option opts [String] :last_updated_after A date used for selecting jobs updated at or after a specified time. Must be in ISO 8601 format. Required if &#x60;createdAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error.
+    # @option opts [String] :last_updated_before A date used for selecting jobs updated at or before a specified time. Must be in ISO 8601 format.
+    # @option opts [String] :schedule_start_date A date used for filtering jobs schedules at or after a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date.
+    # @option opts [String] :schedule_end_date A date used for filtering jobs schedules at or before a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date.
+    # @option opts [Array<String>] :asins List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20.
+    # @option opts [Array<String>] :required_skills A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20.
+    # @option opts [Array<String>] :store_ids List of Amazon-defined identifiers for the region scope. Max values supported is 50.
     # @return [Array<(GetServiceJobsResponse, Integer, Hash)>] GetServiceJobsResponse data, response status code and response headers
     def get_service_jobs_with_http_info(marketplace_ids, opts = {})
       if @api_client.config.debugging
@@ -319,6 +859,9 @@ module AmzSpApi::ServicesApiModel
       query_params[:'lastUpdatedBefore'] = opts[:'last_updated_before'] if !opts[:'last_updated_before'].nil?
       query_params[:'scheduleStartDate'] = opts[:'schedule_start_date'] if !opts[:'schedule_start_date'].nil?
       query_params[:'scheduleEndDate'] = opts[:'schedule_end_date'] if !opts[:'schedule_end_date'].nil?
+      query_params[:'asins'] = @api_client.build_collection_param(opts[:'asins'], :csv) if !opts[:'asins'].nil?
+      query_params[:'requiredSkills'] = @api_client.build_collection_param(opts[:'required_skills'], :csv) if !opts[:'required_skills'].nil?
+      query_params[:'storeIds'] = @api_client.build_collection_param(opts[:'store_ids'], :csv) if !opts[:'store_ids'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -347,7 +890,7 @@ module AmzSpApi::ServicesApiModel
       end
       return data, status_code, headers
     end
-    # Reschedules an appointment for the service job indicated by the service job identifier you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  For more information, see \"Usage Plans and Rate Limits\" in the Selling Partner API documentation.
+    # Reschedules an appointment for the service job indicated by the service job identifier specified.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
     # @param body Reschedule appointment operation input details.
     # @param service_job_id An Amazon defined service job identifier.
     # @param appointment_id An existing appointment identifier for the Service Job.
@@ -358,7 +901,7 @@ module AmzSpApi::ServicesApiModel
       data
     end
 
-    # Reschedules an appointment for the service job indicated by the service job identifier you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+    # Reschedules an appointment for the service job indicated by the service job identifier specified.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
     # @param body Reschedule appointment operation input details.
     # @param service_job_id An Amazon defined service job identifier.
     # @param appointment_id An existing appointment identifier for the Service Job.
@@ -412,6 +955,212 @@ module AmzSpApi::ServicesApiModel
 
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ServiceApi#reschedule_appointment_for_service_job_by_service_job_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Updates the appointment fulfillment data related to a given `jobID` and `appointmentID`.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+    # @param body Appointment fulfillment data collection details.
+    # @param service_job_id An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API.
+    # @param appointment_id An Amazon-defined identifier of active service job appointment.
+    # @param [Hash] opts the optional parameters
+    # @return [String]
+    def set_appointment_fulfillment_data(body, service_job_id, appointment_id, opts = {})
+      data, _status_code, _headers = set_appointment_fulfillment_data_with_http_info(body, service_job_id, appointment_id, opts)
+      data
+    end
+
+    # Updates the appointment fulfillment data related to a given &#x60;jobID&#x60; and &#x60;appointmentID&#x60;.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+    # @param body Appointment fulfillment data collection details.
+    # @param service_job_id An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API.
+    # @param appointment_id An Amazon-defined identifier of active service job appointment.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers
+    def set_appointment_fulfillment_data_with_http_info(body, service_job_id, appointment_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ServiceApi.set_appointment_fulfillment_data ...'
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling ServiceApi.set_appointment_fulfillment_data"
+      end
+      # verify the required parameter 'service_job_id' is set
+      if @api_client.config.client_side_validation && service_job_id.nil?
+        fail ArgumentError, "Missing the required parameter 'service_job_id' when calling ServiceApi.set_appointment_fulfillment_data"
+      end
+      # verify the required parameter 'appointment_id' is set
+      if @api_client.config.client_side_validation && appointment_id.nil?
+        fail ArgumentError, "Missing the required parameter 'appointment_id' when calling ServiceApi.set_appointment_fulfillment_data"
+      end
+      # resource path
+      local_var_path = '/service/v1/serviceJobs/{serviceJobId}/appointments/{appointmentId}/fulfillment'.sub('{' + 'serviceJobId' + '}', service_job_id.to_s).sub('{' + 'appointmentId' + '}', appointment_id.to_s)
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:body] || @api_client.object_to_http_body(body) 
+
+      return_type = opts[:return_type] || 'String' 
+
+      auth_names = opts[:auth_names] || []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type)
+
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ServiceApi#set_appointment_fulfillment_data\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Update a reservation.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+    # @param body Reservation details
+    # @param marketplace_ids An identifier for the marketplace in which the resource operates.
+    # @param reservation_id Reservation Identifier
+    # @param [Hash] opts the optional parameters
+    # @return [UpdateReservationResponse]
+    def update_reservation(body, marketplace_ids, reservation_id, opts = {})
+      data, _status_code, _headers = update_reservation_with_http_info(body, marketplace_ids, reservation_id, opts)
+      data
+    end
+
+    # Update a reservation.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+    # @param body Reservation details
+    # @param marketplace_ids An identifier for the marketplace in which the resource operates.
+    # @param reservation_id Reservation Identifier
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(UpdateReservationResponse, Integer, Hash)>] UpdateReservationResponse data, response status code and response headers
+    def update_reservation_with_http_info(body, marketplace_ids, reservation_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ServiceApi.update_reservation ...'
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling ServiceApi.update_reservation"
+      end
+      # verify the required parameter 'marketplace_ids' is set
+      if @api_client.config.client_side_validation && marketplace_ids.nil?
+        fail ArgumentError, "Missing the required parameter 'marketplace_ids' when calling ServiceApi.update_reservation"
+      end
+      # verify the required parameter 'reservation_id' is set
+      if @api_client.config.client_side_validation && reservation_id.nil?
+        fail ArgumentError, "Missing the required parameter 'reservation_id' when calling ServiceApi.update_reservation"
+      end
+      # resource path
+      local_var_path = '/service/v1/reservation/{reservationId}'.sub('{' + 'reservationId' + '}', reservation_id.to_s)
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'marketplaceIds'] = @api_client.build_collection_param(marketplace_ids, :csv)
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:body] || @api_client.object_to_http_body(body) 
+
+      return_type = opts[:return_type] || 'UpdateReservationResponse' 
+
+      auth_names = opts[:auth_names] || []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type)
+
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ServiceApi#update_reservation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Update the schedule of the given resource.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+    # @param body Schedule details
+    # @param marketplace_ids An identifier for the marketplace in which the resource operates.
+    # @param resource_id Resource (store) Identifier
+    # @param [Hash] opts the optional parameters
+    # @return [UpdateScheduleResponse]
+    def update_schedule(body, marketplace_ids, resource_id, opts = {})
+      data, _status_code, _headers = update_schedule_with_http_info(body, marketplace_ids, resource_id, opts)
+      data
+    end
+
+    # Update the schedule of the given resource.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+    # @param body Schedule details
+    # @param marketplace_ids An identifier for the marketplace in which the resource operates.
+    # @param resource_id Resource (store) Identifier
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(UpdateScheduleResponse, Integer, Hash)>] UpdateScheduleResponse data, response status code and response headers
+    def update_schedule_with_http_info(body, marketplace_ids, resource_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ServiceApi.update_schedule ...'
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling ServiceApi.update_schedule"
+      end
+      # verify the required parameter 'marketplace_ids' is set
+      if @api_client.config.client_side_validation && marketplace_ids.nil?
+        fail ArgumentError, "Missing the required parameter 'marketplace_ids' when calling ServiceApi.update_schedule"
+      end
+      # verify the required parameter 'resource_id' is set
+      if @api_client.config.client_side_validation && resource_id.nil?
+        fail ArgumentError, "Missing the required parameter 'resource_id' when calling ServiceApi.update_schedule"
+      end
+      # resource path
+      local_var_path = '/service/v1/serviceResources/{resourceId}/schedules'.sub('{' + 'resourceId' + '}', resource_id.to_s)
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'marketplaceIds'] = @api_client.build_collection_param(marketplace_ids, :csv)
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:body] || @api_client.object_to_http_body(body) 
+
+      return_type = opts[:return_type] || 'UpdateScheduleResponse' 
+
+      auth_names = opts[:auth_names] || []
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type)
+
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ServiceApi#update_schedule\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

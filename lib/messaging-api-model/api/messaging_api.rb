@@ -820,5 +820,74 @@ module AmzSpApi::MessagingApiModel
       end
       return data, status_code, headers
     end
+    # Sends a message providing the buyer an invoice
+    # @param body 
+    # @param marketplace_ids A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified.
+    # @param amazon_order_id An Amazon order identifier. This specifies the order for which a message is sent.
+    # @param [Hash] opts the optional parameters
+    # @return [InvoiceResponse]
+    def send_invoice(body, marketplace_ids, amazon_order_id, opts = {})
+      data, _status_code, _headers = send_invoice_with_http_info(body, marketplace_ids, amazon_order_id, opts)
+      data
+    end
+
+    # Sends a message providing the buyer an invoice
+    # @param body 
+    # @param marketplace_ids A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified.
+    # @param amazon_order_id An Amazon order identifier. This specifies the order for which a message is sent.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(InvoiceResponse, Integer, Hash)>] InvoiceResponse data, response status code and response headers
+    def send_invoice_with_http_info(body, marketplace_ids, amazon_order_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: MessagingApi.send_invoice ...'
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling MessagingApi.send_invoice"
+      end
+      # verify the required parameter 'marketplace_ids' is set
+      if @api_client.config.client_side_validation && marketplace_ids.nil?
+        fail ArgumentError, "Missing the required parameter 'marketplace_ids' when calling MessagingApi.send_invoice"
+      end
+      # verify the required parameter 'amazon_order_id' is set
+      if @api_client.config.client_side_validation && amazon_order_id.nil?
+        fail ArgumentError, "Missing the required parameter 'amazon_order_id' when calling MessagingApi.send_invoice"
+      end
+      # resource path
+      local_var_path = '/messaging/v1/orders/{amazonOrderId}/messages/invoice'.sub('{' + 'amazonOrderId' + '}', amazon_order_id.to_s)
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'marketplaceIds'] = @api_client.build_collection_param(marketplace_ids, :csv)
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/hal+json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:body] || @api_client.object_to_http_body(body) 
+
+      return_type = opts[:return_type] || 'InvoiceResponse' 
+
+      auth_names = opts[:auth_names] || []
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type)
+
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: MessagingApi#send_invoice\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
   end
 end

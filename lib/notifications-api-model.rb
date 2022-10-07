@@ -1,7 +1,7 @@
 =begin
 #Selling Partner API for Notifications
 
-#The Selling Partner API for Notifications lets you subscribe to notifications that are relevant to a selling partner's business. Using this API you can create a destination to receive notifications, subscribe to notifications, delete notification subscriptions, and more.
+#The Selling Partner API for Notifications lets you subscribe to notifications that are relevant to a selling partner's business. Using this API you can create a destination to receive notifications, subscribe to notifications, delete notification subscriptions, and more.  For more information, see the [Notifications Use Case Guide](doc:notifications-api-v1-use-case-guide).
 
 OpenAPI spec version: v1
 
@@ -16,6 +16,9 @@ require 'notifications-api-model/version'
 require 'notifications-api-model/configuration'
 
 # Models
+require 'notifications-api-model/models/aggregation_filter'
+require 'notifications-api-model/models/aggregation_settings'
+require 'notifications-api-model/models/aggregation_time_period'
 require 'notifications-api-model/models/create_destination_request'
 require 'notifications-api-model/models/create_destination_response'
 require 'notifications-api-model/models/create_subscription_request'
@@ -30,10 +33,14 @@ require 'notifications-api-model/models/error'
 require 'notifications-api-model/models/error_list'
 require 'notifications-api-model/models/event_bridge_resource'
 require 'notifications-api-model/models/event_bridge_resource_specification'
+require 'notifications-api-model/models/event_filter'
 require 'notifications-api-model/models/get_destination_response'
 require 'notifications-api-model/models/get_destinations_response'
 require 'notifications-api-model/models/get_subscription_by_id_response'
 require 'notifications-api-model/models/get_subscription_response'
+require 'notifications-api-model/models/marketplace_filter'
+require 'notifications-api-model/models/marketplace_ids'
+require 'notifications-api-model/models/processing_directive'
 require 'notifications-api-model/models/sqs_resource'
 require 'notifications-api-model/models/subscription'
 

@@ -24,6 +24,7 @@ module AmzSpApi::FbaSmallAndLightApiModel
 
     attr_accessor :total_fees
 
+    # One or more unexpected errors occurred during the getSmallAndLightFeePreview operation.
     attr_accessor :errors
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -88,7 +89,9 @@ module AmzSpApi::FbaSmallAndLightApiModel
       end
 
       if attributes.key?(:'errors')
-        self.errors = attributes[:'errors']
+        if (value = attributes[:'errors']).is_a?(Array)
+          self.errors = value
+        end
       end
     end
 

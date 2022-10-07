@@ -24,6 +24,16 @@ module AmzSpApi::ProductPricingApiModel
     # Indicates the subcondition of the item whose pricing information is returned. Possible values are: New, Mint, Very Good, Good, Acceptable, Poor, Club, OEM, Warranty, Refurbished Warranty, Refurbished, Open Box, or Other.
     attr_accessor :subcondition
 
+    attr_accessor :offer_type
+
+    # Indicates at what quantity this price becomes active.
+    attr_accessor :quantity_tier
+
+    attr_accessor :quantity_discount_type
+
+    # The seller identifier for the offer.
+    attr_accessor :seller_id
+
     #  Indicates whether or not the pricing information is for an offer listing that belongs to the requester. The requester is the seller associated with the SellerId that was submitted with the request. Possible values are: true and false.
     attr_accessor :belongs_to_requester
 
@@ -34,6 +44,10 @@ module AmzSpApi::ProductPricingApiModel
         :'price' => :'Price',
         :'condition' => :'condition',
         :'subcondition' => :'subcondition',
+        :'offer_type' => :'offerType',
+        :'quantity_tier' => :'quantityTier',
+        :'quantity_discount_type' => :'quantityDiscountType',
+        :'seller_id' => :'sellerId',
         :'belongs_to_requester' => :'belongsToRequester'
       }
     end
@@ -45,6 +59,10 @@ module AmzSpApi::ProductPricingApiModel
         :'price' => :'Object',
         :'condition' => :'Object',
         :'subcondition' => :'Object',
+        :'offer_type' => :'Object',
+        :'quantity_tier' => :'Object',
+        :'quantity_discount_type' => :'Object',
+        :'seller_id' => :'Object',
         :'belongs_to_requester' => :'Object'
       }
     end
@@ -86,6 +104,22 @@ module AmzSpApi::ProductPricingApiModel
         self.subcondition = attributes[:'subcondition']
       end
 
+      if attributes.key?(:'offer_type')
+        self.offer_type = attributes[:'offer_type']
+      end
+
+      if attributes.key?(:'quantity_tier')
+        self.quantity_tier = attributes[:'quantity_tier']
+      end
+
+      if attributes.key?(:'quantity_discount_type')
+        self.quantity_discount_type = attributes[:'quantity_discount_type']
+      end
+
+      if attributes.key?(:'seller_id')
+        self.seller_id = attributes[:'seller_id']
+      end
+
       if attributes.key?(:'belongs_to_requester')
         self.belongs_to_requester = attributes[:'belongs_to_requester']
       end
@@ -123,6 +157,10 @@ module AmzSpApi::ProductPricingApiModel
           price == o.price &&
           condition == o.condition &&
           subcondition == o.subcondition &&
+          offer_type == o.offer_type &&
+          quantity_tier == o.quantity_tier &&
+          quantity_discount_type == o.quantity_discount_type &&
+          seller_id == o.seller_id &&
           belongs_to_requester == o.belongs_to_requester
     end
 
@@ -135,7 +173,7 @@ module AmzSpApi::ProductPricingApiModel
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [competitive_price_id, price, condition, subcondition, belongs_to_requester].hash
+      [competitive_price_id, price, condition, subcondition, offer_type, quantity_tier, quantity_discount_type, seller_id, belongs_to_requester].hash
     end
 
     # Builds the object from hash

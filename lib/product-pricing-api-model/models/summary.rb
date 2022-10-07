@@ -25,7 +25,11 @@ module AmzSpApi::ProductPricingApiModel
 
     attr_accessor :list_price
 
+    attr_accessor :competitive_price_threshold
+
     attr_accessor :suggested_lower_price_plus_shipping
+
+    attr_accessor :sales_rankings
 
     attr_accessor :buy_box_eligible_offers
 
@@ -40,7 +44,9 @@ module AmzSpApi::ProductPricingApiModel
         :'lowest_prices' => :'LowestPrices',
         :'buy_box_prices' => :'BuyBoxPrices',
         :'list_price' => :'ListPrice',
+        :'competitive_price_threshold' => :'CompetitivePriceThreshold',
         :'suggested_lower_price_plus_shipping' => :'SuggestedLowerPricePlusShipping',
+        :'sales_rankings' => :'SalesRankings',
         :'buy_box_eligible_offers' => :'BuyBoxEligibleOffers',
         :'offers_available_time' => :'OffersAvailableTime'
       }
@@ -54,7 +60,9 @@ module AmzSpApi::ProductPricingApiModel
         :'lowest_prices' => :'Object',
         :'buy_box_prices' => :'Object',
         :'list_price' => :'Object',
+        :'competitive_price_threshold' => :'Object',
         :'suggested_lower_price_plus_shipping' => :'Object',
+        :'sales_rankings' => :'Object',
         :'buy_box_eligible_offers' => :'Object',
         :'offers_available_time' => :'Object'
       }
@@ -101,8 +109,16 @@ module AmzSpApi::ProductPricingApiModel
         self.list_price = attributes[:'list_price']
       end
 
+      if attributes.key?(:'competitive_price_threshold')
+        self.competitive_price_threshold = attributes[:'competitive_price_threshold']
+      end
+
       if attributes.key?(:'suggested_lower_price_plus_shipping')
         self.suggested_lower_price_plus_shipping = attributes[:'suggested_lower_price_plus_shipping']
+      end
+
+      if attributes.key?(:'sales_rankings')
+        self.sales_rankings = attributes[:'sales_rankings']
       end
 
       if attributes.key?(:'buy_box_eligible_offers')
@@ -142,7 +158,9 @@ module AmzSpApi::ProductPricingApiModel
           lowest_prices == o.lowest_prices &&
           buy_box_prices == o.buy_box_prices &&
           list_price == o.list_price &&
+          competitive_price_threshold == o.competitive_price_threshold &&
           suggested_lower_price_plus_shipping == o.suggested_lower_price_plus_shipping &&
+          sales_rankings == o.sales_rankings &&
           buy_box_eligible_offers == o.buy_box_eligible_offers &&
           offers_available_time == o.offers_available_time
     end
@@ -156,7 +174,7 @@ module AmzSpApi::ProductPricingApiModel
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [total_offer_count, number_of_offers, lowest_prices, buy_box_prices, list_price, suggested_lower_price_plus_shipping, buy_box_eligible_offers, offers_available_time].hash
+      [total_offer_count, number_of_offers, lowest_prices, buy_box_prices, list_price, competitive_price_threshold, suggested_lower_price_plus_shipping, sales_rankings, buy_box_eligible_offers, offers_available_time].hash
     end
 
     # Builds the object from hash

@@ -87,11 +87,18 @@ module AmzSpApi::OrdersApiModel
     # When true, transparency codes are required.
     attr_accessor :is_transparency
 
-    # The IOSS number of the seller. Sellers selling in the EU will be assigned a unique IOSS number that must be listed on all packages sent to the EU.
+    # The IOSS number for the marketplace. Sellers shipping to the European Union (EU) from outside of the EU must provide this IOSS number to their carrier when Amazon has collected the VAT on the sale.
     attr_accessor :ioss_number
+
+    # The store chain store identifier. Linked to a specific store in a store chain.
+    attr_accessor :store_chain_store_id
 
     # The category of deemed reseller. This applies to selling partners that are not based in the EU and is used to help them meet the VAT Deemed Reseller tax laws in the EU and UK.
     attr_accessor :deemed_reseller_category
+
+    attr_accessor :buyer_info
+
+    attr_accessor :buyer_requested_cancel
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -148,7 +155,10 @@ module AmzSpApi::OrdersApiModel
         :'serial_number_required' => :'SerialNumberRequired',
         :'is_transparency' => :'IsTransparency',
         :'ioss_number' => :'IossNumber',
-        :'deemed_reseller_category' => :'DeemedResellerCategory'
+        :'store_chain_store_id' => :'StoreChainStoreId',
+        :'deemed_reseller_category' => :'DeemedResellerCategory',
+        :'buyer_info' => :'BuyerInfo',
+        :'buyer_requested_cancel' => :'BuyerRequestedCancel'
       }
     end
 
@@ -185,7 +195,10 @@ module AmzSpApi::OrdersApiModel
         :'serial_number_required' => :'Object',
         :'is_transparency' => :'Object',
         :'ioss_number' => :'Object',
-        :'deemed_reseller_category' => :'Object'
+        :'store_chain_store_id' => :'Object',
+        :'deemed_reseller_category' => :'Object',
+        :'buyer_info' => :'Object',
+        :'buyer_requested_cancel' => :'Object'
       }
     end
 
@@ -330,8 +343,20 @@ module AmzSpApi::OrdersApiModel
         self.ioss_number = attributes[:'ioss_number']
       end
 
+      if attributes.key?(:'store_chain_store_id')
+        self.store_chain_store_id = attributes[:'store_chain_store_id']
+      end
+
       if attributes.key?(:'deemed_reseller_category')
         self.deemed_reseller_category = attributes[:'deemed_reseller_category']
+      end
+
+      if attributes.key?(:'buyer_info')
+        self.buyer_info = attributes[:'buyer_info']
+      end
+
+      if attributes.key?(:'buyer_requested_cancel')
+        self.buyer_requested_cancel = attributes[:'buyer_requested_cancel']
       end
     end
 
@@ -410,7 +435,10 @@ module AmzSpApi::OrdersApiModel
           serial_number_required == o.serial_number_required &&
           is_transparency == o.is_transparency &&
           ioss_number == o.ioss_number &&
-          deemed_reseller_category == o.deemed_reseller_category
+          store_chain_store_id == o.store_chain_store_id &&
+          deemed_reseller_category == o.deemed_reseller_category &&
+          buyer_info == o.buyer_info &&
+          buyer_requested_cancel == o.buyer_requested_cancel
     end
 
     # @see the `==` method
@@ -422,7 +450,7 @@ module AmzSpApi::OrdersApiModel
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [asin, seller_sku, order_item_id, title, quantity_ordered, quantity_shipped, product_info, points_granted, item_price, shipping_price, item_tax, shipping_tax, shipping_discount, shipping_discount_tax, promotion_discount, promotion_discount_tax, promotion_ids, cod_fee, cod_fee_discount, is_gift, condition_note, condition_id, condition_subtype_id, scheduled_delivery_start_date, scheduled_delivery_end_date, price_designation, tax_collection, serial_number_required, is_transparency, ioss_number, deemed_reseller_category].hash
+      [asin, seller_sku, order_item_id, title, quantity_ordered, quantity_shipped, product_info, points_granted, item_price, shipping_price, item_tax, shipping_tax, shipping_discount, shipping_discount_tax, promotion_discount, promotion_discount_tax, promotion_ids, cod_fee, cod_fee_discount, is_gift, condition_note, condition_id, condition_subtype_id, scheduled_delivery_start_date, scheduled_delivery_end_date, price_designation, tax_collection, serial_number_required, is_transparency, ioss_number, store_chain_store_id, deemed_reseller_category, buyer_info, buyer_requested_cancel].hash
     end
 
     # Builds the object from hash

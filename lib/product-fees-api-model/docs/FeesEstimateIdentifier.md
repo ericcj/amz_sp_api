@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **marketplace_id** | **String** | A marketplace identifier. | [optional] 
 **seller_id** | **String** | The seller identifier. | [optional] 
-**id_type** | **String** | The type of item identifier specified. | [optional] 
+**id_type** | [**IdType**](IdType.md) |  | [optional] 
 **id_value** | **String** | The item identifier. | [optional] 
 **is_amazon_fulfilled** | **BOOLEAN** | When true, the offer is fulfilled by Amazon. | [optional] 
 **price_to_estimate_fees** | [**PriceToEstimateFees**](PriceToEstimateFees.md) |  | [optional] 

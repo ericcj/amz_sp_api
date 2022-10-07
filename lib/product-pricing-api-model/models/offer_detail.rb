@@ -16,14 +16,24 @@ module AmzSpApi::ProductPricingApiModel
     # When true, this is the seller's offer.
     attr_accessor :my_offer
 
+    attr_accessor :offer_type
+
     # The subcondition of the item. Subcondition values: New, Mint, Very Good, Good, Acceptable, Poor, Club, OEM, Warranty, Refurbished Warranty, Refurbished, Open Box, or Other.
     attr_accessor :sub_condition
+
+    # The seller identifier for the offer.
+    attr_accessor :seller_id
+
+    # Information about the condition of the item.
+    attr_accessor :condition_notes
 
     attr_accessor :seller_feedback_rating
 
     attr_accessor :shipping_time
 
     attr_accessor :listing_price
+
+    attr_accessor :quantity_discount_prices
 
     attr_accessor :points
 
@@ -33,6 +43,8 @@ module AmzSpApi::ProductPricingApiModel
 
     # When true, the offer is fulfilled by Amazon.
     attr_accessor :is_fulfilled_by_amazon
+
+    attr_accessor :prime_information
 
     # When true, the offer is currently in the Buy Box. There can be up to two Buy Box winners at any time per ASIN, one that is eligible for Prime and one that is not eligible for Prime.
     attr_accessor :is_buy_box_winner
@@ -44,14 +56,19 @@ module AmzSpApi::ProductPricingApiModel
     def self.attribute_map
       {
         :'my_offer' => :'MyOffer',
+        :'offer_type' => :'offerType',
         :'sub_condition' => :'SubCondition',
+        :'seller_id' => :'SellerId',
+        :'condition_notes' => :'ConditionNotes',
         :'seller_feedback_rating' => :'SellerFeedbackRating',
         :'shipping_time' => :'ShippingTime',
         :'listing_price' => :'ListingPrice',
+        :'quantity_discount_prices' => :'quantityDiscountPrices',
         :'points' => :'Points',
         :'shipping' => :'Shipping',
         :'ships_from' => :'ShipsFrom',
         :'is_fulfilled_by_amazon' => :'IsFulfilledByAmazon',
+        :'prime_information' => :'PrimeInformation',
         :'is_buy_box_winner' => :'IsBuyBoxWinner',
         :'is_featured_merchant' => :'IsFeaturedMerchant'
       }
@@ -61,14 +78,19 @@ module AmzSpApi::ProductPricingApiModel
     def self.openapi_types
       {
         :'my_offer' => :'Object',
+        :'offer_type' => :'Object',
         :'sub_condition' => :'Object',
+        :'seller_id' => :'Object',
+        :'condition_notes' => :'Object',
         :'seller_feedback_rating' => :'Object',
         :'shipping_time' => :'Object',
         :'listing_price' => :'Object',
+        :'quantity_discount_prices' => :'Object',
         :'points' => :'Object',
         :'shipping' => :'Object',
         :'ships_from' => :'Object',
         :'is_fulfilled_by_amazon' => :'Object',
+        :'prime_information' => :'Object',
         :'is_buy_box_winner' => :'Object',
         :'is_featured_merchant' => :'Object'
       }
@@ -99,8 +121,20 @@ module AmzSpApi::ProductPricingApiModel
         self.my_offer = attributes[:'my_offer']
       end
 
+      if attributes.key?(:'offer_type')
+        self.offer_type = attributes[:'offer_type']
+      end
+
       if attributes.key?(:'sub_condition')
         self.sub_condition = attributes[:'sub_condition']
+      end
+
+      if attributes.key?(:'seller_id')
+        self.seller_id = attributes[:'seller_id']
+      end
+
+      if attributes.key?(:'condition_notes')
+        self.condition_notes = attributes[:'condition_notes']
       end
 
       if attributes.key?(:'seller_feedback_rating')
@@ -113,6 +147,12 @@ module AmzSpApi::ProductPricingApiModel
 
       if attributes.key?(:'listing_price')
         self.listing_price = attributes[:'listing_price']
+      end
+
+      if attributes.key?(:'quantity_discount_prices')
+        if (value = attributes[:'quantity_discount_prices']).is_a?(Array)
+          self.quantity_discount_prices = value
+        end
       end
 
       if attributes.key?(:'points')
@@ -129,6 +169,10 @@ module AmzSpApi::ProductPricingApiModel
 
       if attributes.key?(:'is_fulfilled_by_amazon')
         self.is_fulfilled_by_amazon = attributes[:'is_fulfilled_by_amazon']
+      end
+
+      if attributes.key?(:'prime_information')
+        self.prime_information = attributes[:'prime_information']
       end
 
       if attributes.key?(:'is_buy_box_winner')
@@ -184,14 +228,19 @@ module AmzSpApi::ProductPricingApiModel
       return true if self.equal?(o)
       self.class == o.class &&
           my_offer == o.my_offer &&
+          offer_type == o.offer_type &&
           sub_condition == o.sub_condition &&
+          seller_id == o.seller_id &&
+          condition_notes == o.condition_notes &&
           seller_feedback_rating == o.seller_feedback_rating &&
           shipping_time == o.shipping_time &&
           listing_price == o.listing_price &&
+          quantity_discount_prices == o.quantity_discount_prices &&
           points == o.points &&
           shipping == o.shipping &&
           ships_from == o.ships_from &&
           is_fulfilled_by_amazon == o.is_fulfilled_by_amazon &&
+          prime_information == o.prime_information &&
           is_buy_box_winner == o.is_buy_box_winner &&
           is_featured_merchant == o.is_featured_merchant
     end
@@ -205,7 +254,7 @@ module AmzSpApi::ProductPricingApiModel
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [my_offer, sub_condition, seller_feedback_rating, shipping_time, listing_price, points, shipping, ships_from, is_fulfilled_by_amazon, is_buy_box_winner, is_featured_merchant].hash
+      [my_offer, offer_type, sub_condition, seller_id, condition_notes, seller_feedback_rating, shipping_time, listing_price, quantity_discount_prices, points, shipping, ships_from, is_fulfilled_by_amazon, prime_information, is_buy_box_winner, is_featured_merchant].hash
     end
 
     # Builds the object from hash

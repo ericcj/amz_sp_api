@@ -58,6 +58,16 @@ module AmzSpApi::FinancesApiModel
 
     attr_accessor :affordability_expense_reversal_event_list
 
+    attr_accessor :trial_shipment_event_list
+
+    attr_accessor :shipment_settle_event_list
+
+    attr_accessor :tax_withholding_event_list
+
+    attr_accessor :removal_shipment_event_list
+
+    attr_accessor :removal_shipment_adjustment_event_list
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -82,7 +92,12 @@ module AmzSpApi::FinancesApiModel
         :'imaging_services_fee_event_list' => :'ImagingServicesFeeEventList',
         :'network_commingling_transaction_event_list' => :'NetworkComminglingTransactionEventList',
         :'affordability_expense_event_list' => :'AffordabilityExpenseEventList',
-        :'affordability_expense_reversal_event_list' => :'AffordabilityExpenseReversalEventList'
+        :'affordability_expense_reversal_event_list' => :'AffordabilityExpenseReversalEventList',
+        :'trial_shipment_event_list' => :'TrialShipmentEventList',
+        :'shipment_settle_event_list' => :'ShipmentSettleEventList',
+        :'tax_withholding_event_list' => :'TaxWithholdingEventList',
+        :'removal_shipment_event_list' => :'RemovalShipmentEventList',
+        :'removal_shipment_adjustment_event_list' => :'RemovalShipmentAdjustmentEventList'
       }
     end
 
@@ -110,7 +125,12 @@ module AmzSpApi::FinancesApiModel
         :'imaging_services_fee_event_list' => :'Object',
         :'network_commingling_transaction_event_list' => :'Object',
         :'affordability_expense_event_list' => :'Object',
-        :'affordability_expense_reversal_event_list' => :'Object'
+        :'affordability_expense_reversal_event_list' => :'Object',
+        :'trial_shipment_event_list' => :'Object',
+        :'shipment_settle_event_list' => :'Object',
+        :'tax_withholding_event_list' => :'Object',
+        :'removal_shipment_event_list' => :'Object',
+        :'removal_shipment_adjustment_event_list' => :'Object'
       }
     end
 
@@ -222,6 +242,26 @@ module AmzSpApi::FinancesApiModel
       if attributes.key?(:'affordability_expense_reversal_event_list')
         self.affordability_expense_reversal_event_list = attributes[:'affordability_expense_reversal_event_list']
       end
+
+      if attributes.key?(:'trial_shipment_event_list')
+        self.trial_shipment_event_list = attributes[:'trial_shipment_event_list']
+      end
+
+      if attributes.key?(:'shipment_settle_event_list')
+        self.shipment_settle_event_list = attributes[:'shipment_settle_event_list']
+      end
+
+      if attributes.key?(:'tax_withholding_event_list')
+        self.tax_withholding_event_list = attributes[:'tax_withholding_event_list']
+      end
+
+      if attributes.key?(:'removal_shipment_event_list')
+        self.removal_shipment_event_list = attributes[:'removal_shipment_event_list']
+      end
+
+      if attributes.key?(:'removal_shipment_adjustment_event_list')
+        self.removal_shipment_adjustment_event_list = attributes[:'removal_shipment_adjustment_event_list']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -263,7 +303,12 @@ module AmzSpApi::FinancesApiModel
           imaging_services_fee_event_list == o.imaging_services_fee_event_list &&
           network_commingling_transaction_event_list == o.network_commingling_transaction_event_list &&
           affordability_expense_event_list == o.affordability_expense_event_list &&
-          affordability_expense_reversal_event_list == o.affordability_expense_reversal_event_list
+          affordability_expense_reversal_event_list == o.affordability_expense_reversal_event_list &&
+          trial_shipment_event_list == o.trial_shipment_event_list &&
+          shipment_settle_event_list == o.shipment_settle_event_list &&
+          tax_withholding_event_list == o.tax_withholding_event_list &&
+          removal_shipment_event_list == o.removal_shipment_event_list &&
+          removal_shipment_adjustment_event_list == o.removal_shipment_adjustment_event_list
     end
 
     # @see the `==` method
@@ -275,7 +320,7 @@ module AmzSpApi::FinancesApiModel
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [shipment_event_list, refund_event_list, guarantee_claim_event_list, chargeback_event_list, pay_with_amazon_event_list, service_provider_credit_event_list, retrocharge_event_list, rental_transaction_event_list, product_ads_payment_event_list, service_fee_event_list, seller_deal_payment_event_list, debt_recovery_event_list, loan_servicing_event_list, adjustment_event_list, safet_reimbursement_event_list, seller_review_enrollment_payment_event_list, fba_liquidation_event_list, coupon_payment_event_list, imaging_services_fee_event_list, network_commingling_transaction_event_list, affordability_expense_event_list, affordability_expense_reversal_event_list].hash
+      [shipment_event_list, refund_event_list, guarantee_claim_event_list, chargeback_event_list, pay_with_amazon_event_list, service_provider_credit_event_list, retrocharge_event_list, rental_transaction_event_list, product_ads_payment_event_list, service_fee_event_list, seller_deal_payment_event_list, debt_recovery_event_list, loan_servicing_event_list, adjustment_event_list, safet_reimbursement_event_list, seller_review_enrollment_payment_event_list, fba_liquidation_event_list, coupon_payment_event_list, imaging_services_fee_event_list, network_commingling_transaction_event_list, affordability_expense_event_list, affordability_expense_reversal_event_list, trial_shipment_event_list, shipment_settle_event_list, tax_withholding_event_list, removal_shipment_event_list, removal_shipment_adjustment_event_list].hash
     end
 
     # Builds the object from hash

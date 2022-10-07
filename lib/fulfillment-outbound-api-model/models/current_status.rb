@@ -21,6 +21,16 @@ module AmzSpApi::FulfillmentOutboundApiModel
     DELAYED = 'DELAYED'.freeze
     AVAILABLE_FOR_PICKUP = 'AVAILABLE_FOR_PICKUP'.freeze
     CUSTOMER_ACTION = 'CUSTOMER_ACTION'.freeze
+    UNKNOWN = 'UNKNOWN'.freeze
+    OUT_FOR_DELIVERY = 'OUT_FOR_DELIVERY'.freeze
+    DELIVERY_ATTEMPTED = 'DELIVERY_ATTEMPTED'.freeze
+    PICKUP_SUCCESSFUL = 'PICKUP_SUCCESSFUL'.freeze
+    PICKUP_CANCELLED = 'PICKUP_CANCELLED'.freeze
+    PICKUP_ATTEMPTED = 'PICKUP_ATTEMPTED'.freeze
+    PICKUP_SCHEDULED = 'PICKUP_SCHEDULED'.freeze
+    RETURN_REQUEST_ACCEPTED = 'RETURN_REQUEST_ACCEPTED'.freeze
+    REFUND_ISSUED = 'REFUND_ISSUED'.freeze
+    RETURN_RECEIVED_IN_FC = 'RETURN_RECEIVED_IN_FC'.freeze
 
     # Builds the enum from string
     # @param [String] The enum value in the form of the string

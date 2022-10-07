@@ -115,21 +115,36 @@ rescue AmzSpApi::OrdersApiModel::ApiError => e
 end
 
 api_instance = AmzSpApi::OrdersApiModel::OrdersV0Api.new
-marketplace_ids = ['marketplace_ids_example'] # Array<String> | A list of MarketplaceId values. Used to select orders that were placed in the specified marketplaces.
+order_id = 'order_id_example' # String | An orderId is an Amazon-defined order identifier, in 3-7-7 format.
+
+
+begin
+  result = api_instance.get_order_regulated_info(order_id)
+  p result
+rescue AmzSpApi::OrdersApiModel::ApiError => e
+  puts "Exception when calling OrdersV0Api->get_order_regulated_info: #{e}"
+end
+
+api_instance = AmzSpApi::OrdersApiModel::OrdersV0Api.new
+marketplace_ids = ['marketplace_ids_example'] # Array<String> | A list of MarketplaceId values. Used to select orders that were placed in the specified marketplaces.  See the [Selling Partner API Developer Guide](doc:marketplace-ids) for a complete list of marketplaceId values.
 opts = { 
   created_after: 'created_after_example', # String | A date used for selecting orders created after (or at) a specified time. Only orders placed after the specified time are returned. Either the CreatedAfter parameter or the LastUpdatedAfter parameter is required. Both cannot be empty. The date must be in ISO 8601 format.
   created_before: 'created_before_example', # String | A date used for selecting orders created before (or at) a specified time. Only orders placed before the specified time are returned. The date must be in ISO 8601 format.
   last_updated_after: 'last_updated_after_example', # String | A date used for selecting orders that were last updated after (or at) a specified time. An update is defined as any change in order status, including the creation of a new order. Includes updates made by Amazon and by the seller. The date must be in ISO 8601 format.
   last_updated_before: 'last_updated_before_example', # String | A date used for selecting orders that were last updated before (or at) a specified time. An update is defined as any change in order status, including the creation of a new order. Includes updates made by Amazon and by the seller. The date must be in ISO 8601 format.
-  order_statuses: ['order_statuses_example'], # Array<String> | A list of OrderStatus values used to filter the results. Possible values: PendingAvailability (This status is available for pre-orders only. The order has been placed, payment has not been authorized, and the release date of the item is in the future.); Pending (The order has been placed but payment has not been authorized); Unshipped (Payment has been authorized and the order is ready for shipment, but no items in the order have been shipped); PartiallyShipped (One or more, but not all, items in the order have been shipped); Shipped (All items in the order have been shipped); InvoiceUnconfirmed (All items in the order have been shipped. The seller has not yet given confirmation to Amazon that the invoice has been shipped to the buyer.); Canceled (The order has been canceled); and Unfulfillable (The order cannot be fulfilled. This state applies only to Multi-Channel Fulfillment orders.).
-  fulfillment_channels: ['fulfillment_channels_example'], # Array<String> | A list that indicates how an order was fulfilled. Filters the results by fulfillment channel. Possible values: FBA (Fulfillment by Amazon); SellerFulfilled (Fulfilled by the seller).
+  order_statuses: ['order_statuses_example'], # Array<String> | A list of `OrderStatus` values used to filter the results.  **Possible values:** - `PendingAvailability` (This status is available for pre-orders only. The order has been placed, payment has not been authorized, and the release date of the item is in the future.) - `Pending` (The order has been placed but payment has not been authorized.) - `Unshipped` (Payment has been authorized and the order is ready for shipment, but no items in the order have been shipped.) - `PartiallyShipped` (One or more, but not all, items in the order have been shipped.) - `Shipped` (All items in the order have been shipped.) - `InvoiceUnconfirmed` (All items in the order have been shipped. The seller has not yet given confirmation to Amazon that the invoice has been shipped to the buyer.) - `Canceled` (The order has been canceled.) - `Unfulfillable` (The order cannot be fulfilled. This state applies only to Multi-Channel Fulfillment orders.)
+  fulfillment_channels: ['fulfillment_channels_example'], # Array<String> | A list that indicates how an order was fulfilled. Filters the results by fulfillment channel. Possible values: AFN (Fulfillment by Amazon); MFN (Fulfilled by the seller).
   payment_methods: ['payment_methods_example'], # Array<String> | A list of payment method values. Used to select orders paid using the specified payment methods. Possible values: COD (Cash on delivery); CVS (Convenience store payment); Other (Any payment method other than COD or CVS).
   buyer_email: 'buyer_email_example', # String | The email address of a buyer. Used to select orders that contain the specified email address.
   seller_order_id: 'seller_order_id_example', # String | An order identifier that is specified by the seller. Used to select only the orders that match the order identifier. If SellerOrderId is specified, then FulfillmentChannels, OrderStatuses, PaymentMethod, LastUpdatedAfter, LastUpdatedBefore, and BuyerEmail cannot be specified.
   max_results_per_page: 56, # Integer | A number that indicates the maximum number of orders that can be returned per page. Value must be 1 - 100. Default 100.
-  easy_ship_shipment_statuses: ['easy_ship_shipment_statuses_example'], # Array<String> | A list of EasyShipShipmentStatus values. Used to select Easy Ship orders with statuses that match the specified  values. If EasyShipShipmentStatus is specified, only Amazon Easy Ship orders are returned.Possible values: PendingPickUp (Amazon has not yet picked up the package from the seller). LabelCanceled (The seller canceled the pickup). PickedUp (Amazon has picked up the package from the seller). AtOriginFC (The packaged is at the origin fulfillment center). AtDestinationFC (The package is at the destination fulfillment center). OutForDelivery (The package is out for delivery). Damaged (The package was damaged by the carrier). Delivered (The package has been delivered to the buyer). RejectedByBuyer (The package has been rejected by the buyer). Undeliverable (The package cannot be delivered). ReturnedToSeller (The package was not delivered to the buyer and was returned to the seller). ReturningToSeller (The package was not delivered to the buyer and is being returned to the seller).
+  easy_ship_shipment_statuses: ['easy_ship_shipment_statuses_example'], # Array<String> | A list of `EasyShipShipmentStatus` values. Used to select Easy Ship orders with statuses that match the specified values. If `EasyShipShipmentStatus` is specified, only Amazon Easy Ship orders are returned.  **Possible values:** - `PendingSchedule` (The package is awaiting the schedule for pick-up.) - `PendingPickUp` (Amazon has not yet picked up the package from the seller.) - `PendingDropOff` (The seller will deliver the package to the carrier.) - `LabelCanceled` (The seller canceled the pickup.) - `PickedUp` (Amazon has picked up the package from the seller.) - `DroppedOff` (The package is delivered to the carrier by the seller.) - `AtOriginFC` (The packaged is at the origin fulfillment center.) - `AtDestinationFC` (The package is at the destination fulfillment center.) - `Delivered` (The package has been delivered.) - `RejectedByBuyer` (The package has been rejected by the buyer.) - `Undeliverable` (The package cannot be delivered.) - `ReturningToSeller` (The package was not delivered and is being returned to the seller.) - `ReturnedToSeller` (The package was not delivered and was returned to the seller.) - `Lost` (The package is lost.) - `OutForDelivery` (The package is out for delivery.) - `Damaged` (The package was damaged by the carrier.)
+  electronic_invoice_statuses: ['electronic_invoice_statuses_example'], # Array<String> | A list of `ElectronicInvoiceStatus` values. Used to select orders with electronic invoice statuses that match the specified values.  **Possible values:** - `NotRequired` (Electronic invoice submission is not required for this order.) - `NotFound` (The electronic invoice was not submitted for this order.) - `Processing` (The electronic invoice is being processed for this order.) - `Errored` (The last submitted electronic invoice was rejected for this order.) - `Accepted` (The last submitted electronic invoice was submitted and accepted.)
   next_token: 'next_token_example', # String | A string token returned in the response of your previous request.
-  amazon_order_ids: ['amazon_order_ids_example'] # Array<String> | A list of AmazonOrderId values. An AmazonOrderId is an Amazon-defined order identifier, in 3-7-7 format.
+  amazon_order_ids: ['amazon_order_ids_example'], # Array<String> | A list of AmazonOrderId values. An AmazonOrderId is an Amazon-defined order identifier, in 3-7-7 format.
+  actual_fulfillment_supply_source_id: 'actual_fulfillment_supply_source_id_example', # String | Denotes the recommended sourceId where the order should be fulfilled from.
+  is_ispu: true, # BOOLEAN | When true, this order is marked to be picked up from a store rather than delivered.
+  store_chain_store_id: 'store_chain_store_id_example' # String | The store chain store identifier. Linked to a specific store in a store chain.
 }
 
 begin
@@ -137,6 +152,28 @@ begin
   p result
 rescue AmzSpApi::OrdersApiModel::ApiError => e
   puts "Exception when calling OrdersV0Api->get_orders: #{e}"
+end
+
+api_instance = AmzSpApi::OrdersApiModel::OrdersV0Api.new
+body = AmzSpApi::OrdersApiModel::UpdateVerificationStatusRequest.new # UpdateVerificationStatusRequest | The request body for the updateVerificationStatus operation.
+order_id = 'order_id_example' # String | An orderId is an Amazon-defined order identifier, in 3-7-7 format.
+
+
+begin
+  api_instance.update_verification_status(body, order_id)
+rescue AmzSpApi::OrdersApiModel::ApiError => e
+  puts "Exception when calling OrdersV0Api->update_verification_status: #{e}"
+end
+
+api_instance = AmzSpApi::OrdersApiModel::ShipmentApi.new
+body = AmzSpApi::OrdersApiModel::UpdateShipmentStatusRequest.new # UpdateShipmentStatusRequest | The request body for the updateShipmentStatus operation.
+order_id = 'order_id_example' # String | An Amazon-defined order identifier, in 3-7-7 format.
+
+
+begin
+  api_instance.update_shipment_status(body, order_id)
+rescue AmzSpApi::OrdersApiModel::ApiError => e
+  puts "Exception when calling ShipmentApi->update_shipment_status: #{e}"
 end
 ```
 
@@ -151,13 +188,22 @@ Class | Method | HTTP request | Description
 *AmzSpApi::OrdersApiModel::OrdersV0Api* | [**get_order_buyer_info**](docs/OrdersV0Api.md#get_order_buyer_info) | **GET** /orders/v0/orders/{orderId}/buyerInfo | 
 *AmzSpApi::OrdersApiModel::OrdersV0Api* | [**get_order_items**](docs/OrdersV0Api.md#get_order_items) | **GET** /orders/v0/orders/{orderId}/orderItems | 
 *AmzSpApi::OrdersApiModel::OrdersV0Api* | [**get_order_items_buyer_info**](docs/OrdersV0Api.md#get_order_items_buyer_info) | **GET** /orders/v0/orders/{orderId}/orderItems/buyerInfo | 
+*AmzSpApi::OrdersApiModel::OrdersV0Api* | [**get_order_regulated_info**](docs/OrdersV0Api.md#get_order_regulated_info) | **GET** /orders/v0/orders/{orderId}/regulatedInfo | 
 *AmzSpApi::OrdersApiModel::OrdersV0Api* | [**get_orders**](docs/OrdersV0Api.md#get_orders) | **GET** /orders/v0/orders | 
+*AmzSpApi::OrdersApiModel::OrdersV0Api* | [**update_verification_status**](docs/OrdersV0Api.md#update_verification_status) | **PATCH** /orders/v0/orders/{orderId}/regulatedInfo | 
+*AmzSpApi::OrdersApiModel::ShipmentApi* | [**update_shipment_status**](docs/ShipmentApi.md#update_shipment_status) | **POST** /orders/v0/orders/{orderId}/shipment | 
 
 ## Documentation for Models
 
  - [AmzSpApi::OrdersApiModel::Address](docs/Address.md)
+ - [AmzSpApi::OrdersApiModel::AutomatedShippingSettings](docs/AutomatedShippingSettings.md)
  - [AmzSpApi::OrdersApiModel::BuyerCustomizedInfoDetail](docs/BuyerCustomizedInfoDetail.md)
+ - [AmzSpApi::OrdersApiModel::BuyerInfo](docs/BuyerInfo.md)
+ - [AmzSpApi::OrdersApiModel::BuyerRequestedCancel](docs/BuyerRequestedCancel.md)
  - [AmzSpApi::OrdersApiModel::BuyerTaxInfo](docs/BuyerTaxInfo.md)
+ - [AmzSpApi::OrdersApiModel::BuyerTaxInformation](docs/BuyerTaxInformation.md)
+ - [AmzSpApi::OrdersApiModel::EasyShipShipmentStatus](docs/EasyShipShipmentStatus.md)
+ - [AmzSpApi::OrdersApiModel::ElectronicInvoiceStatus](docs/ElectronicInvoiceStatus.md)
  - [AmzSpApi::OrdersApiModel::Error](docs/Error.md)
  - [AmzSpApi::OrdersApiModel::ErrorList](docs/ErrorList.md)
  - [AmzSpApi::OrdersApiModel::FulfillmentInstruction](docs/FulfillmentInstruction.md)
@@ -165,8 +211,12 @@ Class | Method | HTTP request | Description
  - [AmzSpApi::OrdersApiModel::GetOrderBuyerInfoResponse](docs/GetOrderBuyerInfoResponse.md)
  - [AmzSpApi::OrdersApiModel::GetOrderItemsBuyerInfoResponse](docs/GetOrderItemsBuyerInfoResponse.md)
  - [AmzSpApi::OrdersApiModel::GetOrderItemsResponse](docs/GetOrderItemsResponse.md)
+ - [AmzSpApi::OrdersApiModel::GetOrderRegulatedInfoResponse](docs/GetOrderRegulatedInfoResponse.md)
  - [AmzSpApi::OrdersApiModel::GetOrderResponse](docs/GetOrderResponse.md)
  - [AmzSpApi::OrdersApiModel::GetOrdersResponse](docs/GetOrdersResponse.md)
+ - [AmzSpApi::OrdersApiModel::ItemBuyerInfo](docs/ItemBuyerInfo.md)
+ - [AmzSpApi::OrdersApiModel::MarketplaceId](docs/MarketplaceId.md)
+ - [AmzSpApi::OrdersApiModel::MarketplaceTaxInfo](docs/MarketplaceTaxInfo.md)
  - [AmzSpApi::OrdersApiModel::Money](docs/Money.md)
  - [AmzSpApi::OrdersApiModel::Order](docs/Order.md)
  - [AmzSpApi::OrdersApiModel::OrderAddress](docs/OrderAddress.md)
@@ -175,9 +225,12 @@ Class | Method | HTTP request | Description
  - [AmzSpApi::OrdersApiModel::OrderItemBuyerInfo](docs/OrderItemBuyerInfo.md)
  - [AmzSpApi::OrdersApiModel::OrderItemBuyerInfoList](docs/OrderItemBuyerInfoList.md)
  - [AmzSpApi::OrdersApiModel::OrderItemList](docs/OrderItemList.md)
+ - [AmzSpApi::OrdersApiModel::OrderItems](docs/OrderItems.md)
  - [AmzSpApi::OrdersApiModel::OrderItemsBuyerInfoList](docs/OrderItemsBuyerInfoList.md)
+ - [AmzSpApi::OrdersApiModel::OrderItemsInner](docs/OrderItemsInner.md)
  - [AmzSpApi::OrdersApiModel::OrderItemsList](docs/OrderItemsList.md)
  - [AmzSpApi::OrdersApiModel::OrderList](docs/OrderList.md)
+ - [AmzSpApi::OrdersApiModel::OrderRegulatedInfo](docs/OrderRegulatedInfo.md)
  - [AmzSpApi::OrdersApiModel::OrdersList](docs/OrdersList.md)
  - [AmzSpApi::OrdersApiModel::PaymentExecutionDetailItem](docs/PaymentExecutionDetailItem.md)
  - [AmzSpApi::OrdersApiModel::PaymentExecutionDetailItemList](docs/PaymentExecutionDetailItemList.md)
@@ -185,8 +238,19 @@ Class | Method | HTTP request | Description
  - [AmzSpApi::OrdersApiModel::PointsGrantedDetail](docs/PointsGrantedDetail.md)
  - [AmzSpApi::OrdersApiModel::ProductInfoDetail](docs/ProductInfoDetail.md)
  - [AmzSpApi::OrdersApiModel::PromotionIdList](docs/PromotionIdList.md)
+ - [AmzSpApi::OrdersApiModel::RegulatedInformation](docs/RegulatedInformation.md)
+ - [AmzSpApi::OrdersApiModel::RegulatedInformationField](docs/RegulatedInformationField.md)
+ - [AmzSpApi::OrdersApiModel::RegulatedOrderVerificationStatus](docs/RegulatedOrderVerificationStatus.md)
+ - [AmzSpApi::OrdersApiModel::RejectionReason](docs/RejectionReason.md)
+ - [AmzSpApi::OrdersApiModel::ShipmentStatus](docs/ShipmentStatus.md)
  - [AmzSpApi::OrdersApiModel::TaxClassification](docs/TaxClassification.md)
  - [AmzSpApi::OrdersApiModel::TaxCollection](docs/TaxCollection.md)
+ - [AmzSpApi::OrdersApiModel::UpdateShipmentStatusErrorResponse](docs/UpdateShipmentStatusErrorResponse.md)
+ - [AmzSpApi::OrdersApiModel::UpdateShipmentStatusRequest](docs/UpdateShipmentStatusRequest.md)
+ - [AmzSpApi::OrdersApiModel::UpdateVerificationStatusErrorResponse](docs/UpdateVerificationStatusErrorResponse.md)
+ - [AmzSpApi::OrdersApiModel::UpdateVerificationStatusRequest](docs/UpdateVerificationStatusRequest.md)
+ - [AmzSpApi::OrdersApiModel::UpdateVerificationStatusRequestBody](docs/UpdateVerificationStatusRequestBody.md)
+ - [AmzSpApi::OrdersApiModel::VerificationStatus](docs/VerificationStatus.md)
 
 ## Documentation for Authorization
 

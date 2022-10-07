@@ -1,7 +1,7 @@
 =begin
 #Selling Partner API for Services
 
-#With the Services API, you can build applications that help service providers get and modify their service orders.
+#With the Services API, you can build applications that help service providers get and modify their service orders and manage their resources.
 
 OpenAPI spec version: v1
 
@@ -22,7 +22,7 @@ module AmzSpApi::ServicesApiModel
     # The identifier of the technician who uploaded the POA.
     attr_accessor :uploading_technician
 
-    # The date and time when the POA was uploaded, in ISO 8601 format.
+    # The date and time when the POA was uploaded in ISO 8601 format.
     attr_accessor :upload_time
 
     # The type of POA uploaded.

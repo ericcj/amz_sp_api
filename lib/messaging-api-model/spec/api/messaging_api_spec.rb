@@ -184,4 +184,17 @@ describe 'MessagingApi' do
     end
   end
 
+  # unit tests for send_invoice
+  # Sends a message providing the buyer an invoice
+  # @param body 
+  # @param marketplace_ids A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified.
+  # @param amazon_order_id An Amazon order identifier. This specifies the order for which a message is sent.
+  # @param [Hash] opts the optional parameters
+  # @return [InvoiceResponse]
+  describe 'send_invoice test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
 end
