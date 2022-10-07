@@ -61,23 +61,18 @@ This is a handy way to see all the API model class names and corresponding files
 
 ## Feeds and reports
 
-This gem also offers encrypt/decrypt helper methods for feeds and reports, but actually using that API as per https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/feeds-api-use-case-guide requires the following calls, e.g. for feeds but reports is the same pattern:
+This gem also offers encrypt/decrypt helper methods for feeds and reports, but actually using that API as per https://developer-docs.amazon.com/sp-api/docs/ requires the following calls, e.g. for feeds but reports is the same pattern:
 
 ```ruby
 feeds = AmzSpApi::FeedsApiModel::FeedsApi.new(AmzSpApi::SpApiClient.new)
 response = feeds.create_feed_document({"contentType" => content_type})
-feed_document_id = response&.payload&.dig(:feedDocumentId)
-url = response.payload[:url]
-encrypted = AmzSpApi.encrypt_feed(feed_content, response.payload)
-# PUT to url with lowercase "content-type" header, it's already pre-signed
-response = feeds.create_feed({"feedType" => feed_type, "marketplaceIds" => marketplace_ids, "inputFeedDocumentId" => feed_document_id})
-feed_id = response&.payload&.dig(:feedId)
-response = feeds.get_feed(feed_id)
-result_feed_document_id = response&.payload&.dig(:resultFeedDocumentId) # present once it is successful
+# PUT to response.url with lowercase "content-type" header, it's already pre-signed
+response = feeds.create_feed({"feedType" => feed_type, "marketplaceIds" => marketplace_ids, "inputFeedDocumentId" => response.feed_document_id})
+response = feeds.get_feed(response.feed_id)
+result_feed_document_id = response.result_feed_document_id # present once it is successful
 response = feeds.get_feed_document(result_feed_document_id)
-url = response&.payload&.dig(:url)
-# GET response&.payload&.dig(:url) into ciphertext, again it's pre-signed so no authorization needed
-AmzSpApi.decrypt_and_inflate_document(ciphertext, response.payload)
+# GET response.url into compressed, again it's pre-signed so no authorization needed
+AmzSpApi.inflate_document(compressed, response)
 ```
 
 ## Thanks
