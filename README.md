@@ -72,7 +72,10 @@ response = feeds.get_feed(response.feed_id)
 result_feed_document_id = response.result_feed_document_id # present once it is successful
 response = feeds.get_feed_document(result_feed_document_id)
 # GET response.url into compressed, again it's pre-signed so no authorization needed
-AmzSpApi.inflate_document(compressed, response)
+report = AmzSpApi.inflate_document(compressed, response)
+# you should capture the HTTP headers from downloading url as well since it's often Cp1252
+report.force_encoding($1) if headers['Content-Type'] =~ /charset *= *([^;]+)/
+CSV.parse(report, headers: true, col_sep: "\t", liberal_parsing: true) # if it's a CSV report type
 ```
 
 ## Thanks
