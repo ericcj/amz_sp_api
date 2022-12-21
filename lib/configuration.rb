@@ -113,6 +113,13 @@ module AmzSpApi
     # Client private key file (for client certificate)
     attr_accessor :key_file
 
+    ### Typhoeus request extra options
+    # Additional options to pass to Typhoeus::Request.new(url, opts)
+    #
+    # @see {http://rubydoc.info/github/typhoeus/ethon/Ethon/Easy/Options Ethon::Easy::Options} for more options.
+    # @return [Hash] Additional options
+    attr_accessor :request_extra_opts
+
     # Set this to customize parameters encoding of array parameter with multi collectionFormat.
     # Default to nil.
     #
@@ -137,6 +144,7 @@ module AmzSpApi
       @params_encoding = nil
       @cert_file = nil
       @key_file = nil
+      @request_extra_opts = {}
       @debugging = false
       @inject_format = false
       @force_ending_format = false

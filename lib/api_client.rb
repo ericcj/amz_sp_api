@@ -97,7 +97,7 @@ module AmzSpApi
       # set ssl_verifyhosts option based on @config.verify_ssl_host (true/false)
       _verify_ssl_host = @config.verify_ssl_host ? 2 : 0
 
-      req_opts = {
+      req_opts = (@config.request_extra_opts || {}).merge({
         :method => http_method,
         :headers => header_params,
         :params => query_params,
@@ -108,7 +108,7 @@ module AmzSpApi
         :sslcert => @config.cert_file,
         :sslkey => @config.key_file,
         :verbose => @config.debugging
-      }
+      })
 
       # set custom cert, if provided
       req_opts[:cainfo] = @config.ssl_ca_cert if @config.ssl_ca_cert
