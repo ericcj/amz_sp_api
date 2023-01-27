@@ -100,9 +100,9 @@ module AmzSpApi::NotificationsApiModel
         fail ArgumentError, "Missing the required parameter 'notification_type' when calling NotificationsApi.create_subscription"
       end
       # verify enum value
-      if @api_client.config.client_side_validation && !['ANY_OFFER_CHANGED', 'FEED_PROCESSING_FINISHED', 'FBA_OUTBOUND_SHIPMENT_STATUS', 'FEE_PROMOTION', 'FULFILLMENT_ORDER_STATUS', 'REPORT_PROCESSING_FINISHED', 'BRANDED_ITEM_CONTENT_CHANGE', 'ITEM_PRODUCT_TYPE_CHANGE', 'MFN_ORDER_STATUS_CHANGE', 'B2B_ANY_OFFER_CHANGED'].include?(notification_type)
-        fail ArgumentError, "invalid value for 'notification_type', must be one of ANY_OFFER_CHANGED, FEED_PROCESSING_FINISHED, FBA_OUTBOUND_SHIPMENT_STATUS, FEE_PROMOTION, FULFILLMENT_ORDER_STATUS, REPORT_PROCESSING_FINISHED, BRANDED_ITEM_CONTENT_CHANGE, ITEM_PRODUCT_TYPE_CHANGE, MFN_ORDER_STATUS_CHANGE, B2B_ANY_OFFER_CHANGED"
-      end
+      # if @api_client.config.client_side_validation && !['ANY_OFFER_CHANGED', 'FEED_PROCESSING_FINISHED', 'FBA_OUTBOUND_SHIPMENT_STATUS', 'FEE_PROMOTION', 'FULFILLMENT_ORDER_STATUS', 'REPORT_PROCESSING_FINISHED', 'BRANDED_ITEM_CONTENT_CHANGE', 'ITEM_PRODUCT_TYPE_CHANGE', 'MFN_ORDER_STATUS_CHANGE', 'B2B_ANY_OFFER_CHANGED'].include?(notification_type)
+      #   fail ArgumentError, "invalid value for 'notification_type', must be one of ANY_OFFER_CHANGED, FEED_PROCESSING_FINISHED, FBA_OUTBOUND_SHIPMENT_STATUS, FEE_PROMOTION, FULFILLMENT_ORDER_STATUS, REPORT_PROCESSING_FINISHED, BRANDED_ITEM_CONTENT_CHANGE, ITEM_PRODUCT_TYPE_CHANGE, MFN_ORDER_STATUS_CHANGE, B2B_ANY_OFFER_CHANGED"
+      # end
       # resource path
       local_var_path = '/notifications/v1/subscriptions/{notificationType}'.sub('{' + 'notificationType' + '}', notification_type.to_s)
 
@@ -220,9 +220,9 @@ module AmzSpApi::NotificationsApiModel
         fail ArgumentError, "Missing the required parameter 'notification_type' when calling NotificationsApi.delete_subscription_by_id"
       end
       # verify enum value
-      if @api_client.config.client_side_validation && !['ANY_OFFER_CHANGED', 'FEED_PROCESSING_FINISHED', 'FBA_OUTBOUND_SHIPMENT_STATUS', 'FEE_PROMOTION', 'FULFILLMENT_ORDER_STATUS', 'REPORT_PROCESSING_FINISHED', 'BRANDED_ITEM_CONTENT_CHANGE', 'ITEM_PRODUCT_TYPE_CHANGE', 'MFN_ORDER_STATUS_CHANGE', 'B2B_ANY_OFFER_CHANGED'].include?(notification_type)
-        fail ArgumentError, "invalid value for 'notification_type', must be one of ANY_OFFER_CHANGED, FEED_PROCESSING_FINISHED, FBA_OUTBOUND_SHIPMENT_STATUS, FEE_PROMOTION, FULFILLMENT_ORDER_STATUS, REPORT_PROCESSING_FINISHED, BRANDED_ITEM_CONTENT_CHANGE, ITEM_PRODUCT_TYPE_CHANGE, MFN_ORDER_STATUS_CHANGE, B2B_ANY_OFFER_CHANGED"
-      end
+      # if @api_client.config.client_side_validation && !['ANY_OFFER_CHANGED', 'FEED_PROCESSING_FINISHED', 'FBA_OUTBOUND_SHIPMENT_STATUS', 'FEE_PROMOTION', 'FULFILLMENT_ORDER_STATUS', 'REPORT_PROCESSING_FINISHED', 'BRANDED_ITEM_CONTENT_CHANGE', 'ITEM_PRODUCT_TYPE_CHANGE', 'MFN_ORDER_STATUS_CHANGE', 'B2B_ANY_OFFER_CHANGED'].include?(notification_type)
+      #   fail ArgumentError, "invalid value for 'notification_type', must be one of ANY_OFFER_CHANGED, FEED_PROCESSING_FINISHED, FBA_OUTBOUND_SHIPMENT_STATUS, FEE_PROMOTION, FULFILLMENT_ORDER_STATUS, REPORT_PROCESSING_FINISHED, BRANDED_ITEM_CONTENT_CHANGE, ITEM_PRODUCT_TYPE_CHANGE, MFN_ORDER_STATUS_CHANGE, B2B_ANY_OFFER_CHANGED"
+      # end
       # resource path
       local_var_path = '/notifications/v1/subscriptions/{notificationType}/{subscriptionId}'.sub('{' + 'subscriptionId' + '}', subscription_id.to_s).sub('{' + 'notificationType' + '}', notification_type.to_s)
 
@@ -380,9 +380,9 @@ module AmzSpApi::NotificationsApiModel
         fail ArgumentError, "Missing the required parameter 'notification_type' when calling NotificationsApi.get_subscription"
       end
       # verify enum value
-      if @api_client.config.client_side_validation && !['ANY_OFFER_CHANGED', 'FEED_PROCESSING_FINISHED', 'FBA_OUTBOUND_SHIPMENT_STATUS', 'FEE_PROMOTION', 'FULFILLMENT_ORDER_STATUS', 'REPORT_PROCESSING_FINISHED', 'BRANDED_ITEM_CONTENT_CHANGE', 'ITEM_PRODUCT_TYPE_CHANGE', 'MFN_ORDER_STATUS_CHANGE', 'B2B_ANY_OFFER_CHANGED'].include?(notification_type)
-        fail ArgumentError, "invalid value for 'notification_type', must be one of ANY_OFFER_CHANGED, FEED_PROCESSING_FINISHED, FBA_OUTBOUND_SHIPMENT_STATUS, FEE_PROMOTION, FULFILLMENT_ORDER_STATUS, REPORT_PROCESSING_FINISHED, BRANDED_ITEM_CONTENT_CHANGE, ITEM_PRODUCT_TYPE_CHANGE, MFN_ORDER_STATUS_CHANGE, B2B_ANY_OFFER_CHANGED"
-      end
+      # if @api_client.config.client_side_validation && !['ANY_OFFER_CHANGED', 'FEED_PROCESSING_FINISHED', 'FBA_OUTBOUND_SHIPMENT_STATUS', 'FEE_PROMOTION', 'FULFILLMENT_ORDER_STATUS', 'REPORT_PROCESSING_FINISHED', 'BRANDED_ITEM_CONTENT_CHANGE', 'ITEM_PRODUCT_TYPE_CHANGE', 'MFN_ORDER_STATUS_CHANGE', 'B2B_ANY_OFFER_CHANGED'].include?(notification_type)
+      #   fail ArgumentError, "invalid value for 'notification_type', must be one of ANY_OFFER_CHANGED, FEED_PROCESSING_FINISHED, FBA_OUTBOUND_SHIPMENT_STATUS, FEE_PROMOTION, FULFILLMENT_ORDER_STATUS, REPORT_PROCESSING_FINISHED, BRANDED_ITEM_CONTENT_CHANGE, ITEM_PRODUCT_TYPE_CHANGE, MFN_ORDER_STATUS_CHANGE, B2B_ANY_OFFER_CHANGED"
+      # end
       # resource path
       local_var_path = '/notifications/v1/subscriptions/{notificationType}'.sub('{' + 'notificationType' + '}', notification_type.to_s)
 
