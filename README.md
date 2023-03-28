@@ -78,9 +78,9 @@ CSV.parse(report, headers: true, col_sep: "\t", liberal_parsing: true) # if it's
 
 ## Getting refresh token 
 
-### 1. Ask your customers to authorize your app:
+### 1. Create an authorization URL:
 
-Create an authorization URL and share it with your customers. Replace `YOUR_APPLICATION_ID` and `YOUR_REDIRECT_URI` with the appropriate information.
+Replace `YOUR_APPLICATION_ID` and `YOUR_REDIRECT_URI` with the appropriate information.
 
 ```
 url = https://sellercentral.amazon.com/apps/authorize/consent?application_id=YOUR_APPLICATION_ID&state=<custom-state>&redirect_uri=YOUR_REDIRECT_URI
@@ -94,7 +94,7 @@ The `state` parameter is optional, but useful for maintaining the state between 
 
 ### 2. Get the authorization code:
 
-After your customer authorizes your app, they'll be redirected to the `redirect_uri`, and the authorization code will be appended to it as a query parameter named `spapi_oauth_code`. You should capture this code from the callback request at your `redirect_uri`.
+After authorizing your, you'll be redirected to the `redirect_uri`, and the authorization code will be appended to it as a query parameter named `spapi_oauth_code`. You should capture this code from the callback request at your `redirect_uri`.
 
 ### 3. Exchange the authorization code for a refresh token:
 
