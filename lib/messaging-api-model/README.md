@@ -207,6 +207,19 @@ begin
 rescue AmzSpApi::MessagingApiModel::ApiError => e
   puts "Exception when calling MessagingApi->get_messaging_actions_for_order: #{e}"
 end
+
+api_instance = AmzSpApi::MessagingApiModel::MessagingApi.new
+body = AmzSpApi::MessagingApiModel::InvoiceRequest.new # InvoiceRequest | 
+amazon_order_id = 'amazon_order_id_example' # String | An Amazon order identifier. This specifies the order for which a message is sent.
+marketplace_ids = ['marketplace_ids_example'] # Array<String> | A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified.
+
+
+begin
+  result = api_instance.send_invoice(body, amazon_order_id, marketplace_ids)
+  p result
+rescue AmzSpApi::MessagingApiModel::ApiError => e
+  puts "Exception when calling MessagingApi->send_invoice: #{e}"
+end
 ```
 
 ## Documentation for API Endpoints
@@ -227,6 +240,7 @@ Class | Method | HTTP request | Description
 *AmzSpApi::MessagingApiModel::MessagingApi* | [**create_warranty**](docs/MessagingApi.md#create_warranty) | **POST** /messaging/v1/orders/{amazonOrderId}/messages/warranty | 
 *AmzSpApi::MessagingApiModel::MessagingApi* | [**get_attributes**](docs/MessagingApi.md#get_attributes) | **GET** /messaging/v1/orders/{amazonOrderId}/attributes | 
 *AmzSpApi::MessagingApiModel::MessagingApi* | [**get_messaging_actions_for_order**](docs/MessagingApi.md#get_messaging_actions_for_order) | **GET** /messaging/v1/orders/{amazonOrderId} | 
+*AmzSpApi::MessagingApiModel::MessagingApi* | [**send_invoice**](docs/MessagingApi.md#send_invoice) | **POST** /messaging/v1/orders/{amazonOrderId}/messages/invoice | 
 
 ## Documentation for Models
 
@@ -262,6 +276,8 @@ Class | Method | HTTP request | Description
  - [AmzSpApi::MessagingApiModel::GetMessagingActionsForOrderResponseLinks](docs/GetMessagingActionsForOrderResponseLinks.md)
  - [AmzSpApi::MessagingApiModel::GetSchemaResponse](docs/GetSchemaResponse.md)
  - [AmzSpApi::MessagingApiModel::GetSchemaResponseLinks](docs/GetSchemaResponseLinks.md)
+ - [AmzSpApi::MessagingApiModel::InvoiceRequest](docs/InvoiceRequest.md)
+ - [AmzSpApi::MessagingApiModel::InvoiceResponse](docs/InvoiceResponse.md)
  - [AmzSpApi::MessagingApiModel::LinkObject](docs/LinkObject.md)
  - [AmzSpApi::MessagingApiModel::MessagingAction](docs/MessagingAction.md)
  - [AmzSpApi::MessagingApiModel::Schema](docs/Schema.md)

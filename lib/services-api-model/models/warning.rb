@@ -1,7 +1,7 @@
 =begin
 #Selling Partner API for Services
 
-#With the Services API, you can build applications that help service providers get and modify their service orders.
+#With the Services API, you can build applications that help service providers get and modify their service orders and manage their resources.
 
 OpenAPI spec version: v1
 
@@ -12,7 +12,7 @@ Swagger Codegen version: 3.0.24
 require 'date'
 
 module AmzSpApi::ServicesApiModel
-  # Warning returned when the request is successful but execution have some important callouts on basis of which API clients should take defined actions.
+  # Warning returned when the request is successful, but there are important callouts based on which API clients should take defined actions.
   class Warning
     # An warning code that identifies the type of warning that occurred.
     attr_accessor :code

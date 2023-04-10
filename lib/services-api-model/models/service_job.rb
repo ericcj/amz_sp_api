@@ -1,7 +1,7 @@
 =begin
 #Selling Partner API for Services
 
-#With the Services API, you can build applications that help service providers get and modify their service orders.
+#With the Services API, you can build applications that help service providers get and modify their service orders and manage their resources.
 
 OpenAPI spec version: v1
 
@@ -14,7 +14,7 @@ require 'date'
 module AmzSpApi::ServicesApiModel
   # The job details of a service.
   class ServiceJob
-    # The date and time of the creation of the job, in ISO 8601 format.
+    # The date and time of the creation of the job in ISO 8601 format.
     attr_accessor :create_time
 
     attr_accessor :service_job_id
@@ -38,6 +38,9 @@ module AmzSpApi::ServicesApiModel
 
     # The marketplace identifier.
     attr_accessor :marketplace_id
+
+    # The Amazon-defined identifier for the region scope.
+    attr_accessor :store_id
 
     attr_accessor :buyer
 
@@ -81,6 +84,7 @@ module AmzSpApi::ServicesApiModel
         :'appointments' => :'appointments',
         :'service_order_id' => :'serviceOrderId',
         :'marketplace_id' => :'marketplaceId',
+        :'store_id' => :'storeId',
         :'buyer' => :'buyer',
         :'associated_items' => :'associatedItems',
         :'service_location' => :'serviceLocation'
@@ -100,6 +104,7 @@ module AmzSpApi::ServicesApiModel
         :'appointments' => :'Object',
         :'service_order_id' => :'Object',
         :'marketplace_id' => :'Object',
+        :'store_id' => :'Object',
         :'buyer' => :'Object',
         :'associated_items' => :'Object',
         :'service_location' => :'Object'
@@ -171,6 +176,10 @@ module AmzSpApi::ServicesApiModel
         self.marketplace_id = attributes[:'marketplace_id']
       end
 
+      if attributes.key?(:'store_id')
+        self.store_id = attributes[:'store_id']
+      end
+
       if attributes.key?(:'buyer')
         self.buyer = attributes[:'buyer']
       end
@@ -226,6 +235,7 @@ module AmzSpApi::ServicesApiModel
           appointments == o.appointments &&
           service_order_id == o.service_order_id &&
           marketplace_id == o.marketplace_id &&
+          store_id == o.store_id &&
           buyer == o.buyer &&
           associated_items == o.associated_items &&
           service_location == o.service_location
@@ -240,7 +250,7 @@ module AmzSpApi::ServicesApiModel
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [create_time, service_job_id, service_job_status, scope_of_work, seller, service_job_provider, preferred_appointment_times, appointments, service_order_id, marketplace_id, buyer, associated_items, service_location].hash
+      [create_time, service_job_id, service_job_status, scope_of_work, seller, service_job_provider, preferred_appointment_times, appointments, service_order_id, marketplace_id, store_id, buyer, associated_items, service_location].hash
     end
 
     # Builds the object from hash

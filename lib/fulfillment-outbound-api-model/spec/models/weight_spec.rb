@@ -34,7 +34,7 @@ describe 'Weight' do
   describe 'test attribute "unit"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["KG", "LB"])
+      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["KG", "KILOGRAMS", "LB", "POUNDS"])
       # validator.allowable_values.each do |value|
       #   expect { @instance.unit = value }.not_to raise_error
       # end

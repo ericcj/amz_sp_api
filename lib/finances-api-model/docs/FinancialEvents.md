@@ -25,4 +25,9 @@ Name | Type | Description | Notes
 **network_commingling_transaction_event_list** | [**NetworkComminglingTransactionEventList**](NetworkComminglingTransactionEventList.md) |  | [optional] 
 **affordability_expense_event_list** | [**AffordabilityExpenseEventList**](AffordabilityExpenseEventList.md) |  | [optional] 
 **affordability_expense_reversal_event_list** | [**AffordabilityExpenseEventList**](AffordabilityExpenseEventList.md) |  | [optional] 
+**trial_shipment_event_list** | [**TrialShipmentEventList**](TrialShipmentEventList.md) |  | [optional] 
+**shipment_settle_event_list** | [**ShipmentSettleEventList**](ShipmentSettleEventList.md) |  | [optional] 
+**tax_withholding_event_list** | [**TaxWithholdingEventList**](TaxWithholdingEventList.md) |  | [optional] 
+**removal_shipment_event_list** | [**RemovalShipmentEventList**](RemovalShipmentEventList.md) |  | [optional] 
+**removal_shipment_adjustment_event_list** | [**RemovalShipmentAdjustmentEventList**](RemovalShipmentAdjustmentEventList.md) |  | [optional] 
 

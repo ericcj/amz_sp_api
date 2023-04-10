@@ -1,7 +1,7 @@
 =begin
 #Selling Partner API for Services
 
-#With the Services API, you can build applications that help service providers get and modify their service orders.
+#With the Services API, you can build applications that help service providers get and modify their service orders and manage their resources.
 
 OpenAPI spec version: v1
 
@@ -12,15 +12,15 @@ Swagger Codegen version: 3.0.24
 require 'date'
 
 module AmzSpApi::ServicesApiModel
-  # The payload for the GetJobs operation.
+  # The payload for the `getServiceJobs` operation.
   class JobListing
     # Total result size of the query result.
     attr_accessor :total_result_size
 
-    # A generated string used to pass information to your next request.If nextPageToken is returned, pass the value of nextPageToken to the pageToken to get next results.
+    # A generated string used to pass information to your next request. If `nextPageToken` is returned, pass the value of `nextPageToken` to the `pageToken` to get next results.
     attr_accessor :next_page_token
 
-    # A generated string used to pass information to your next request.If previousPageToken is returned, pass the value of previousPageToken to the pageToken to get previous page results.
+    # A generated string used to pass information to your next request. If `previousPageToken` is returned, pass the value of `previousPageToken` to the `pageToken` to get previous page results.
     attr_accessor :previous_page_token
 
     # List of job details for the given input.

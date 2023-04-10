@@ -17,7 +17,7 @@ module AmzSpApi::OrdersApiModel
     # An error code that identifies the type of error that occurred.
     attr_accessor :code
 
-    # A message that describes the error condition in a human-readable form.
+    # A message that describes the error condition.
     attr_accessor :message
 
     # Additional details that can help the caller understand or fix the issue.

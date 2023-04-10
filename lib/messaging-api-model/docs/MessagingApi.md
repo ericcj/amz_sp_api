@@ -16,6 +16,7 @@ Method | HTTP request | Description
 [**create_warranty**](MessagingApi.md#create_warranty) | **POST** /messaging/v1/orders/{amazonOrderId}/messages/warranty | 
 [**get_attributes**](MessagingApi.md#get_attributes) | **GET** /messaging/v1/orders/{amazonOrderId}/attributes | 
 [**get_messaging_actions_for_order**](MessagingApi.md#get_messaging_actions_for_order) | **GET** /messaging/v1/orders/{amazonOrderId} | 
+[**send_invoice**](MessagingApi.md#send_invoice) | **POST** /messaging/v1/orders/{amazonOrderId}/messages/invoice | 
 
 # **confirm_customization_details**
 > CreateConfirmCustomizationDetailsResponse confirm_customization_details(bodymarketplace_idsamazon_order_id)
@@ -595,6 +596,55 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/hal+json
+
+
+
+# **send_invoice**
+> InvoiceResponse send_invoice(bodymarketplace_idsamazon_order_id)
+
+
+
+Sends a message providing the buyer an invoice
+
+### Example
+```ruby
+# load the gem
+require 'messaging-api-model'
+
+api_instance = AmzSpApi::MessagingApiModel::MessagingApi.new
+body = AmzSpApi::MessagingApiModel::InvoiceRequest.new # InvoiceRequest | 
+marketplace_ids = ['marketplace_ids_example'] # Array<String> | A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified.
+amazon_order_id = 'amazon_order_id_example' # String | An Amazon order identifier. This specifies the order for which a message is sent.
+
+
+begin
+  result = api_instance.send_invoice(bodymarketplace_idsamazon_order_id)
+  p result
+rescue AmzSpApi::MessagingApiModel::ApiError => e
+  puts "Exception when calling MessagingApi->send_invoice: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**InvoiceRequest**](InvoiceRequest.md)|  | 
+ **marketplace_ids** | [**Array&lt;String&gt;**](String.md)| A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. | 
+ **amazon_order_id** | **String**| An Amazon order identifier. This specifies the order for which a message is sent. | 
+
+### Return type
+
+[**InvoiceResponse**](InvoiceResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/hal+json
 
 

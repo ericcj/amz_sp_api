@@ -211,6 +211,12 @@ describe 'OrderItem' do
     end
   end
 
+  describe 'test attribute "store_chain_store_id"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   describe 'test attribute "deemed_reseller_category"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -218,6 +224,18 @@ describe 'OrderItem' do
       # validator.allowable_values.each do |value|
       #   expect { @instance.deemed_reseller_category = value }.not_to raise_error
       # end
+    end
+  end
+
+  describe 'test attribute "buyer_info"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  describe 'test attribute "buyer_requested_cancel"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 

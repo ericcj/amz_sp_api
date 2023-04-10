@@ -35,4 +35,8 @@ Gem::Specification.new do |s|
   s.files         = `find *`.split("\n").uniq.sort.select { |f| !f.empty? }
   s.executables   = []
   s.require_paths = ["lib"]
+
+  s.metadata    = {
+    "changelog_uri" => "https://github.com/ericcj/amz_sp_api/releases"
+  }
 end

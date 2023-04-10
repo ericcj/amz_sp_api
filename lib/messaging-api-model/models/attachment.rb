@@ -12,9 +12,9 @@ Swagger Codegen version: 3.0.24
 require 'date'
 
 module AmzSpApi::MessagingApiModel
-  # Represents a file uploaded to a destination that was created by the createUploadDestination operation of the Uploads API.
+  # Represents a file uploaded to a destination that was created by the [createUploadDestinationForResource](doc:uploads-api-reference#post-uploads2020-11-01uploaddestinationsresource) operation of the Selling Partner API for Uploads.
   class Attachment
-    # The identifier of the upload destination. Get this value by calling the createUploadDestination operation of the Uploads API.
+    # The identifier of the upload destination. Get this value by calling the [createUploadDestinationForResource](doc:uploads-api-reference#post-uploads2020-11-01uploaddestinationsresource) operation of the Uploads API.
     attr_accessor :upload_destination_id
 
     # The name of the file, including the extension. This is the file name that will appear in the message. This does not need to match the file name of the file that you uploaded.

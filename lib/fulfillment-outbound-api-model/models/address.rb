@@ -150,8 +150,8 @@ module AmzSpApi::FulfillmentOutboundApiModel
         invalid_properties.push('invalid value for "address_line1", address_line1 cannot be nil.')
       end
 
-      if @district_or_county.nil?
-        invalid_properties.push('invalid value for "district_or_county", district_or_county cannot be nil.')
+      if @state_or_region.nil?
+        invalid_properties.push('invalid value for "state_or_region", state_or_region cannot be nil.')
       end
 
       if @country_code.nil?
@@ -166,7 +166,7 @@ module AmzSpApi::FulfillmentOutboundApiModel
     def valid?
       return false if @name.nil?
       return false if @address_line1.nil?
-      return false if @district_or_county.nil?
+      return false if @state_or_region.nil?
       return false if @country_code.nil?
       true
     end

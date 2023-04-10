@@ -12,7 +12,7 @@ Swagger Codegen version: 3.0.24
 require 'date'
 
 module AmzSpApi::MerchantFulfillmentApiModel
-  # An Amazon-defined order identifier, in 3-7-7 format. <br>**Pattern** : `[0-9A-Z]{3}-[0-9]{7}-[0-9]{7}`.
+  # An Amazon-defined order identifier, in 3-7-7 format.
   class AmazonOrderId
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map

@@ -4,15 +4,15 @@ All URIs are relative to *https://sellingpartnerapi-na.amazon.com/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**cancel_feed**](FeedsApi.md#cancel_feed) | **DELETE** /feeds/2020-09-04/feeds/{feedId} | 
-[**create_feed**](FeedsApi.md#create_feed) | **POST** /feeds/2020-09-04/feeds | 
-[**create_feed_document**](FeedsApi.md#create_feed_document) | **POST** /feeds/2020-09-04/documents | 
-[**get_feed**](FeedsApi.md#get_feed) | **GET** /feeds/2020-09-04/feeds/{feedId} | 
-[**get_feed_document**](FeedsApi.md#get_feed_document) | **GET** /feeds/2020-09-04/documents/{feedDocumentId} | 
-[**get_feeds**](FeedsApi.md#get_feeds) | **GET** /feeds/2020-09-04/feeds | 
+[**cancel_feed**](FeedsApi.md#cancel_feed) | **DELETE** /feeds/2021-06-30/feeds/{feedId} | 
+[**create_feed**](FeedsApi.md#create_feed) | **POST** /feeds/2021-06-30/feeds | 
+[**create_feed_document**](FeedsApi.md#create_feed_document) | **POST** /feeds/2021-06-30/documents | 
+[**get_feed**](FeedsApi.md#get_feed) | **GET** /feeds/2021-06-30/feeds/{feedId} | 
+[**get_feed_document**](FeedsApi.md#get_feed_document) | **GET** /feeds/2021-06-30/documents/{feedDocumentId} | 
+[**get_feeds**](FeedsApi.md#get_feeds) | **GET** /feeds/2021-06-30/feeds | 
 
 # **cancel_feed**
-> CancelFeedResponse cancel_feed(feed_id)
+> cancel_feed(feed_id)
 
 
 
@@ -28,8 +28,7 @@ feed_id = 'feed_id_example' # String | The identifier for the feed. This identif
 
 
 begin
-  result = api_instance.cancel_feed(feed_id)
-  p result
+  api_instance.cancel_feed(feed_id)
 rescue AmzSpApi::FeedsApiModel::ApiError => e
   puts "Exception when calling FeedsApi->cancel_feed: #{e}"
 end
@@ -43,7 +42,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CancelFeedResponse**](CancelFeedResponse.md)
+nil (empty response body)
 
 ### Authorization
 
@@ -61,7 +60,7 @@ No authorization required
 
 
 
-Creates a feed. Encrypt and upload the contents of the feed document before calling this operation.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0083 | 15 |  For more information, see \"Usage Plans and Rate Limits\" in the Selling Partner API documentation.
+Creates a feed. Upload the contents of the feed document before calling this operation.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0083 | 15 |  For more information, see \"Usage Plans and Rate Limits\" in the Selling Partner API documentation.
 
 ### Example
 ```ruby
@@ -106,7 +105,7 @@ No authorization required
 
 
 
-Creates a feed document for the feed type that you specify. This operation returns encryption details for encrypting the contents of the document, as well as a presigned URL for uploading the encrypted feed document contents. It also returns a feedDocumentId value that you can pass in with a subsequent call to the createFeed operation.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0083 | 15 |  For more information, see \"Usage Plans and Rate Limits\" in the Selling Partner API documentation.
+Creates a feed document for the feed type that you specify. This operation returns a presigned URL for uploading the feed document contents. It also returns a feedDocumentId value that you can pass in with a subsequent call to the createFeed operation.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0083 | 15 |  For more information, see \"Usage Plans and Rate Limits\" in the Selling Partner API documentation.
 
 ### Example
 ```ruby
@@ -147,7 +146,7 @@ No authorization required
 
 
 # **get_feed**
-> GetFeedResponse get_feed(feed_id)
+> Feed get_feed(feed_id)
 
 
 
@@ -178,7 +177,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetFeedResponse**](GetFeedResponse.md)
+[**Feed**](Feed.md)
 
 ### Authorization
 
@@ -192,11 +191,11 @@ No authorization required
 
 
 # **get_feed_document**
-> GetFeedDocumentResponse get_feed_document(feed_document_id)
+> FeedDocument get_feed_document(feed_document_id)
 
 
 
-Returns the information required for retrieving a feed document's contents. This includes a presigned URL for the feed document as well as the information required to decrypt the document's contents.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0222 | 10 |  For more information, see \"Usage Plans and Rate Limits\" in the Selling Partner API documentation.
+Returns the information required for retrieving a feed document's contents.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0222 | 10 |  For more information, see \"Usage Plans and Rate Limits\" in the Selling Partner API documentation.
 
 ### Example
 ```ruby
@@ -223,7 +222,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetFeedDocumentResponse**](GetFeedDocumentResponse.md)
+[**FeedDocument**](FeedDocument.md)
 
 ### Authorization
 

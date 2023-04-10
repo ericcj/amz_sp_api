@@ -1,7 +1,7 @@
 =begin
 #Selling Partner API for Services
 
-#With the Services API, you can build applications that help service providers get and modify their service orders.
+#With the Services API, you can build applications that help service providers get and modify their service orders and manage their resources.
 
 OpenAPI spec version: v1
 
@@ -12,7 +12,7 @@ Swagger Codegen version: 3.0.24
 require 'date'
 
 module AmzSpApi::ServicesApiModel
-  # Response schema for add or reschedule appointment operation.
+  # Response schema for the `addAppointmentForServiceJobByServiceJobId` and `rescheduleAppointmentForServiceJobByServiceJobId` operations.
   class SetAppointmentResponse
     attr_accessor :appointment_id
 

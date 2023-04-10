@@ -32,12 +32,13 @@ describe 'ProductPricingApi' do
   end
 
   # unit tests for get_competitive_pricing
-  # Returns competitive pricing information for a seller&#x27;s offer listings based on seller SKU or ASIN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+  # Returns competitive pricing information for a seller&#x27;s offer listings based on seller SKU or ASIN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
   # @param marketplace_id A marketplace identifier. Specifies the marketplace for which prices are returned.
   # @param item_type Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter. Possible values: Asin, Sku.
   # @param [Hash] opts the optional parameters
   # @option opts [Array<String>] :asins A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace.
   # @option opts [Array<String>] :skus A list of up to twenty seller SKU values used to identify items in the given marketplace.
+  # @option opts [String] :customer_type Indicates whether to request pricing information from the point of view of Consumer or Business buyers. Default is Consumer.
   # @return [GetPricingResponse]
   describe 'get_competitive_pricing test' do
     it 'should work' do
@@ -46,11 +47,12 @@ describe 'ProductPricingApi' do
   end
 
   # unit tests for get_item_offers
-  # Returns the lowest priced offers for a single item based on ASIN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+  # Returns the lowest priced offers for a single item based on ASIN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
   # @param marketplace_id A marketplace identifier. Specifies the marketplace for which prices are returned.
   # @param item_condition Filters the offer listings to be considered based on item condition. Possible values: New, Used, Collectible, Refurbished, Club.
   # @param asin The Amazon Standard Identification Number (ASIN) of the item.
   # @param [Hash] opts the optional parameters
+  # @option opts [String] :customer_type Indicates whether to request Consumer or Business offers. Default is Consumer.
   # @return [GetOffersResponse]
   describe 'get_item_offers test' do
     it 'should work' do
@@ -58,12 +60,24 @@ describe 'ProductPricingApi' do
     end
   end
 
+  # unit tests for get_item_offers_batch
+  # Returns the lowest priced offers for a batch of items based on ASIN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+  # @param body 
+  # @param [Hash] opts the optional parameters
+  # @return [GetItemOffersBatchResponse]
+  describe 'get_item_offers_batch test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for get_listing_offers
-  # Returns the lowest priced offers for a single SKU listing.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+  # Returns the lowest priced offers for a single SKU listing.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
   # @param marketplace_id A marketplace identifier. Specifies the marketplace for which prices are returned.
   # @param item_condition Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club.
   # @param seller_sku Identifies an item in the given marketplace. SellerSKU is qualified by the seller&#x27;s SellerId, which is included with every operation that you submit.
   # @param [Hash] opts the optional parameters
+  # @option opts [String] :customer_type Indicates whether to request Consumer or Business offers. Default is Consumer.
   # @return [GetOffersResponse]
   describe 'get_listing_offers test' do
     it 'should work' do
@@ -71,14 +85,26 @@ describe 'ProductPricingApi' do
     end
   end
 
+  # unit tests for get_listing_offers_batch
+  # Returns the lowest priced offers for a batch of listings by SKU.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+  # @param body 
+  # @param [Hash] opts the optional parameters
+  # @return [GetListingOffersBatchResponse]
+  describe 'get_listing_offers_batch test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for get_pricing
-  # Returns pricing information for a seller&#x27;s offer listings based on seller SKU or ASIN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+  # Returns pricing information for a seller&#x27;s offer listings based on seller SKU or ASIN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
   # @param marketplace_id A marketplace identifier. Specifies the marketplace for which prices are returned.
   # @param item_type Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter.
   # @param [Hash] opts the optional parameters
   # @option opts [Array<String>] :asins A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace.
   # @option opts [Array<String>] :skus A list of up to twenty seller SKU values used to identify items in the given marketplace.
   # @option opts [String] :item_condition Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club.
+  # @option opts [String] :offer_type Indicates whether to request pricing information for the seller&#x27;s B2C or B2B offers. Default is B2C.
   # @return [GetPricingResponse]
   describe 'get_pricing test' do
     it 'should work' do

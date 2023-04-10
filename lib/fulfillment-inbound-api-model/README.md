@@ -145,7 +145,9 @@ label_type = 'label_type_example' # String | The type of labels requested.
 opts = { 
   number_of_packages: 56, # Integer | The number of packages in the shipment.
   package_labels_to_print: ['package_labels_to_print_example'], # Array<String> | A list of identifiers that specify packages for which you want package labels printed.  Must match CartonId values previously passed using the FBA Inbound Shipment Carton Information Feed. If not, the operation returns the IncorrectPackageIdentifier error code.
-  number_of_pallets: 56 # Integer | The number of pallets in the shipment. This returns four identical labels for each pallet.
+  number_of_pallets: 56, # Integer | The number of pallets in the shipment. This returns four identical labels for each pallet.
+  page_size: 56, # Integer | The page size for paginating through the total packages' labels. This is a required parameter for Non-Partnered LTL Shipments. Max value:1000.
+  page_start_index: 56 # Integer | The page start index for paginating through the total packages' labels. This is a required parameter for Non-Partnered LTL Shipments.
 }
 
 begin
