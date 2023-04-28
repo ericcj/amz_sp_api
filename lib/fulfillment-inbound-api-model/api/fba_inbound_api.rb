@@ -815,8 +815,8 @@ module AmzSpApi::FulfillmentInboundApiModel
       if @api_client.config.client_side_validation && marketplace_id.nil?
         fail ArgumentError, "Missing the required parameter 'marketplace_id' when calling FbaInboundApi.get_shipments"
       end
-      if @api_client.config.client_side_validation && opts[:'shipment_status_list'] && !opts[:'shipment_status_list'].all? { |item| ['WORKING', 'SHIPPED', 'RECEIVING', 'CANCELLED', 'DELETED', 'CLOSED', 'ERROR', 'IN_TRANSIT', 'DELIVERED', 'CHECKED_IN'].include?(item) }
-        fail ArgumentError, 'invalid value for "shipment_status_list", must include one of WORKING, SHIPPED, RECEIVING, CANCELLED, DELETED, CLOSED, ERROR, IN_TRANSIT, DELIVERED, CHECKED_IN'
+      if @api_client.config.client_side_validation && opts[:'shipment_status_list'] && !opts[:'shipment_status_list'].all? { |item| ['WORKING', 'READY_TO_SHIP', 'SHIPPED', 'RECEIVING', 'CANCELLED', 'DELETED', 'CLOSED', 'ERROR', 'IN_TRANSIT', 'DELIVERED', 'CHECKED_IN'].include?(item) }
+        fail ArgumentError, 'invalid value for "shipment_status_list", must include one of WORKING, READY_TO_SHIP, SHIPPED, RECEIVING, CANCELLED, DELETED, CLOSED, ERROR, IN_TRANSIT, DELIVERED, CHECKED_IN'
       end
       # resource path
       local_var_path = '/fba/inbound/v0/shipments'
