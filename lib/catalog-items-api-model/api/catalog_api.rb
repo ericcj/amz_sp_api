@@ -68,9 +68,9 @@ module AmzSpApi::CatalogItemsApiModel
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:body] 
+      post_body = opts[:body]
 
-      return_type = opts[:return_type] || 'Item' 
+      return_type = opts[:return_type] || 'AmzSpApi::CatalogItemsApiModel::Item'
 
       auth_names = opts[:auth_names] || []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
@@ -162,9 +162,9 @@ module AmzSpApi::CatalogItemsApiModel
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:body] 
+      post_body = opts[:body]
 
-      return_type = opts[:return_type] || 'ItemSearchResults' 
+      return_type = opts[:return_type] || 'ItemSearchResults'
 
       auth_names = opts[:auth_names] || []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,

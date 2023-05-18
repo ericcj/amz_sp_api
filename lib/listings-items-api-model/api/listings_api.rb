@@ -68,9 +68,9 @@ module AmzSpApi::ListingsItemsApiModel
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:body] 
+      post_body = opts[:body]
 
-      return_type = opts[:return_type] || 'ListingsItemSubmissionResponse' 
+      return_type = opts[:return_type] || 'ListingsItemSubmissionResponse'
 
       auth_names = opts[:auth_names] || []
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
@@ -144,9 +144,9 @@ module AmzSpApi::ListingsItemsApiModel
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:body] 
+      post_body = opts[:body]
 
-      return_type = opts[:return_type] || 'Item' 
+      return_type = opts[:return_type] || 'AmzSpApi::ListingsItemsApiModel::Item'
 
       auth_names = opts[:auth_names] || []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
@@ -160,6 +160,7 @@ module AmzSpApi::ListingsItemsApiModel
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ListingsApi#get_listings_item\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
+
       return data, status_code, headers
     end
     # Partially update (patch) a listings item for a selling partner. Only top-level listings item attributes can be patched. Patching nested attributes is not supported.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 10 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
@@ -222,9 +223,9 @@ module AmzSpApi::ListingsItemsApiModel
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:body] || @api_client.object_to_http_body(body) 
+      post_body = opts[:body] || @api_client.object_to_http_body(body)
 
-      return_type = opts[:return_type] || 'ListingsItemSubmissionResponse' 
+      return_type = opts[:return_type] || 'ListingsItemSubmissionResponse'
 
       auth_names = opts[:auth_names] || []
       data, status_code, headers = @api_client.call_api(:PATCH, local_var_path,
@@ -300,9 +301,9 @@ module AmzSpApi::ListingsItemsApiModel
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:body] || @api_client.object_to_http_body(body) 
+      post_body = opts[:body] || @api_client.object_to_http_body(body)
 
-      return_type = opts[:return_type] || 'ListingsItemSubmissionResponse' 
+      return_type = opts[:return_type] || 'ListingsItemSubmissionResponse'
 
       auth_names = opts[:auth_names] || []
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
