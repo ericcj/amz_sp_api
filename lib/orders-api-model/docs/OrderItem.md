@@ -37,4 +37,5 @@ Name | Type | Description | Notes
 **deemed_reseller_category** | **String** | The category of deemed reseller. This applies to selling partners that are not based in the EU and is used to help them meet the VAT Deemed Reseller tax laws in the EU and UK. | [optional] 
 **buyer_info** | [**ItemBuyerInfo**](ItemBuyerInfo.md) |  | [optional] 
 **buyer_requested_cancel** | [**BuyerRequestedCancel**](BuyerRequestedCancel.md) |  | [optional] 
+**serial_numbers** | **Array&lt;String&gt;** | A list of serial numbers for electronic products that are shipped to customers. Returned for FBA orders only. | [optional] 
 

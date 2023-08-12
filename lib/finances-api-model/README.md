@@ -57,7 +57,7 @@ require 'finances-api-model'
 
 api_instance = AmzSpApi::FinancesApiModel::DefaultApi.new
 opts = { 
-  max_results_per_page: 100, # Integer | The maximum number of results to return per page.
+  max_results_per_page: 100, # Integer | The maximum number of results to return per page. If the response exceeds the maximum number of transactions or 10 MB, the API responds with 'InvalidInput'.
   financial_event_group_started_before: DateTime.parse('2013-10-20T19:20:30+01:00'), # DateTime | A date used for selecting financial event groups that opened before (but not at) a specified date and time, in ISO 8601 format. The date-time  must be later than FinancialEventGroupStartedAfter and no later than two minutes before the request was submitted. If FinancialEventGroupStartedAfter and FinancialEventGroupStartedBefore are more than 180 days apart, no financial event groups are returned.
   financial_event_group_started_after: DateTime.parse('2013-10-20T19:20:30+01:00'), # DateTime | A date used for selecting financial event groups that opened after (or at) a specified date and time, in ISO 8601 format. The date-time must be no later than two minutes before the request was submitted.
   next_token: 'next_token_example' # String | A string token returned in the response of your previous request.
@@ -72,7 +72,7 @@ end
 
 api_instance = AmzSpApi::FinancesApiModel::DefaultApi.new
 opts = { 
-  max_results_per_page: 100, # Integer | The maximum number of results to return per page.
+  max_results_per_page: 100, # Integer | The maximum number of results to return per page. If the response exceeds the maximum number of transactions or 10 MB, the API responds with 'InvalidInput'.
   posted_after: DateTime.parse('2013-10-20T19:20:30+01:00'), # DateTime | A date used for selecting financial events posted after (or at) a specified time. The date-time must be no later than two minutes before the request was submitted, in ISO 8601 date time format.
   posted_before: DateTime.parse('2013-10-20T19:20:30+01:00'), # DateTime | A date used for selecting financial events posted before (but not at) a specified time. The date-time must be later than PostedAfter and no later than two minutes before the request was submitted, in ISO 8601 date time format. If PostedAfter and PostedBefore are more than 180 days apart, no financial events are returned. You must specify the PostedAfter parameter if you specify the PostedBefore parameter. Default: Now minus two minutes.
   next_token: 'next_token_example' # String | A string token returned in the response of your previous request.
@@ -88,7 +88,9 @@ end
 api_instance = AmzSpApi::FinancesApiModel::DefaultApi.new
 event_group_id = 'event_group_id_example' # String | The identifier of the financial event group to which the events belong.
 opts = { 
-  max_results_per_page: 100, # Integer | The maximum number of results to return per page.
+  max_results_per_page: 100, # Integer | The maximum number of results to return per page. If the response exceeds the maximum number of transactions or 10 MB, the API responds with 'InvalidInput'.
+  posted_after: DateTime.parse('2013-10-20T19:20:30+01:00'), # DateTime | A date used for selecting financial events posted after (or at) a specified time. The date-time **must** be more than two minutes before the time of the request, in ISO 8601 date time format.
+  posted_before: DateTime.parse('2013-10-20T19:20:30+01:00'), # DateTime | A date used for selecting financial events posted before (but not at) a specified time. The date-time must be later than `PostedAfter` and no later than two minutes before the request was submitted, in ISO 8601 date time format. If `PostedAfter` and `PostedBefore` are more than 180 days apart, no financial events are returned. You must specify the `PostedAfter` parameter if you specify the `PostedBefore` parameter. Default: Now minus two minutes.
   next_token: 'next_token_example' # String | A string token returned in the response of your previous request.
 }
 
@@ -102,7 +104,7 @@ end
 api_instance = AmzSpApi::FinancesApiModel::DefaultApi.new
 order_id = 'order_id_example' # String | An Amazon-defined order identifier, in 3-7-7 format.
 opts = { 
-  max_results_per_page: 100, # Integer | The maximum number of results to return per page.
+  max_results_per_page: 100, # Integer | The maximum number of results to return per page. If the response exceeds the maximum number of transactions or 10 MB, the API responds with 'InvalidInput'.
   next_token: 'next_token_example' # String | A string token returned in the response of your previous request.
 }
 
@@ -127,6 +129,8 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
+ - [AmzSpApi::FinancesApiModel::AdhocDisbursementEvent](docs/AdhocDisbursementEvent.md)
+ - [AmzSpApi::FinancesApiModel::AdhocDisbursementEventList](docs/AdhocDisbursementEventList.md)
  - [AmzSpApi::FinancesApiModel::AdjustmentEvent](docs/AdjustmentEvent.md)
  - [AmzSpApi::FinancesApiModel::AdjustmentEventList](docs/AdjustmentEventList.md)
  - [AmzSpApi::FinancesApiModel::AdjustmentItem](docs/AdjustmentItem.md)
@@ -134,10 +138,15 @@ Class | Method | HTTP request | Description
  - [AmzSpApi::FinancesApiModel::AffordabilityExpenseEvent](docs/AffordabilityExpenseEvent.md)
  - [AmzSpApi::FinancesApiModel::AffordabilityExpenseEventList](docs/AffordabilityExpenseEventList.md)
  - [AmzSpApi::FinancesApiModel::BigDecimal](docs/BigDecimal.md)
+ - [AmzSpApi::FinancesApiModel::CapacityReservationBillingEvent](docs/CapacityReservationBillingEvent.md)
+ - [AmzSpApi::FinancesApiModel::CapacityReservationBillingEventList](docs/CapacityReservationBillingEventList.md)
  - [AmzSpApi::FinancesApiModel::ChargeComponent](docs/ChargeComponent.md)
  - [AmzSpApi::FinancesApiModel::ChargeComponentList](docs/ChargeComponentList.md)
  - [AmzSpApi::FinancesApiModel::ChargeInstrument](docs/ChargeInstrument.md)
  - [AmzSpApi::FinancesApiModel::ChargeInstrumentList](docs/ChargeInstrumentList.md)
+ - [AmzSpApi::FinancesApiModel::ChargeRefundEvent](docs/ChargeRefundEvent.md)
+ - [AmzSpApi::FinancesApiModel::ChargeRefundEventList](docs/ChargeRefundEventList.md)
+ - [AmzSpApi::FinancesApiModel::ChargeRefundTransaction](docs/ChargeRefundTransaction.md)
  - [AmzSpApi::FinancesApiModel::CouponPaymentEvent](docs/CouponPaymentEvent.md)
  - [AmzSpApi::FinancesApiModel::CouponPaymentEventList](docs/CouponPaymentEventList.md)
  - [AmzSpApi::FinancesApiModel::Currency](docs/Currency.md)
@@ -152,6 +161,7 @@ Class | Method | HTTP request | Description
  - [AmzSpApi::FinancesApiModel::ErrorList](docs/ErrorList.md)
  - [AmzSpApi::FinancesApiModel::FBALiquidationEvent](docs/FBALiquidationEvent.md)
  - [AmzSpApi::FinancesApiModel::FBALiquidationEventList](docs/FBALiquidationEventList.md)
+ - [AmzSpApi::FinancesApiModel::FailedAdhocDisbursementEventList](docs/FailedAdhocDisbursementEventList.md)
  - [AmzSpApi::FinancesApiModel::FeeComponent](docs/FeeComponent.md)
  - [AmzSpApi::FinancesApiModel::FeeComponentList](docs/FeeComponentList.md)
  - [AmzSpApi::FinancesApiModel::FinancialEventGroup](docs/FinancialEventGroup.md)
@@ -201,6 +211,8 @@ Class | Method | HTTP request | Description
  - [AmzSpApi::FinancesApiModel::ShipmentSettleEventList](docs/ShipmentSettleEventList.md)
  - [AmzSpApi::FinancesApiModel::SolutionProviderCreditEvent](docs/SolutionProviderCreditEvent.md)
  - [AmzSpApi::FinancesApiModel::SolutionProviderCreditEventList](docs/SolutionProviderCreditEventList.md)
+ - [AmzSpApi::FinancesApiModel::TDSReimbursementEvent](docs/TDSReimbursementEvent.md)
+ - [AmzSpApi::FinancesApiModel::TDSReimbursementEventList](docs/TDSReimbursementEventList.md)
  - [AmzSpApi::FinancesApiModel::TaxWithheldComponent](docs/TaxWithheldComponent.md)
  - [AmzSpApi::FinancesApiModel::TaxWithheldComponentList](docs/TaxWithheldComponentList.md)
  - [AmzSpApi::FinancesApiModel::TaxWithholdingEvent](docs/TaxWithholdingEvent.md)
@@ -208,6 +220,7 @@ Class | Method | HTTP request | Description
  - [AmzSpApi::FinancesApiModel::TaxWithholdingPeriod](docs/TaxWithholdingPeriod.md)
  - [AmzSpApi::FinancesApiModel::TrialShipmentEvent](docs/TrialShipmentEvent.md)
  - [AmzSpApi::FinancesApiModel::TrialShipmentEventList](docs/TrialShipmentEventList.md)
+ - [AmzSpApi::FinancesApiModel::ValueAddedServiceChargeEventList](docs/ValueAddedServiceChargeEventList.md)
 
 ## Documentation for Authorization
 

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **customer_tracking_link** | **String** | Link on swiship.com that allows customers to track the package. | [optional] 
 **carrier_code** | **String** | The name of the carrier. | [optional] 
 **carrier_phone_number** | **String** | The phone number of the carrier. | [optional] 
-**carrier_url** | **String** | The URL of the carrier’s website. | [optional] 
+**carrier_url** | **String** | The URL of the carrier&#x27;s website. | [optional] 
 **ship_date** | [**Timestamp**](Timestamp.md) |  | [optional] 
 **estimated_arrival_date** | [**Timestamp**](Timestamp.md) |  | [optional] 
 **ship_to_address** | [**TrackingAddress**](TrackingAddress.md) |  | [optional] 
