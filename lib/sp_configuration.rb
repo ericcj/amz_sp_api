@@ -4,7 +4,8 @@ module AmzSpApi
   class SpConfiguration < Configuration
     attr_accessor :refresh_token, :client_id, :client_secret, :sandbox, :region,
       :aws_access_key_id, :aws_secret_access_key, :credentials_provider, # either access key or credentials_provider for AWS Signer, e.g. Aws::STS::Client
-      :save_access_token, :get_access_token # optional lambdas for storing and retrieving token
+      :save_access_token, :get_access_token, # optional lambdas for storing and retrieving token
+      :save_grantless_access_token, :get_grantless_access_token # optional lambdas for storing and retrieving grantless token
 
     # from https://github.com/amzn/selling-partner-api-docs/blob/main/guides/developer-guide/SellingPartnerApiDeveloperGuide.md#selling-partner-api-endpoints
     AWS_REGION_MAP = {
@@ -31,6 +32,10 @@ module AmzSpApi
 
     def access_token_key
       Digest::MD5.hexdigest("#{client_id} #{refresh_token}")
+    end
+
+    def grantless_access_token_key
+      Digest::MD5.hexdigest("#{client_id} #{region} grantless")
     end
 
     def self.default
