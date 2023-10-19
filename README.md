@@ -59,7 +59,23 @@ require 'fulfillment-outbound-api-model'
 
 ## Restricted operations
 
+Configure as per above but also create a new client for each restrictedResources you need, e.g.:
+
 ```
+require 'orders-api-model'
+
+client = AmzSpApi::RestrictedSpApiClient.new({
+  'restrictedResources' => [
+    {
+      'method' => 'GET',
+      'path' => "/orders/v0/orders",
+      'dataElements' => ['buyerInfo', 'shippingAddress']
+    }
+  ]
+})
+api_orders = AmzSpApi::OrdersApiModel::OrdersV0Api.new(client)
+api_orders.get_orders(marketplace_ids, created_after: 1.day.ago.iso8601)
+
 client = AmzSpApi::RestrictedSpApiClient.new({
   'restrictedResources' => [
     {

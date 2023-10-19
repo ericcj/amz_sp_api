@@ -1,10 +1,9 @@
-require 'sp_api_client'
-require 'tokens_api_model'
-
 require 'api_error'
 require 'api_client'
-
 require 'configuration'
+require 'sp_api_client'
+
+require 'tokens-api-model'
 
 module AmzSpApi
   class RestrictedSpApiClient < ApiClient

@@ -1,7 +1,8 @@
 require 'amz_sp_api_version'
 require 'api_error'
-require 'sp_api_client'
 require 'sp_configuration'
+require 'sp_api_client'
+require 'restricted_sp_api_client'
 
 module AmzSpApi
   class << self
