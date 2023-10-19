@@ -57,6 +57,25 @@ require 'fulfillment-outbound-api-model'
   end
 ```
 
+## Restricted operations
+
+```
+client = AmzSpApi::RestrictedSpApiClient.new({
+  'restrictedResources' => [
+    {
+      'method' => 'GET',
+      'path' => "/orders/v0/orders/#{my_order_id}",
+      'dataElements' => ['buyerInfo', 'shippingAddress']
+    }
+  ]
+})
+api_orders = AmzSpApi::OrdersApiModel::OrdersV0Api.new(client)
+api_orders.get_order(my_order_id)
+
+# or you can use models AmzSpApi::RestrictedSpApiClient.new(AmzSpApi::TokensApiModel::CreateRestrictedDataTokenRequest.new(restricted_resources: [
+        AmzSpApi::TokensApiModel::RestrictedResource.new(...
+```
+
 ## Feeds and reports
 
 This gem also offers encrypt/decrypt helper methods for feeds and reports, but actually using that API as per https://developer-docs.amazon.com/sp-api/docs/ requires the following calls, e.g. for feeds but reports is the same pattern:
