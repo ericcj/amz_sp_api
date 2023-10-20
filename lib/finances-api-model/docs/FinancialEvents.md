@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **shipment_event_list** | [**ShipmentEventList**](ShipmentEventList.md) |  | [optional] 
+**shipment_settle_event_list** | [**ShipmentSettleEventList**](ShipmentSettleEventList.md) |  | [optional] 
 **refund_event_list** | [**ShipmentEventList**](ShipmentEventList.md) |  | [optional] 
 **guarantee_claim_event_list** | [**ShipmentEventList**](ShipmentEventList.md) |  | [optional] 
 **chargeback_event_list** | [**ShipmentEventList**](ShipmentEventList.md) |  | [optional] 
@@ -25,9 +26,14 @@ Name | Type | Description | Notes
 **network_commingling_transaction_event_list** | [**NetworkComminglingTransactionEventList**](NetworkComminglingTransactionEventList.md) |  | [optional] 
 **affordability_expense_event_list** | [**AffordabilityExpenseEventList**](AffordabilityExpenseEventList.md) |  | [optional] 
 **affordability_expense_reversal_event_list** | [**AffordabilityExpenseEventList**](AffordabilityExpenseEventList.md) |  | [optional] 
-**trial_shipment_event_list** | [**TrialShipmentEventList**](TrialShipmentEventList.md) |  | [optional] 
-**shipment_settle_event_list** | [**ShipmentSettleEventList**](ShipmentSettleEventList.md) |  | [optional] 
-**tax_withholding_event_list** | [**TaxWithholdingEventList**](TaxWithholdingEventList.md) |  | [optional] 
 **removal_shipment_event_list** | [**RemovalShipmentEventList**](RemovalShipmentEventList.md) |  | [optional] 
 **removal_shipment_adjustment_event_list** | [**RemovalShipmentAdjustmentEventList**](RemovalShipmentAdjustmentEventList.md) |  | [optional] 
+**trial_shipment_event_list** | [**TrialShipmentEventList**](TrialShipmentEventList.md) |  | [optional] 
+**tds_reimbursement_event_list** | [**TDSReimbursementEventList**](TDSReimbursementEventList.md) |  | [optional] 
+**adhoc_disbursement_event_list** | [**AdhocDisbursementEventList**](AdhocDisbursementEventList.md) |  | [optional] 
+**tax_withholding_event_list** | [**TaxWithholdingEventList**](TaxWithholdingEventList.md) |  | [optional] 
+**charge_refund_event_list** | [**ChargeRefundEventList**](ChargeRefundEventList.md) |  | [optional] 
+**failed_adhoc_disbursement_event_list** | [**FailedAdhocDisbursementEventList**](FailedAdhocDisbursementEventList.md) |  | [optional] 
+**value_added_service_charge_event_list** | [**ValueAddedServiceChargeEventList**](ValueAddedServiceChargeEventList.md) |  | [optional] 
+**capacity_reservation_billing_event_list** | [**CapacityReservationBillingEventList**](CapacityReservationBillingEventList.md) |  | [optional] 
 

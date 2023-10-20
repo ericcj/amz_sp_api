@@ -189,6 +189,18 @@ rescue AmzSpApi::FulfillmentOutboundApiModel::ApiError => e
 end
 
 api_instance = AmzSpApi::FulfillmentOutboundApiModel::FbaOutboundApi.new
+body = AmzSpApi::FulfillmentOutboundApiModel::SubmitFulfillmentOrderStatusUpdateRequest.new # SubmitFulfillmentOrderStatusUpdateRequest | 
+seller_fulfillment_order_id = 'seller_fulfillment_order_id_example' # String | The identifier assigned to the item by the seller when the fulfillment order was created.
+
+
+begin
+  result = api_instance.submit_fulfillment_order_status_update(body, seller_fulfillment_order_id)
+  p result
+rescue AmzSpApi::FulfillmentOutboundApiModel::ApiError => e
+  puts "Exception when calling FbaOutboundApi->submit_fulfillment_order_status_update: #{e}"
+end
+
+api_instance = AmzSpApi::FulfillmentOutboundApiModel::FbaOutboundApi.new
 body = AmzSpApi::FulfillmentOutboundApiModel::UpdateFulfillmentOrderRequest.new # UpdateFulfillmentOrderRequest | 
 seller_fulfillment_order_id = 'seller_fulfillment_order_id_example' # String | The identifier assigned to the item by the seller when the fulfillment order was created.
 
@@ -218,6 +230,7 @@ Class | Method | HTTP request | Description
 *AmzSpApi::FulfillmentOutboundApiModel::FbaOutboundApi* | [**get_package_tracking_details**](docs/FbaOutboundApi.md#get_package_tracking_details) | **GET** /fba/outbound/2020-07-01/tracking | 
 *AmzSpApi::FulfillmentOutboundApiModel::FbaOutboundApi* | [**list_all_fulfillment_orders**](docs/FbaOutboundApi.md#list_all_fulfillment_orders) | **GET** /fba/outbound/2020-07-01/fulfillmentOrders | 
 *AmzSpApi::FulfillmentOutboundApiModel::FbaOutboundApi* | [**list_return_reason_codes**](docs/FbaOutboundApi.md#list_return_reason_codes) | **GET** /fba/outbound/2020-07-01/returnReasonCodes | 
+*AmzSpApi::FulfillmentOutboundApiModel::FbaOutboundApi* | [**submit_fulfillment_order_status_update**](docs/FbaOutboundApi.md#submit_fulfillment_order_status_update) | **PUT** /fba/outbound/2020-07-01/fulfillmentOrders/{sellerFulfillmentOrderId}/status | 
 *AmzSpApi::FulfillmentOutboundApiModel::FbaOutboundApi* | [**update_fulfillment_order**](docs/FbaOutboundApi.md#update_fulfillment_order) | **PUT** /fba/outbound/2020-07-01/fulfillmentOrders/{sellerFulfillmentOrderId} | 
 
 ## Documentation for Models
@@ -304,6 +317,8 @@ Class | Method | HTTP request | Description
  - [AmzSpApi::FulfillmentOutboundApiModel::ShippingSpeedCategory](docs/ShippingSpeedCategory.md)
  - [AmzSpApi::FulfillmentOutboundApiModel::ShippingSpeedCategoryList](docs/ShippingSpeedCategoryList.md)
  - [AmzSpApi::FulfillmentOutboundApiModel::StringList](docs/StringList.md)
+ - [AmzSpApi::FulfillmentOutboundApiModel::SubmitFulfillmentOrderStatusUpdateRequest](docs/SubmitFulfillmentOrderStatusUpdateRequest.md)
+ - [AmzSpApi::FulfillmentOutboundApiModel::SubmitFulfillmentOrderStatusUpdateResponse](docs/SubmitFulfillmentOrderStatusUpdateResponse.md)
  - [AmzSpApi::FulfillmentOutboundApiModel::Timestamp](docs/Timestamp.md)
  - [AmzSpApi::FulfillmentOutboundApiModel::TrackingAddress](docs/TrackingAddress.md)
  - [AmzSpApi::FulfillmentOutboundApiModel::TrackingEvent](docs/TrackingEvent.md)

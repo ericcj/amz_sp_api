@@ -63,7 +63,8 @@ opts = {
   details: false, # BOOLEAN | true to return inventory summaries with additional summarized inventory details and quantities. Otherwise, returns inventory summaries only (default value).
   start_date_time: DateTime.parse('2013-10-20T19:20:30+01:00'), # DateTime | A start date and time in ISO8601 format. If specified, all inventory summaries that have changed since then are returned. You must specify a date and time that is no earlier than 18 months prior to the date and time when you call the API. Note: Changes in inboundWorkingQuantity, inboundShippedQuantity and inboundReceivingQuantity are not detected.
   seller_skus: ['seller_skus_example'], # Array<String> | A list of seller SKUs for which to return inventory summaries. You may specify up to 50 SKUs.
-  next_token: 'next_token_example' # String | String token returned in the response of your previous request.
+  seller_sku: 'seller_sku_example', # String | A single seller SKU used for querying the specified seller SKU inventory summaries.
+  next_token: 'next_token_example' # String | String token returned in the response of your previous request. The string token will expire 30 seconds after being created.
 }
 
 begin

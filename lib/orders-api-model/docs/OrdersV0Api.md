@@ -4,6 +4,7 @@ All URIs are relative to *https://sellingpartnerapi-na.amazon.com/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**confirm_shipment**](OrdersV0Api.md#confirm_shipment) | **POST** /orders/v0/orders/{orderId}/shipmentConfirmation | 
 [**get_order**](OrdersV0Api.md#get_order) | **GET** /orders/v0/orders/{orderId} | 
 [**get_order_address**](OrdersV0Api.md#get_order_address) | **GET** /orders/v0/orders/{orderId}/address | 
 [**get_order_buyer_info**](OrdersV0Api.md#get_order_buyer_info) | **GET** /orders/v0/orders/{orderId}/buyerInfo | 
@@ -12,6 +13,52 @@ Method | HTTP request | Description
 [**get_order_regulated_info**](OrdersV0Api.md#get_order_regulated_info) | **GET** /orders/v0/orders/{orderId}/regulatedInfo | 
 [**get_orders**](OrdersV0Api.md#get_orders) | **GET** /orders/v0/orders | 
 [**update_verification_status**](OrdersV0Api.md#update_verification_status) | **PATCH** /orders/v0/orders/{orderId}/regulatedInfo | 
+
+# **confirm_shipment**
+> confirm_shipment(bodyorder_id)
+
+
+
+Updates the shipment confirmation status for a specified order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 10 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+
+### Example
+```ruby
+# load the gem
+require 'orders-api-model'
+
+api_instance = AmzSpApi::OrdersApiModel::OrdersV0Api.new
+body = AmzSpApi::OrdersApiModel::ConfirmShipmentRequest.new # ConfirmShipmentRequest | Request body of confirmShipment.
+order_id = 'order_id_example' # String | An Amazon-defined order identifier, in 3-7-7 format.
+
+
+begin
+  api_instance.confirm_shipment(bodyorder_id)
+rescue AmzSpApi::OrdersApiModel::ApiError => e
+  puts "Exception when calling OrdersV0Api->confirm_shipment: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**ConfirmShipmentRequest**](ConfirmShipmentRequest.md)| Request body of confirmShipment. | 
+ **order_id** | **String**| An Amazon-defined order identifier, in 3-7-7 format. | 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
 
 # **get_order**
 > GetOrderResponse get_order(order_id)
