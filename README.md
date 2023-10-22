@@ -111,6 +111,48 @@ report.force_encoding($1) if headers['Content-Type'] =~ /charset *= *([^;]+)/
 CSV.parse(report, headers: true, col_sep: "\t", liberal_parsing: true) # if it's a CSV report type
 ```
 
+## Getting refresh token 
+
+### 1. Create an authorization URL:
+
+Replace `YOUR_APPLICATION_ID` and `YOUR_REDIRECT_URI` with the appropriate information.
+
+```
+url = https://sellercentral.amazon.com/apps/authorize/consent?application_id=YOUR_APPLICATION_ID&state=<custom-state>&redirect_uri=YOUR_REDIRECT_URI
+```
+
+```markdown
+<a href=<%= url %>Authorize</a>
+```
+
+The `state` parameter is optional, but useful for maintaining the state between the request and callback. The `redirect_uri` should be a URL-encoded endpoint that the user will be redirected to after granting consent.
+
+### 2. Get the authorization code:
+
+After authorizing your, you'll be redirected to the `redirect_uri`, and the authorization code will be appended to it as a query parameter named `spapi_oauth_code`. You should capture this code from the callback request at your `redirect_uri`.
+
+### 3. Exchange the authorization code for a refresh token:
+
+Write a Ruby function to exchange the authorization code for a refresh token.
+
+```ruby
+def request_refresh_token(spapi_oauth_code)
+  body = {
+    code:          spapi_oauth_code,
+    grant_type:    'authorization_code',
+    client_id:     ENV['SP_API_CLIENT_ID'],
+    client_secret: ENV['SP_API_CLIENT_SECRET'],
+    redirect_uri:  ENV['SP_API_REDIRECT_URI']
+  }
+
+  Faraday.post('https://api.amazon.com/auth/o2/token', body.to_json, {"Content-Type" => "application/json"});
+end
+```
+
+This response will contain a refresh token that you can use to make API calls on behalf of the customer.
+
+---
+
 ## Thanks
 
 to https://github.com/patterninc/muffin_man as the basis for [sp_api_client.rb](lib/sp_api_client.rb)
