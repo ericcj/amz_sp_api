@@ -47,10 +47,7 @@ module AmzSpApi
     end
 
     def auth_headers(http_method, url, body)
-      SpApiClient.signed_request_headers(config, http_method, url, body).merge({
-        'x-amz-access-token' => retrieve_rdt_access_token
-      })
+      { 'x-amz-access-token' => retrieve_rdt_access_token }
     end
-
   end
 end
