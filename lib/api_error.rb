@@ -48,7 +48,7 @@ module AmzSpApi
 
       msg += "\nHTTP status code: #{code}" if code
       msg += "\nResponse headers: #{response_headers}" if response_headers
-      msg += "\nResponse body: #{response_body}" if response_body
+      msg += "\nResponse body: #{response_body.force_encoding('UTF-8')}" if response_body
 
       msg
     end
