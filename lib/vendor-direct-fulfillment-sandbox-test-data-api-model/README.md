@@ -56,7 +56,7 @@ Please follow the [installation](#installation) procedure and then run the follo
 require 'vendor-direct-fulfillment-sandbox-test-data-api-model'
 
 api_instance = AmzSpApi::VendorDirectFulfillmentSandboxTestDataApiModel::VendorDFSandboxApi.new
-body = AmzSpApi::VendorDirectFulfillmentSandboxTestDataApiModel::GenerateOrderScenarioRequest.new # GenerateOrderScenarioRequest | 
+body = AmzSpApi::VendorDirectFulfillmentSandboxTestDataApiModel::GenerateOrderScenarioRequest.new # GenerateOrderScenarioRequest | The request payload containing parameters for generating test order data scenarios.
 
 
 begin

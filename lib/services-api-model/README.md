@@ -341,6 +341,7 @@ Class | Method | HTTP request | Description
  - [AmzSpApi::ServicesApiModel::CreateReservationRequest](docs/CreateReservationRequest.md)
  - [AmzSpApi::ServicesApiModel::CreateReservationResponse](docs/CreateReservationResponse.md)
  - [AmzSpApi::ServicesApiModel::CreateServiceDocumentUploadDestination](docs/CreateServiceDocumentUploadDestination.md)
+ - [AmzSpApi::ServicesApiModel::DateTimeRange](docs/DateTimeRange.md)
  - [AmzSpApi::ServicesApiModel::DayOfWeek](docs/DayOfWeek.md)
  - [AmzSpApi::ServicesApiModel::EncryptionDetails](docs/EncryptionDetails.md)
  - [AmzSpApi::ServicesApiModel::Error](docs/Error.md)

@@ -56,7 +56,7 @@ Please follow the [installation](#installation) procedure and then run the follo
 require 'vendor-invoices-api-model'
 
 api_instance = AmzSpApi::VendorInvoicesApiModel::VendorPaymentsApi.new
-body = AmzSpApi::VendorInvoicesApiModel::SubmitInvoicesRequest.new # SubmitInvoicesRequest | 
+body = AmzSpApi::VendorInvoicesApiModel::SubmitInvoicesRequest.new # SubmitInvoicesRequest | The request body containing the invoice data to submit.
 
 
 begin
@@ -90,12 +90,14 @@ Class | Method | HTTP request | Description
  - [AmzSpApi::VendorInvoicesApiModel::InvoiceItem](docs/InvoiceItem.md)
  - [AmzSpApi::VendorInvoicesApiModel::ItemQuantity](docs/ItemQuantity.md)
  - [AmzSpApi::VendorInvoicesApiModel::Money](docs/Money.md)
+ - [AmzSpApi::VendorInvoicesApiModel::NetCostUnitOfMeasure](docs/NetCostUnitOfMeasure.md)
  - [AmzSpApi::VendorInvoicesApiModel::PartyIdentification](docs/PartyIdentification.md)
  - [AmzSpApi::VendorInvoicesApiModel::PaymentTerms](docs/PaymentTerms.md)
  - [AmzSpApi::VendorInvoicesApiModel::SubmitInvoicesRequest](docs/SubmitInvoicesRequest.md)
  - [AmzSpApi::VendorInvoicesApiModel::SubmitInvoicesResponse](docs/SubmitInvoicesResponse.md)
  - [AmzSpApi::VendorInvoicesApiModel::TaxDetails](docs/TaxDetails.md)
  - [AmzSpApi::VendorInvoicesApiModel::TaxRegistrationDetails](docs/TaxRegistrationDetails.md)
+ - [AmzSpApi::VendorInvoicesApiModel::TotalWeight](docs/TotalWeight.md)
  - [AmzSpApi::VendorInvoicesApiModel::TransactionId](docs/TransactionId.md)
 
 ## Documentation for Authorization

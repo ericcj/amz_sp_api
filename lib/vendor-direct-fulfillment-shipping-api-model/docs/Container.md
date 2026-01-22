@@ -13,6 +13,6 @@ Name | Type | Description | Notes
 **carrier** | **String** | Carrier required for EU VOC vendors only. | [optional] 
 **container_sequence_number** | **Integer** | An integer that must be submitted for multi-box shipments only, where one item may come in separate packages. | [optional] 
 **dimensions** | [**Dimensions**](Dimensions.md) |  | [optional] 
-**weight** | [**Weight**](Weight.md) |  | [optional] 
+**weight** | [**Weight**](Weight.md) |  | 
 **packed_items** | [**Array&lt;PackedItem&gt;**](PackedItem.md) | A list of packed items. | 
 

@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **vendor_product_identifier** | **String** | The vendor selected product identifier of the item. Should be the same as was provided in the purchase order. | [optional] 
 **invoiced_quantity** | [**ItemQuantity**](ItemQuantity.md) |  | 
 **net_cost** | [**Money**](Money.md) |  | 
+**net_cost_unit_of_measure** | [**NetCostUnitOfMeasure**](NetCostUnitOfMeasure.md) |  | [optional] 
 **purchase_order_number** | **String** | The Amazon purchase order number for this invoiced line item. Formatting Notes: 8-character alpha-numeric code. This value is mandatory only when invoiceType is Invoice, and is not required when invoiceType is CreditNote. | [optional] 
 **hsn_code** | **String** | HSN Tax code. The HSN number cannot contain alphabets. | [optional] 
 **credit_note_details** | [**CreditNoteDetails**](CreditNoteDetails.md) |  | [optional] 

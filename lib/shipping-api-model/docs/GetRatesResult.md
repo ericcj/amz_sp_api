@@ -3,5 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**service_rates** | [**ServiceRateList**](ServiceRateList.md) |  | 
+**request_token** | [**RequestToken**](RequestToken.md) |  | 
+**rates** | [**RateList**](RateList.md) |  | 
+**ineligible_rates** | [**IneligibleRateList**](IneligibleRateList.md) |  | [optional] 
 

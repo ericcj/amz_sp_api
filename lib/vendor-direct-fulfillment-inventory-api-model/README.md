@@ -56,7 +56,7 @@ Please follow the [installation](#installation) procedure and then run the follo
 require 'vendor-direct-fulfillment-inventory-api-model'
 
 api_instance = AmzSpApi::VendorDirectFulfillmentInventoryApiModel::UpdateInventoryApi.new
-body = AmzSpApi::VendorDirectFulfillmentInventoryApiModel::SubmitInventoryUpdateRequest.new # SubmitInventoryUpdateRequest | 
+body = AmzSpApi::VendorDirectFulfillmentInventoryApiModel::SubmitInventoryUpdateRequest.new # SubmitInventoryUpdateRequest | The request body containing the inventory update data to submit.
 warehouse_id = 'warehouse_id_example' # String | Identifier for the warehouse for which to update inventory.
 
 

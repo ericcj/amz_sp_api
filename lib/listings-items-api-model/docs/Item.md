@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **attributes** | [**ItemAttributes**](ItemAttributes.md) |  | [optional] 
 **issues** | [**ItemIssues**](ItemIssues.md) |  | [optional] 
 **offers** | [**ItemOffers**](ItemOffers.md) |  | [optional] 
-**fulfillment_availability** | [**Array&lt;FulfillmentAvailability&gt;**](FulfillmentAvailability.md) | Fulfillment availability for the listings item. | [optional] 
-**procurement** | [**ItemProcurement**](ItemProcurement.md) |  | [optional] 
+**fulfillment_availability** | [**Array&lt;FulfillmentAvailability&gt;**](FulfillmentAvailability.md) | The fulfillment availability for the listings item. | [optional] 
+**procurement** | [**Array&lt;ItemProcurement&gt;**](ItemProcurement.md) | The vendor procurement information for the listings item. | [optional] 
+**relationships** | [**ItemRelationships**](ItemRelationships.md) |  | [optional] 
+**product_types** | [**ItemProductTypes**](ItemProductTypes.md) |  | [optional] 
 

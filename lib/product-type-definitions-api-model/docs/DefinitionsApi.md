@@ -80,7 +80,10 @@ require 'product-type-definitions-api-model'
 api_instance = AmzSpApi::ProductTypeDefinitionsApiModel::DefinitionsApi.new
 marketplace_ids = ['marketplace_ids_example'] # Array<String> | A comma-delimited list of Amazon marketplace identifiers for the request.
 opts = { 
-  keywords: ['keywords_example'] # Array<String> | A comma-delimited list of keywords to search product types by.
+  keywords: ['keywords_example'], # Array<String> | A comma-delimited list of keywords to search product types. **Note:** Cannot be used with `itemName`.
+  item_name: 'item_name_example', # String | The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with `keywords`.
+  locale: 'locale_example', # String | The locale for the display names in the response. Defaults to the primary locale of the marketplace.
+  search_locale: 'search_locale_example' # String | The locale used for the `keywords` and `itemName` parameters. Defaults to the primary locale of the marketplace.
 }
 
 begin
@@ -96,7 +99,10 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **marketplace_ids** | [**Array&lt;String&gt;**](String.md)| A comma-delimited list of Amazon marketplace identifiers for the request. | 
- **keywords** | [**Array&lt;String&gt;**](String.md)| A comma-delimited list of keywords to search product types by. | [optional] 
+ **keywords** | [**Array&lt;String&gt;**](String.md)| A comma-delimited list of keywords to search product types. **Note:** Cannot be used with &#x60;itemName&#x60;. | [optional] 
+ **item_name** | **String**| The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;. | [optional] 
+ **locale** | **String**| The locale for the display names in the response. Defaults to the primary locale of the marketplace. | [optional] 
+ **search_locale** | **String**| The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to the primary locale of the marketplace. | [optional] 
 
 ### Return type
 

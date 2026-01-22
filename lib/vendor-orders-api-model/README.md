@@ -114,7 +114,7 @@ rescue AmzSpApi::VendorOrdersApiModel::ApiError => e
 end
 
 api_instance = AmzSpApi::VendorOrdersApiModel::VendorOrdersApi.new
-body = AmzSpApi::VendorOrdersApiModel::SubmitAcknowledgementRequest.new # SubmitAcknowledgementRequest | 
+body = AmzSpApi::VendorOrdersApiModel::SubmitAcknowledgementRequest.new # SubmitAcknowledgementRequest | Submits acknowledgements for one or more purchase orders from a vendor.
 
 
 begin

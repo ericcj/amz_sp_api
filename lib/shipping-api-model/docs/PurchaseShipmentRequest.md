@@ -3,11 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**client_reference_id** | [**ClientReferenceId**](ClientReferenceId.md) |  | 
-**ship_to** | [**Address**](Address.md) |  | 
-**ship_from** | [**Address**](Address.md) |  | 
-**ship_date** | **DateTime** | The start date and time. This defaults to the current date and time. | [optional] 
-**service_type** | [**ServiceType**](ServiceType.md) |  | 
-**containers** | [**ContainerList**](ContainerList.md) |  | 
-**label_specification** | [**LabelSpecification**](LabelSpecification.md) |  | 
+**request_token** | [**RequestToken**](RequestToken.md) |  | 
+**rate_id** | [**RateId**](RateId.md) |  | 
+**requested_document_specification** | [**RequestedDocumentSpecification**](RequestedDocumentSpecification.md) |  | 
+**requested_value_added_services** | [**RequestedValueAddedServiceList**](RequestedValueAddedServiceList.md) |  | [optional] 
+**additional_inputs** | **Hash&lt;String, Object&gt;** | The additional inputs required to purchase a shipping offering, in JSON format. The JSON provided here must adhere to the JSON schema that is returned in the response to the getAdditionalInputs operation.  Additional inputs are only required when indicated by the requiresAdditionalInputs property in the response to the getRates operation. | [optional] 
 

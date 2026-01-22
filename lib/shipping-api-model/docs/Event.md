@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **event_code** | [**EventCode**](EventCode.md) |  | 
-**event_time** | **DateTime** | The date and time of an event for a shipment. | 
 **location** | [**Location**](Location.md) |  | [optional] 
+**event_time** | **DateTime** | The ISO 8601 formatted timestamp of the event. | 
+**shipment_type** | [**ShipmentType**](ShipmentType.md) |  | [optional] 
 

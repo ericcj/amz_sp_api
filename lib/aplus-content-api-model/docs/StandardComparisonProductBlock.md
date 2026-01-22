@@ -7,6 +7,6 @@ Name | Type | Description | Notes
 **image** | [**ImageComponent**](ImageComponent.md) |  | [optional] 
 **title** | **String** | The comparison product title. | [optional] 
 **asin** | [**Asin**](Asin.md) |  | [optional] 
-**highlight** | **BOOLEAN** | Determines whether this block of content is visually highlighted. | [optional] 
+**highlight** | **BOOLEAN** | When true, indicates that this content block is visually highlighted. | [optional] 
 **metrics** | [**Array&lt;PlainTextItem&gt;**](PlainTextItem.md) | Comparison metrics for the product. | [optional] 
 

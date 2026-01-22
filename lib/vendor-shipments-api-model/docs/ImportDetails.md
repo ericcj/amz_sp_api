@@ -9,4 +9,5 @@ Name | Type | Description | Notes
 **import_containers** | **String** | Types and numbers of container(s) for import purchase orders. Can be a comma-separated list if shipment has multiple containers. | [optional] 
 **billable_weight** | [**Weight**](Weight.md) |  | [optional] 
 **estimated_ship_by_date** | **DateTime** | Date on which the shipment is expected to be shipped. This value should not be in the past and not more than 60 days out in the future. | [optional] 
+**handling_instructions** | **String** | Identification of the instructions on how specified item/carton/pallet should be handled. | [optional] 
 

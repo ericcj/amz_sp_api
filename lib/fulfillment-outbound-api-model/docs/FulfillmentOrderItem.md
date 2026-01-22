@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **seller_sku** | **String** | The seller SKU of the item. | 
-**seller_fulfillment_order_item_id** | **String** | A fulfillment order item identifier submitted with a call to the createFulfillmentOrder operation. | 
+**seller_fulfillment_order_item_id** | **String** | A fulfillment order item identifier submitted with a call to the &#x60;createFulfillmentOrder&#x60; operation. | 
 **quantity** | [**Quantity**](Quantity.md) |  | 
 **gift_message** | **String** | A message to the gift recipient, if applicable. | [optional] 
 **displayable_comment** | **String** | Item-specific text that displays in recipient-facing materials such as the outbound shipment packing slip. | [optional] 

@@ -76,7 +76,10 @@ end
 api_instance = AmzSpApi::ProductTypeDefinitionsApiModel::DefinitionsApi.new
 marketplace_ids = ['marketplace_ids_example'] # Array<String> | A comma-delimited list of Amazon marketplace identifiers for the request.
 opts = { 
-  keywords: ['keywords_example'] # Array<String> | A comma-delimited list of keywords to search product types by.
+  keywords: ['keywords_example'], # Array<String> | A comma-delimited list of keywords to search product types. **Note:** Cannot be used with `itemName`.
+  item_name: 'item_name_example', # String | The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with `keywords`.
+  locale: 'locale_example', # String | The locale for the display names in the response. Defaults to the primary locale of the marketplace.
+  search_locale: 'search_locale_example' # String | The locale used for the `keywords` and `itemName` parameters. Defaults to the primary locale of the marketplace.
 }
 
 begin

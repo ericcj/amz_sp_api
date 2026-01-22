@@ -56,7 +56,7 @@ Please follow the [installation](#installation) procedure and then run the follo
 require 'product-fees-api-model'
 
 api_instance = AmzSpApi::ProductFeesApiModel::FeesApi.new
-body = AmzSpApi::ProductFeesApiModel::GetMyFeesEstimateRequest.new # GetMyFeesEstimateRequest | 
+body = AmzSpApi::ProductFeesApiModel::GetMyFeesEstimateRequest.new # GetMyFeesEstimateRequest | The request body schema for the getMyFeesEstimates operation
 asin = 'asin_example' # String | The Amazon Standard Identification Number (ASIN) of the item.
 
 
@@ -68,7 +68,7 @@ rescue AmzSpApi::ProductFeesApiModel::ApiError => e
 end
 
 api_instance = AmzSpApi::ProductFeesApiModel::FeesApi.new
-body = AmzSpApi::ProductFeesApiModel::GetMyFeesEstimateRequest.new # GetMyFeesEstimateRequest | 
+body = AmzSpApi::ProductFeesApiModel::GetMyFeesEstimateRequest.new # GetMyFeesEstimateRequest | The request body schema for the getMyFeesEstimates operation
 seller_sku = 'seller_sku_example' # String | Used to identify an item in the given marketplace. SellerSKU is qualified by the seller's SellerId, which is included with every operation that you submit.
 
 
@@ -80,7 +80,7 @@ rescue AmzSpApi::ProductFeesApiModel::ApiError => e
 end
 
 api_instance = AmzSpApi::ProductFeesApiModel::FeesApi.new
-body = [AmzSpApi::ProductFeesApiModel::FeesEstimateByIdRequest.new] # Array<FeesEstimateByIdRequest> | 
+body = [AmzSpApi::ProductFeesApiModel::FeesEstimateByIdRequest.new] # Array<FeesEstimateByIdRequest> | The request body schema for the getMyFeesEstimates operation
 
 
 begin

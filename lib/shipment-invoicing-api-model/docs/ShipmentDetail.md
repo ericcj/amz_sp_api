@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **purchase_date** | **DateTime** | The date and time when the order was created. | [optional] 
 **shipping_address** | [**Address**](Address.md) |  | [optional] 
 **payment_method_details** | [**PaymentMethodDetailItemList**](PaymentMethodDetailItemList.md) |  | [optional] 
+**payments** | [**PaymentInformationList**](PaymentInformationList.md) |  | [optional] 
 **marketplace_id** | **String** | The identifier for the marketplace where the order was placed. | [optional] 
 **seller_id** | **String** | The seller identifier. | [optional] 
 **buyer_name** | **String** | The name of the buyer. | [optional] 

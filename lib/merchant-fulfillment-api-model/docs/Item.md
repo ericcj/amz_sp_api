@@ -9,4 +9,7 @@ Name | Type | Description | Notes
 **item_description** | [**ItemDescription**](ItemDescription.md) |  | [optional] 
 **transparency_code_list** | [**TransparencyCodeList**](TransparencyCodeList.md) |  | [optional] 
 **item_level_seller_inputs_list** | [**AdditionalSellerInputsList**](AdditionalSellerInputsList.md) |  | [optional] 
+**liquid_volume** | [**LiquidVolume**](LiquidVolume.md) |  | [optional] 
+**is_hazmat** | **BOOLEAN** | When true, the item qualifies as hazardous materials (hazmat). Defaults to false. | [optional] 
+**dangerous_goods_details** | [**DangerousGoodsDetails**](DangerousGoodsDetails.md) |  | [optional] 
 

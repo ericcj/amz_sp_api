@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **net_cost** | [**Money**](Money.md) |  | 
 **purchase_order_number** | **String** | The purchase order number for this order. Formatting Notes: 8-character alpha-numeric code. | 
 **vendor_order_number** | **String** | The vendor&#x27;s order number for this order. | [optional] 
-**hsn_code** | **String** | HSN tax code. The HSN number cannot contain alphabets. | [optional] 
+**hsn_code** | **String** | Harmonized System of Nomenclature (HSN) tax code. The HSN number cannot contain alphabets. | [optional] 
 **tax_details** | [**Array&lt;TaxDetail&gt;**](TaxDetail.md) | Individual tax details per line item. | [optional] 
 **charge_details** | [**Array&lt;ChargeDetails&gt;**](ChargeDetails.md) | Individual charge details per line item. | [optional] 
 

@@ -76,7 +76,7 @@ rescue AmzSpApi::ReportsApiModel::ApiError => e
 end
 
 api_instance = AmzSpApi::ReportsApiModel::ReportsApi.new
-body = AmzSpApi::ReportsApiModel::CreateReportSpecification.new # CreateReportSpecification | 
+body = AmzSpApi::ReportsApiModel::CreateReportSpecification.new # CreateReportSpecification | Information required to create the report.
 
 
 begin
@@ -87,7 +87,7 @@ rescue AmzSpApi::ReportsApiModel::ApiError => e
 end
 
 api_instance = AmzSpApi::ReportsApiModel::ReportsApi.new
-body = AmzSpApi::ReportsApiModel::CreateReportScheduleSpecification.new # CreateReportScheduleSpecification | 
+body = AmzSpApi::ReportsApiModel::CreateReportScheduleSpecification.new # CreateReportScheduleSpecification | Information required to create the report schedule.
 
 
 begin
@@ -131,7 +131,7 @@ rescue AmzSpApi::ReportsApiModel::ApiError => e
 end
 
 api_instance = AmzSpApi::ReportsApiModel::ReportsApi.new
-report_types = ['report_types_example'] # Array<String> | A list of report types used to filter report schedules.
+report_types = ['report_types_example'] # Array<String> | A list of report types used to filter report schedules. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information.
 
 
 begin
@@ -143,13 +143,13 @@ end
 
 api_instance = AmzSpApi::ReportsApiModel::ReportsApi.new
 opts = { 
-  report_types: ['report_types_example'], # Array<String> | A list of report types used to filter reports. When reportTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be provided. Either reportTypes or nextToken is required.
+  report_types: ['report_types_example'], # Array<String> | A list of report types used to filter reports. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. When reportTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be provided. Either reportTypes or nextToken is required.
   processing_statuses: ['processing_statuses_example'], # Array<String> | A list of processing statuses used to filter reports.
   marketplace_ids: ['marketplace_ids_example'], # Array<String> | A list of marketplace identifiers used to filter reports. The reports returned will match at least one of the marketplaces that you specify.
   page_size: 10, # Integer | The maximum number of reports to return in a single call.
-  created_since: DateTime.parse('2013-10-20T19:20:30+01:00'), # DateTime | The earliest report creation date and time for reports to include in the response, in ISO 8601 date time format. The default is 90 days ago. Reports are retained for a maximum of 90 days.
-  created_until: DateTime.parse('2013-10-20T19:20:30+01:00'), # DateTime | The latest report creation date and time for reports to include in the response, in ISO 8601 date time format. The default is now.
-  next_token: 'next_token_example' # String | A string token returned in the response to your previous request. nextToken is returned when the number of results exceeds the specified pageSize value. To get the next page of results, call the getReports operation and include this token as the only parameter. Specifying nextToken with any other parameters will cause the request to fail.
+  created_since: DateTime.parse('2013-10-20T19:20:30+01:00'), # DateTime | The earliest report creation date and time for reports to include in the response, in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> date time format. The default is 90 days ago. Reports are retained for a maximum of 90 days.
+  created_until: DateTime.parse('2013-10-20T19:20:30+01:00'), # DateTime | The latest report creation date and time for reports to include in the response, in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> date time format. The default is now.
+  next_token: 'next_token_example' # String | A string token returned in the response to your previous request. `nextToken` is returned when the number of results exceeds the specified `pageSize` value. To get the next page of results, call the `getReports` operation and include this token as the only parameter. Specifying `nextToken` with any other parameters will cause the request to fail.
 }
 
 begin

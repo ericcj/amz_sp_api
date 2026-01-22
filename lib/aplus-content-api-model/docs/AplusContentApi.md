@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 
 
-Creates a new A+ Content document.  **Usage Plans:**  | Plan type | Rate (requests per second) | Burst | | ---- | ---- | ---- | |Default| 10 | 10 | |Selling partner specific| Variable | Variable |  The x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were applied to the requested operation. Rate limits for some selling partners will vary from the default rate and burst shown in the table above. For more information, see \"Usage Plans and Rate Limits\" in the Selling Partner API documentation.
+Creates a new A+ Content document.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The `x-amzn-RateLimit-Limit` response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
 
 ### Example
 ```ruby
@@ -29,7 +29,7 @@ require 'aplus-content-api-model'
 
 api_instance = AmzSpApi::AplusContentApiModel::AplusContentApi.new
 body = AmzSpApi::AplusContentApiModel::PostContentDocumentRequest.new # PostContentDocumentRequest | The content document request details.
-marketplace_id = 'marketplace_id_example' # String | The identifier for the marketplace where the A+ Content is published.
+marketplace_id = 'marketplace_id_example' # String | The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
 
 
 begin
@@ -45,7 +45,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**PostContentDocumentRequest**](PostContentDocumentRequest.md)| The content document request details. | 
- **marketplace_id** | **String**| The identifier for the marketplace where the A+ Content is published. | 
+ **marketplace_id** | **String**| The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). | 
 
 ### Return type
 
@@ -67,7 +67,7 @@ No authorization required
 
 
 
-Returns an A+ Content document, if available.  **Usage Plans:**  | Plan type | Rate (requests per second) | Burst | | ---- | ---- | ---- | |Default| 10 | 10 | |Selling partner specific| Variable | Variable |  The x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were applied to the requested operation. Rate limits for some selling partners will vary from the default rate and burst shown in the table above. For more information, see \"Usage Plans and Rate Limits\" in the Selling Partner API documentation.
+Returns an A+ Content document, if available.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The `x-amzn-RateLimit-Limit` response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
 
 ### Example
 ```ruby
@@ -75,8 +75,8 @@ Returns an A+ Content document, if available.  **Usage Plans:**  | Plan type | R
 require 'aplus-content-api-model'
 
 api_instance = AmzSpApi::AplusContentApiModel::AplusContentApi.new
-content_reference_key = 'content_reference_key_example' # String | The unique reference key for the A+ Content document. A content reference key cannot form a permalink and may change in the future. A content reference key is not guaranteed to match any A+ Content identifier.
-marketplace_id = 'marketplace_id_example' # String | The identifier for the marketplace where the A+ Content is published.
+content_reference_key = 'content_reference_key_example' # String | The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier.
+marketplace_id = 'marketplace_id_example' # String | The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
 included_data_set = ['included_data_set_example'] # Array<String> | The set of A+ Content data types to include in the response.
 
 
@@ -92,8 +92,8 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **content_reference_key** | **String**| The unique reference key for the A+ Content document. A content reference key cannot form a permalink and may change in the future. A content reference key is not guaranteed to match any A+ Content identifier. | 
- **marketplace_id** | **String**| The identifier for the marketplace where the A+ Content is published. | 
+ **content_reference_key** | **String**| The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier. | 
+ **marketplace_id** | **String**| The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). | 
  **included_data_set** | [**Array&lt;String&gt;**](String.md)| The set of A+ Content data types to include in the response. | 
 
 ### Return type
@@ -116,7 +116,7 @@ No authorization required
 
 
 
-Returns a list of ASINs related to the specified A+ Content document, if available. If you do not include the asinSet parameter, the operation returns all ASINs related to the content document.  **Usage Plans:**  | Plan type | Rate (requests per second) | Burst | | ---- | ---- | ---- | |Default| 10 | 10 | |Selling partner specific| Variable | Variable |  The x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were applied to the requested operation. Rate limits for some selling partners will vary from the default rate and burst shown in the table above. For more information, see \"Usage Plans and Rate Limits\" in the Selling Partner API documentation.
+Returns a list of ASINs that are related to the specified A+ Content document, if available. If you don't include the `asinSet` parameter, this operation returns all ASINs related to the content document.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The `x-amzn-RateLimit-Limit` response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
 
 ### Example
 ```ruby
@@ -124,12 +124,12 @@ Returns a list of ASINs related to the specified A+ Content document, if availab
 require 'aplus-content-api-model'
 
 api_instance = AmzSpApi::AplusContentApiModel::AplusContentApi.new
-content_reference_key = 'content_reference_key_example' # String | The unique reference key for the A+ Content document. A content reference key cannot form a permalink and may change in the future. A content reference key is not guaranteed to match any A+ Content identifier.
-marketplace_id = 'marketplace_id_example' # String | The identifier for the marketplace where the A+ Content is published.
+content_reference_key = 'content_reference_key_example' # String | The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier.
+marketplace_id = 'marketplace_id_example' # String | The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
 opts = { 
-  included_data_set: ['included_data_set_example'], # Array<String> | The set of A+ Content data types to include in the response. If you do not include this parameter, the operation returns the related ASINs without metadata.
+  included_data_set: ['included_data_set_example'], # Array<String> | The set of A+ Content data types to include in the response. If you don't include this parameter, the operation returns the related ASINs without metadata.
   asin_set: ['asin_set_example'], # Array<String> | The set of ASINs.
-  page_token: 'page_token_example' # String | A page token from the nextPageToken response element returned by your previous call to this operation. nextPageToken is returned when the results of a call exceed the page size. To get the next page of results, call the operation and include pageToken as the only parameter. Specifying pageToken with any other parameter will cause the request to fail. When no nextPageToken value is returned there are no more pages to return. A pageToken value is not usable across different operations.
+  page_token: 'page_token_example' # String | A token that you use to fetch a specific page when there are multiple pages of results.
 }
 
 begin
@@ -144,11 +144,11 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **content_reference_key** | **String**| The unique reference key for the A+ Content document. A content reference key cannot form a permalink and may change in the future. A content reference key is not guaranteed to match any A+ Content identifier. | 
- **marketplace_id** | **String**| The identifier for the marketplace where the A+ Content is published. | 
- **included_data_set** | [**Array&lt;String&gt;**](String.md)| The set of A+ Content data types to include in the response. If you do not include this parameter, the operation returns the related ASINs without metadata. | [optional] 
+ **content_reference_key** | **String**| The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier. | 
+ **marketplace_id** | **String**| The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). | 
+ **included_data_set** | [**Array&lt;String&gt;**](String.md)| The set of A+ Content data types to include in the response. If you don&#x27;t include this parameter, the operation returns the related ASINs without metadata. | [optional] 
  **asin_set** | [**Array&lt;String&gt;**](String.md)| The set of ASINs. | [optional] 
- **page_token** | **String**| A page token from the nextPageToken response element returned by your previous call to this operation. nextPageToken is returned when the results of a call exceed the page size. To get the next page of results, call the operation and include pageToken as the only parameter. Specifying pageToken with any other parameter will cause the request to fail. When no nextPageToken value is returned there are no more pages to return. A pageToken value is not usable across different operations. | [optional] 
+ **page_token** | **String**| A token that you use to fetch a specific page when there are multiple pages of results. | [optional] 
 
 ### Return type
 
@@ -170,7 +170,7 @@ No authorization required
 
 
 
-Submits an A+ Content document for review, approval, and publishing.  **Usage Plans:**  | Plan type | Rate (requests per second) | Burst | | ---- | ---- | ---- | |Default| 10 | 10 | |Selling partner specific| Variable | Variable |  The x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were applied to the requested operation. Rate limits for some selling partners will vary from the default rate and burst shown in the table above. For more information, see \"Usage Plans and Rate Limits\" in the Selling Partner API documentation.
+Submits an A+ Content document for review, approval, and publishing.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The `x-amzn-RateLimit-Limit` response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
 
 ### Example
 ```ruby
@@ -178,8 +178,8 @@ Submits an A+ Content document for review, approval, and publishing.  **Usage Pl
 require 'aplus-content-api-model'
 
 api_instance = AmzSpApi::AplusContentApiModel::AplusContentApi.new
-content_reference_key = 'content_reference_key_example' # String | The unique reference key for the A+ Content document. A content reference key cannot form a permalink and may change in the future. A content reference key is not guaranteed to match any A+ content identifier.
-marketplace_id = 'marketplace_id_example' # String | The identifier for the marketplace where the A+ Content is published.
+content_reference_key = 'content_reference_key_example' # String | The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier.
+marketplace_id = 'marketplace_id_example' # String | The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
 
 
 begin
@@ -194,8 +194,8 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **content_reference_key** | **String**| The unique reference key for the A+ Content document. A content reference key cannot form a permalink and may change in the future. A content reference key is not guaranteed to match any A+ content identifier. | 
- **marketplace_id** | **String**| The identifier for the marketplace where the A+ Content is published. | 
+ **content_reference_key** | **String**| The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. | 
+ **marketplace_id** | **String**| The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). | 
 
 ### Return type
 
@@ -217,7 +217,7 @@ No authorization required
 
 
 
-Replaces all ASINs related to the specified A+ Content document, if available. This may add or remove ASINs, depending on the current set of related ASINs. Removing an ASIN has the side effect of suspending the content document from that ASIN.  **Usage Plans:**  | Plan type | Rate (requests per second) | Burst | | ---- | ---- | ---- | |Default| 10 | 10 | |Selling partner specific| Variable | Variable |  The x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were applied to the requested operation. Rate limits for some selling partners will vary from the default rate and burst shown in the table above. For more information, see \"Usage Plans and Rate Limits\" in the Selling Partner API documentation.
+Replaces all ASINs related to the specified A+ Content document, if available. This operation can add or remove ASINs, depending on the current set of related ASINs. Removing an ASIN will suspend the content document from that ASIN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The `x-amzn-RateLimit-Limit` response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
 
 ### Example
 ```ruby
@@ -225,9 +225,9 @@ Replaces all ASINs related to the specified A+ Content document, if available. T
 require 'aplus-content-api-model'
 
 api_instance = AmzSpApi::AplusContentApiModel::AplusContentApi.new
-body = AmzSpApi::AplusContentApiModel::PostContentDocumentAsinRelationsRequest.new # PostContentDocumentAsinRelationsRequest | The content document ASIN relations request details.
-marketplace_id = 'marketplace_id_example' # String | The identifier for the marketplace where the A+ Content is published.
-content_reference_key = 'content_reference_key_example' # String | The unique reference key for the A+ Content document. A content reference key cannot form a permalink and may change in the future. A content reference key is not guaranteed to match any A+ content identifier.
+body = AmzSpApi::AplusContentApiModel::PostContentDocumentAsinRelationsRequest.new # PostContentDocumentAsinRelationsRequest | The request details for the content document ASIN relations.
+marketplace_id = 'marketplace_id_example' # String | The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+content_reference_key = 'content_reference_key_example' # String | The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier.
 
 
 begin
@@ -242,9 +242,9 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**PostContentDocumentAsinRelationsRequest**](PostContentDocumentAsinRelationsRequest.md)| The content document ASIN relations request details. | 
- **marketplace_id** | **String**| The identifier for the marketplace where the A+ Content is published. | 
- **content_reference_key** | **String**| The unique reference key for the A+ Content document. A content reference key cannot form a permalink and may change in the future. A content reference key is not guaranteed to match any A+ content identifier. | 
+ **body** | [**PostContentDocumentAsinRelationsRequest**](PostContentDocumentAsinRelationsRequest.md)| The request details for the content document ASIN relations. | 
+ **marketplace_id** | **String**| The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). | 
+ **content_reference_key** | **String**| The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. | 
 
 ### Return type
 
@@ -266,7 +266,7 @@ No authorization required
 
 
 
-Submits a request to suspend visible A+ Content. This neither deletes the content document nor the ASIN relations.  **Usage Plans:**  | Plan type | Rate (requests per second) | Burst | | ---- | ---- | ---- | |Default| 10 | 10 | |Selling partner specific| Variable | Variable |  The x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were applied to the requested operation. Rate limits for some selling partners will vary from the default rate and burst shown in the table above. For more information, see \"Usage Plans and Rate Limits\" in the Selling Partner API documentation.
+Submits a request to suspend visible A+ Content. This doesn't delete the content document or the ASIN relations.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The `x-amzn-RateLimit-Limit` response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
 
 ### Example
 ```ruby
@@ -274,8 +274,8 @@ Submits a request to suspend visible A+ Content. This neither deletes the conten
 require 'aplus-content-api-model'
 
 api_instance = AmzSpApi::AplusContentApiModel::AplusContentApi.new
-content_reference_key = 'content_reference_key_example' # String | The unique reference key for the A+ Content document. A content reference key cannot form a permalink and may change in the future. A content reference key is not guaranteed to match any A+ content identifier.
-marketplace_id = 'marketplace_id_example' # String | The identifier for the marketplace where the A+ Content is published.
+content_reference_key = 'content_reference_key_example' # String | The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier.
+marketplace_id = 'marketplace_id_example' # String | The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
 
 
 begin
@@ -290,8 +290,8 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **content_reference_key** | **String**| The unique reference key for the A+ Content document. A content reference key cannot form a permalink and may change in the future. A content reference key is not guaranteed to match any A+ content identifier. | 
- **marketplace_id** | **String**| The identifier for the marketplace where the A+ Content is published. | 
+ **content_reference_key** | **String**| The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. | 
+ **marketplace_id** | **String**| The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). | 
 
 ### Return type
 
@@ -313,7 +313,7 @@ No authorization required
 
 
 
-Returns a list of all A+ Content documents assigned to a selling partner. This operation returns only the metadata of the A+ Content documents. Call the getContentDocument operation to get the actual contents of the A+ Content documents.  **Usage Plans:**  | Plan type | Rate (requests per second) | Burst | | ---- | ---- | ---- | |Default| 10 | 10 | |Selling partner specific| Variable | Variable |  The x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were applied to the requested operation. Rate limits for some selling partners will vary from the default rate and burst shown in the table above. For more information, see \"Usage Plans and Rate Limits\" in the Selling Partner API documentation.
+Returns a list of all A+ Content documents, including metadata, that are assigned to a selling partner. To get the actual contents of the A+ Content documents, call the `getContentDocument` operation.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The `x-amzn-RateLimit-Limit` response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
 
 ### Example
 ```ruby
@@ -321,9 +321,9 @@ Returns a list of all A+ Content documents assigned to a selling partner. This o
 require 'aplus-content-api-model'
 
 api_instance = AmzSpApi::AplusContentApiModel::AplusContentApi.new
-marketplace_id = 'marketplace_id_example' # String | The identifier for the marketplace where the A+ Content is published.
+marketplace_id = 'marketplace_id_example' # String | The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
 opts = { 
-  page_token: 'page_token_example' # String | A page token from the nextPageToken response element returned by your previous call to this operation. nextPageToken is returned when the results of a call exceed the page size. To get the next page of results, call the operation and include pageToken as the only parameter. Specifying pageToken with any other parameter will cause the request to fail. When no nextPageToken value is returned there are no more pages to return. A pageToken value is not usable across different operations.
+  page_token: 'page_token_example' # String | A token that you use to fetch a specific page when there are multiple pages of results.
 }
 
 begin
@@ -338,8 +338,8 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **marketplace_id** | **String**| The identifier for the marketplace where the A+ Content is published. | 
- **page_token** | **String**| A page token from the nextPageToken response element returned by your previous call to this operation. nextPageToken is returned when the results of a call exceed the page size. To get the next page of results, call the operation and include pageToken as the only parameter. Specifying pageToken with any other parameter will cause the request to fail. When no nextPageToken value is returned there are no more pages to return. A pageToken value is not usable across different operations. | [optional] 
+ **marketplace_id** | **String**| The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). | 
+ **page_token** | **String**| A token that you use to fetch a specific page when there are multiple pages of results. | [optional] 
 
 ### Return type
 
@@ -361,7 +361,7 @@ No authorization required
 
 
 
-Searches for A+ Content publishing records, if available.  **Usage Plans:**  | Plan type | Rate (requests per second) | Burst | | ---- | ---- | ---- | |Default| 10 | 10 | |Selling partner specific| Variable | Variable |  The x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were applied to the requested operation. Rate limits for some selling partners will vary from the default rate and burst shown in the table above. For more information, see \"Usage Plans and Rate Limits\" in the Selling Partner API documentation.
+Searches for A+ Content publishing records, if available.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The `x-amzn-RateLimit-Limit` response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
 
 ### Example
 ```ruby
@@ -369,10 +369,10 @@ Searches for A+ Content publishing records, if available.  **Usage Plans:**  | P
 require 'aplus-content-api-model'
 
 api_instance = AmzSpApi::AplusContentApiModel::AplusContentApi.new
-marketplace_id = 'marketplace_id_example' # String | The identifier for the marketplace where the A+ Content is published.
-asin = 'asin_example' # String | The Amazon Standard Identification Number (ASIN).
+marketplace_id = 'marketplace_id_example' # String | The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+asin = 'asin_example' # String | The Amazon Standard Identification Number (ASIN) is the unique identifier of a product within a marketplace.
 opts = { 
-  page_token: 'page_token_example' # String | A page token from the nextPageToken response element returned by your previous call to this operation. nextPageToken is returned when the results of a call exceed the page size. To get the next page of results, call the operation and include pageToken as the only parameter. Specifying pageToken with any other parameter will cause the request to fail. When no nextPageToken value is returned there are no more pages to return. A pageToken value is not usable across different operations.
+  page_token: 'page_token_example' # String | A token that you use to fetch a specific page when there are multiple pages of results.
 }
 
 begin
@@ -387,9 +387,9 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **marketplace_id** | **String**| The identifier for the marketplace where the A+ Content is published. | 
- **asin** | **String**| The Amazon Standard Identification Number (ASIN). | 
- **page_token** | **String**| A page token from the nextPageToken response element returned by your previous call to this operation. nextPageToken is returned when the results of a call exceed the page size. To get the next page of results, call the operation and include pageToken as the only parameter. Specifying pageToken with any other parameter will cause the request to fail. When no nextPageToken value is returned there are no more pages to return. A pageToken value is not usable across different operations. | [optional] 
+ **marketplace_id** | **String**| The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). | 
+ **asin** | **String**| The Amazon Standard Identification Number (ASIN) is the unique identifier of a product within a marketplace. | 
+ **page_token** | **String**| A token that you use to fetch a specific page when there are multiple pages of results. | [optional] 
 
 ### Return type
 
@@ -411,7 +411,7 @@ No authorization required
 
 
 
-Updates an existing A+ Content document.  **Usage Plans:**  | Plan type | Rate (requests per second) | Burst | | ---- | ---- | ---- | |Default| 10 | 10 | |Selling partner specific| Variable | Variable |  The x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were applied to the requested operation. Rate limits for some selling partners will vary from the default rate and burst shown in the table above. For more information, see \"Usage Plans and Rate Limits\" in the Selling Partner API documentation.
+Updates an existing A+ Content document.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The `x-amzn-RateLimit-Limit` response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
 
 ### Example
 ```ruby
@@ -420,8 +420,8 @@ require 'aplus-content-api-model'
 
 api_instance = AmzSpApi::AplusContentApiModel::AplusContentApi.new
 body = AmzSpApi::AplusContentApiModel::PostContentDocumentRequest.new # PostContentDocumentRequest | The content document request details.
-marketplace_id = 'marketplace_id_example' # String | The identifier for the marketplace where the A+ Content is published.
-content_reference_key = 'content_reference_key_example' # String | The unique reference key for the A+ Content document. A content reference key cannot form a permalink and may change in the future. A content reference key is not guaranteed to match any A+ Content identifier.
+marketplace_id = 'marketplace_id_example' # String | The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+content_reference_key = 'content_reference_key_example' # String | The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier.
 
 
 begin
@@ -437,8 +437,8 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**PostContentDocumentRequest**](PostContentDocumentRequest.md)| The content document request details. | 
- **marketplace_id** | **String**| The identifier for the marketplace where the A+ Content is published. | 
- **content_reference_key** | **String**| The unique reference key for the A+ Content document. A content reference key cannot form a permalink and may change in the future. A content reference key is not guaranteed to match any A+ Content identifier. | 
+ **marketplace_id** | **String**| The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). | 
+ **content_reference_key** | **String**| The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier. | 
 
 ### Return type
 
@@ -460,7 +460,7 @@ No authorization required
 
 
 
-Checks if the A+ Content document is valid for use on a set of ASINs.  **Usage Plans:**  | Plan type | Rate (requests per second) | Burst | | ---- | ---- | ---- | |Default| 10 | 10 | |Selling partner specific| Variable | Variable |  The x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were applied to the requested operation. Rate limits for some selling partners will vary from the default rate and burst shown in the table above. For more information, see \"Usage Plans and Rate Limits\" in the Selling Partner API documentation.
+Checks if the A+ Content document is valid for use on a set of ASINs.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The `x-amzn-RateLimit-Limit` response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
 
 ### Example
 ```ruby
@@ -469,7 +469,7 @@ require 'aplus-content-api-model'
 
 api_instance = AmzSpApi::AplusContentApiModel::AplusContentApi.new
 body = AmzSpApi::AplusContentApiModel::PostContentDocumentRequest.new # PostContentDocumentRequest | The content document request details.
-marketplace_id = 'marketplace_id_example' # String | The identifier for the marketplace where the A+ Content is published.
+marketplace_id = 'marketplace_id_example' # String | The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
 opts = { 
   asin_set: ['asin_set_example'] # Array<String> | The set of ASINs.
 }
@@ -487,7 +487,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**PostContentDocumentRequest**](PostContentDocumentRequest.md)| The content document request details. | 
- **marketplace_id** | **String**| The identifier for the marketplace where the A+ Content is published. | 
+ **marketplace_id** | **String**| The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). | 
  **asin_set** | [**Array&lt;String&gt;**](String.md)| The set of ASINs. | [optional] 
 
 ### Return type

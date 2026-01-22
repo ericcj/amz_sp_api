@@ -56,7 +56,7 @@ Please follow the [installation](#installation) procedure and then run the follo
 require 'vendor-direct-fulfillment-payments-api-model'
 
 api_instance = AmzSpApi::VendorDirectFulfillmentPaymentsApiModel::VendorInvoiceApi.new
-body = AmzSpApi::VendorDirectFulfillmentPaymentsApiModel::SubmitInvoiceRequest.new # SubmitInvoiceRequest | 
+body = AmzSpApi::VendorDirectFulfillmentPaymentsApiModel::SubmitInvoiceRequest.new # SubmitInvoiceRequest | The request body containing one or more invoices for vendor orders.
 
 
 begin

@@ -3,7 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**uri** | **String** | The &#x60;getItemOffers&#x60; resource path without any query parameters.  **Example:** &#x60;/products/pricing/v0/items/B000P6Q7MY/offers&#x60; | 
+**uri** | **String** | The URI associated with an individual request within a batch. For &#x60;FeaturedOfferExpectedPrice&#x60;, this is &#x60;/products/pricing/2022-05-01/offer/featuredOfferExpectedPrice&#x60;. | 
 **method** | [**HttpMethod**](HttpMethod.md) |  | 
-**headers** | [**HttpRequestHeaders**](HttpRequestHeaders.md) |  | [optional] 
+**body** | [**HttpBody**](HttpBody.md) |  | [optional] 
+**headers** | [**HttpHeaders**](HttpHeaders.md) |  | [optional] 
 

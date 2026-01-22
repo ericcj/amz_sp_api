@@ -11,4 +11,5 @@ Name | Type | Description | Notes
 **last_updated_time** | **DateTime** | The date and time that any quantity was last updated. | [optional] 
 **product_name** | **String** | The localized language product title of the item within the specific marketplace. | [optional] 
 **total_quantity** | **Integer** | The total number of units in an inbound shipment or in Amazon fulfillment centers. | [optional] 
+**stores** | **Array&lt;String&gt;** | A list of seller-enrolled stores that apply to this seller SKU. | [optional] 
 

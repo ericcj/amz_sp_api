@@ -4,19 +4,15 @@ All URIs are relative to *https://sellingpartnerapi-na.amazon.com/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_competitive_pricing**](ProductPricingApi.md#get_competitive_pricing) | **GET** /products/pricing/v0/competitivePrice | 
-[**get_item_offers**](ProductPricingApi.md#get_item_offers) | **GET** /products/pricing/v0/items/{Asin}/offers | 
-[**get_item_offers_batch**](ProductPricingApi.md#get_item_offers_batch) | **POST** /batches/products/pricing/v0/itemOffers | 
-[**get_listing_offers**](ProductPricingApi.md#get_listing_offers) | **GET** /products/pricing/v0/listings/{SellerSKU}/offers | 
-[**get_listing_offers_batch**](ProductPricingApi.md#get_listing_offers_batch) | **POST** /batches/products/pricing/v0/listingOffers | 
-[**get_pricing**](ProductPricingApi.md#get_pricing) | **GET** /products/pricing/v0/price | 
+[**get_competitive_summary**](ProductPricingApi.md#get_competitive_summary) | **POST** /batches/products/pricing/2022-05-01/items/competitiveSummary | 
+[**get_featured_offer_expected_price_batch**](ProductPricingApi.md#get_featured_offer_expected_price_batch) | **POST** /batches/products/pricing/2022-05-01/offer/featuredOfferExpectedPrice | 
 
-# **get_competitive_pricing**
-> GetPricingResponse get_competitive_pricing(marketplace_id, item_type, opts)
+# **get_competitive_summary**
+> CompetitiveSummaryBatchResponse get_competitive_summary(body)
 
 
 
-Returns competitive pricing information for a seller's offer listings based on seller SKU or ASIN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 1 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+Returns the competitive summary response, including featured buying options for the ASIN and `marketplaceId` combination.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.033 | 1 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that are applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may receive higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api) in the Selling Partner API.
 
 ### Example
 ```ruby
@@ -24,19 +20,14 @@ Returns competitive pricing information for a seller's offer listings based on s
 require 'product-pricing-api-model'
 
 api_instance = AmzSpApi::ProductPricingApiModel::ProductPricingApi.new
-marketplace_id = 'marketplace_id_example' # String | A marketplace identifier. Specifies the marketplace for which prices are returned.
-item_type = 'item_type_example' # String | Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter. Possible values: Asin, Sku.
-opts = { 
-  asins: ['asins_example'], # Array<String> | A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace.
-  skus: ['skus_example'], # Array<String> | A list of up to twenty seller SKU values used to identify items in the given marketplace.
-  customer_type: 'customer_type_example' # String | Indicates whether to request pricing information from the point of view of Consumer or Business buyers. Default is Consumer.
-}
+body = AmzSpApi::ProductPricingApiModel::CompetitiveSummaryBatchRequest.new # CompetitiveSummaryBatchRequest | The batch of `getCompetitiveSummary` requests.
+
 
 begin
-  result = api_instance.get_competitive_pricing(marketplace_id, item_type, opts)
+  result = api_instance.get_competitive_summary(body)
   p result
 rescue AmzSpApi::ProductPricingApiModel::ApiError => e
-  puts "Exception when calling ProductPricingApi->get_competitive_pricing: #{e}"
+  puts "Exception when calling ProductPricingApi->get_competitive_summary: #{e}"
 end
 ```
 
@@ -44,112 +35,11 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **marketplace_id** | **String**| A marketplace identifier. Specifies the marketplace for which prices are returned. | 
- **item_type** | **String**| Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter. Possible values: Asin, Sku. | 
- **asins** | [**Array&lt;String&gt;**](String.md)| A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace. | [optional] 
- **skus** | [**Array&lt;String&gt;**](String.md)| A list of up to twenty seller SKU values used to identify items in the given marketplace. | [optional] 
- **customer_type** | **String**| Indicates whether to request pricing information from the point of view of Consumer or Business buyers. Default is Consumer. | [optional] 
+ **body** | [**CompetitiveSummaryBatchRequest**](CompetitiveSummaryBatchRequest.md)| The batch of &#x60;getCompetitiveSummary&#x60; requests. | 
 
 ### Return type
 
-[**GetPricingResponse**](GetPricingResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-
-# **get_item_offers**
-> GetOffersResponse get_item_offers(marketplace_id, item_condition, asin, opts)
-
-
-
-Returns the lowest priced offers for a single item based on ASIN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 1 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
-
-### Example
-```ruby
-# load the gem
-require 'product-pricing-api-model'
-
-api_instance = AmzSpApi::ProductPricingApiModel::ProductPricingApi.new
-marketplace_id = 'marketplace_id_example' # String | A marketplace identifier. Specifies the marketplace for which prices are returned.
-item_condition = 'item_condition_example' # String | Filters the offer listings to be considered based on item condition. Possible values: New, Used, Collectible, Refurbished, Club.
-asin = 'asin_example' # String | The Amazon Standard Identification Number (ASIN) of the item.
-opts = { 
-  customer_type: 'customer_type_example' # String | Indicates whether to request Consumer or Business offers. Default is Consumer.
-}
-
-begin
-  result = api_instance.get_item_offers(marketplace_id, item_condition, asin, opts)
-  p result
-rescue AmzSpApi::ProductPricingApiModel::ApiError => e
-  puts "Exception when calling ProductPricingApi->get_item_offers: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **marketplace_id** | **String**| A marketplace identifier. Specifies the marketplace for which prices are returned. | 
- **item_condition** | **String**| Filters the offer listings to be considered based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. | 
- **asin** | **String**| The Amazon Standard Identification Number (ASIN) of the item. | 
- **customer_type** | **String**| Indicates whether to request Consumer or Business offers. Default is Consumer. | [optional] 
-
-### Return type
-
-[**GetOffersResponse**](GetOffersResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-
-# **get_item_offers_batch**
-> GetItemOffersBatchResponse get_item_offers_batch(body)
-
-
-
-Returns the lowest priced offers for a batch of items based on ASIN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 1 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
-
-### Example
-```ruby
-# load the gem
-require 'product-pricing-api-model'
-
-api_instance = AmzSpApi::ProductPricingApiModel::ProductPricingApi.new
-body = AmzSpApi::ProductPricingApiModel::GetItemOffersBatchRequest.new # GetItemOffersBatchRequest | 
-
-
-begin
-  result = api_instance.get_item_offers_batch(body)
-  p result
-rescue AmzSpApi::ProductPricingApiModel::ApiError => e
-  puts "Exception when calling ProductPricingApi->get_item_offers_batch: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GetItemOffersBatchRequest**](GetItemOffersBatchRequest.md)|  | 
-
-### Return type
-
-[**GetItemOffersBatchResponse**](GetItemOffersBatchResponse.md)
+[**CompetitiveSummaryBatchResponse**](CompetitiveSummaryBatchResponse.md)
 
 ### Authorization
 
@@ -162,64 +52,12 @@ No authorization required
 
 
 
-# **get_listing_offers**
-> GetOffersResponse get_listing_offers(marketplace_id, item_condition, seller_sku, opts)
+# **get_featured_offer_expected_price_batch**
+> GetFeaturedOfferExpectedPriceBatchResponse get_featured_offer_expected_price_batch(body)
 
 
 
-Returns the lowest priced offers for a single SKU listing.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 2 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
-
-### Example
-```ruby
-# load the gem
-require 'product-pricing-api-model'
-
-api_instance = AmzSpApi::ProductPricingApiModel::ProductPricingApi.new
-marketplace_id = 'marketplace_id_example' # String | A marketplace identifier. Specifies the marketplace for which prices are returned.
-item_condition = 'item_condition_example' # String | Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club.
-seller_sku = 'seller_sku_example' # String | Identifies an item in the given marketplace. SellerSKU is qualified by the seller's SellerId, which is included with every operation that you submit.
-opts = { 
-  customer_type: 'customer_type_example' # String | Indicates whether to request Consumer or Business offers. Default is Consumer.
-}
-
-begin
-  result = api_instance.get_listing_offers(marketplace_id, item_condition, seller_sku, opts)
-  p result
-rescue AmzSpApi::ProductPricingApiModel::ApiError => e
-  puts "Exception when calling ProductPricingApi->get_listing_offers: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **marketplace_id** | **String**| A marketplace identifier. Specifies the marketplace for which prices are returned. | 
- **item_condition** | **String**| Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. | 
- **seller_sku** | **String**| Identifies an item in the given marketplace. SellerSKU is qualified by the seller&#x27;s SellerId, which is included with every operation that you submit. | 
- **customer_type** | **String**| Indicates whether to request Consumer or Business offers. Default is Consumer. | [optional] 
-
-### Return type
-
-[**GetOffersResponse**](GetOffersResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-
-# **get_listing_offers_batch**
-> GetListingOffersBatchResponse get_listing_offers_batch(body)
-
-
-
-Returns the lowest priced offers for a batch of listings by SKU.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 1 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+Returns the set of responses that correspond to the batched list of up to 40 requests defined in the request body. The response for each successful (HTTP status code 200) request in the set includes the computed listing price at or below which a seller can expect to become the featured offer (before applicable promotions). This is called the featured offer expected price (FOEP). Featured offer is not guaranteed because competing offers might change. Other offers might be featured based on factors such as fulfillment capabilities to a specific customer. The response to an unsuccessful request includes the available error text.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.033 | 1 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that are applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may receive higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api) in the Selling Partner API.
 
 ### Example
 ```ruby
@@ -227,14 +65,14 @@ Returns the lowest priced offers for a batch of listings by SKU.  **Usage Plan:*
 require 'product-pricing-api-model'
 
 api_instance = AmzSpApi::ProductPricingApiModel::ProductPricingApi.new
-body = AmzSpApi::ProductPricingApiModel::GetListingOffersBatchRequest.new # GetListingOffersBatchRequest | 
+body = AmzSpApi::ProductPricingApiModel::GetFeaturedOfferExpectedPriceBatchRequest.new # GetFeaturedOfferExpectedPriceBatchRequest | The batch of `getFeaturedOfferExpectedPrice` requests.
 
 
 begin
-  result = api_instance.get_listing_offers_batch(body)
+  result = api_instance.get_featured_offer_expected_price_batch(body)
   p result
 rescue AmzSpApi::ProductPricingApiModel::ApiError => e
-  puts "Exception when calling ProductPricingApi->get_listing_offers_batch: #{e}"
+  puts "Exception when calling ProductPricingApi->get_featured_offer_expected_price_batch: #{e}"
 end
 ```
 
@@ -242,11 +80,11 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**GetListingOffersBatchRequest**](GetListingOffersBatchRequest.md)|  | 
+ **body** | [**GetFeaturedOfferExpectedPriceBatchRequest**](GetFeaturedOfferExpectedPriceBatchRequest.md)| The batch of &#x60;getFeaturedOfferExpectedPrice&#x60; requests. | 
 
 ### Return type
 
-[**GetListingOffersBatchResponse**](GetListingOffersBatchResponse.md)
+[**GetFeaturedOfferExpectedPriceBatchResponse**](GetFeaturedOfferExpectedPriceBatchResponse.md)
 
 ### Authorization
 
@@ -255,62 +93,6 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-
-# **get_pricing**
-> GetPricingResponse get_pricing(marketplace_id, item_type, opts)
-
-
-
-Returns pricing information for a seller's offer listings based on seller SKU or ASIN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 1 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
-
-### Example
-```ruby
-# load the gem
-require 'product-pricing-api-model'
-
-api_instance = AmzSpApi::ProductPricingApiModel::ProductPricingApi.new
-marketplace_id = 'marketplace_id_example' # String | A marketplace identifier. Specifies the marketplace for which prices are returned.
-item_type = 'item_type_example' # String | Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter.
-opts = { 
-  asins: ['asins_example'], # Array<String> | A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace.
-  skus: ['skus_example'], # Array<String> | A list of up to twenty seller SKU values used to identify items in the given marketplace.
-  item_condition: 'item_condition_example', # String | Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club.
-  offer_type: 'offer_type_example' # String | Indicates whether to request pricing information for the seller's B2C or B2B offers. Default is B2C.
-}
-
-begin
-  result = api_instance.get_pricing(marketplace_id, item_type, opts)
-  p result
-rescue AmzSpApi::ProductPricingApiModel::ApiError => e
-  puts "Exception when calling ProductPricingApi->get_pricing: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **marketplace_id** | **String**| A marketplace identifier. Specifies the marketplace for which prices are returned. | 
- **item_type** | **String**| Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter. | 
- **asins** | [**Array&lt;String&gt;**](String.md)| A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace. | [optional] 
- **skus** | [**Array&lt;String&gt;**](String.md)| A list of up to twenty seller SKU values used to identify items in the given marketplace. | [optional] 
- **item_condition** | **String**| Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club. | [optional] 
- **offer_type** | **String**| Indicates whether to request pricing information for the seller&#x27;s B2C or B2B offers. Default is B2C. | [optional] 
-
-### Return type
-
-[**GetPricingResponse**](GetPricingResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
  - **Accept**: application/json
 
 

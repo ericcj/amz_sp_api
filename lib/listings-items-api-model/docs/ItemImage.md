@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**link** | **String** | Link, or URL, for the image. | 
-**height** | **Integer** | Height of the image in pixels. | 
-**width** | **Integer** | Width of the image in pixels. | 
+**link** | **String** | The link, or URL, to the image. | 
+**height** | **Integer** | The height of the image in pixels. | 
+**width** | **Integer** | The width of the image in pixels. | 
 

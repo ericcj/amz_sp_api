@@ -56,6 +56,41 @@ Please follow the [installation](#installation) procedure and then run the follo
 require 'fba-inventory-api-model'
 
 api_instance = AmzSpApi::FbaInventoryApiModel::FbaInventoryApi.new
+body = AmzSpApi::FbaInventoryApiModel::AddInventoryRequest.new # AddInventoryRequest | List of items to add to Sandbox inventory.
+x_amzn_idempotency_token = 'x_amzn_idempotency_token_example' # String | A unique token/requestId provided with each call to ensure idempotency.
+
+
+begin
+  result = api_instance.add_inventory(body, x_amzn_idempotency_token)
+  p result
+rescue AmzSpApi::FbaInventoryApiModel::ApiError => e
+  puts "Exception when calling FbaInventoryApi->add_inventory: #{e}"
+end
+
+api_instance = AmzSpApi::FbaInventoryApiModel::FbaInventoryApi.new
+body = AmzSpApi::FbaInventoryApiModel::CreateInventoryItemRequest.new # CreateInventoryItemRequest | CreateInventoryItem Request Body Parameter.
+
+
+begin
+  result = api_instance.create_inventory_item(body)
+  p result
+rescue AmzSpApi::FbaInventoryApiModel::ApiError => e
+  puts "Exception when calling FbaInventoryApi->create_inventory_item: #{e}"
+end
+
+api_instance = AmzSpApi::FbaInventoryApiModel::FbaInventoryApi.new
+seller_sku = 'seller_sku_example' # String | A single seller SKU used for querying the specified seller SKU inventory summaries.
+marketplace_id = 'marketplace_id_example' # String | The marketplace ID for the marketplace for which the sellerSku is to be deleted.
+
+
+begin
+  result = api_instance.delete_inventory_item(seller_sku, marketplace_id)
+  p result
+rescue AmzSpApi::FbaInventoryApiModel::ApiError => e
+  puts "Exception when calling FbaInventoryApi->delete_inventory_item: #{e}"
+end
+
+api_instance = AmzSpApi::FbaInventoryApiModel::FbaInventoryApi.new
 granularity_type = 'granularity_type_example' # String | The granularity type for the inventory aggregation level.
 granularity_id = 'granularity_id_example' # String | The granularity ID for the inventory aggregation level.
 marketplace_ids = ['marketplace_ids_example'] # Array<String> | The marketplace ID for the marketplace for which to return inventory summaries.
@@ -63,7 +98,8 @@ opts = {
   details: false, # BOOLEAN | true to return inventory summaries with additional summarized inventory details and quantities. Otherwise, returns inventory summaries only (default value).
   start_date_time: DateTime.parse('2013-10-20T19:20:30+01:00'), # DateTime | A start date and time in ISO8601 format. If specified, all inventory summaries that have changed since then are returned. You must specify a date and time that is no earlier than 18 months prior to the date and time when you call the API. Note: Changes in inboundWorkingQuantity, inboundShippedQuantity and inboundReceivingQuantity are not detected.
   seller_skus: ['seller_skus_example'], # Array<String> | A list of seller SKUs for which to return inventory summaries. You may specify up to 50 SKUs.
-  next_token: 'next_token_example' # String | String token returned in the response of your previous request.
+  seller_sku: 'seller_sku_example', # String | A single seller SKU used for querying the specified seller SKU inventory summaries.
+  next_token: 'next_token_example' # String | String token returned in the response of your previous request. The string token will expire 30 seconds after being created.
 }
 
 begin
@@ -80,16 +116,26 @@ All URIs are relative to *https://sellingpartnerapi-na.amazon.com/*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AmzSpApi::FbaInventoryApiModel::FbaInventoryApi* | [**add_inventory**](docs/FbaInventoryApi.md#add_inventory) | **POST** /fba/inventory/v1/items/inventory | 
+*AmzSpApi::FbaInventoryApiModel::FbaInventoryApi* | [**create_inventory_item**](docs/FbaInventoryApi.md#create_inventory_item) | **POST** /fba/inventory/v1/items | 
+*AmzSpApi::FbaInventoryApiModel::FbaInventoryApi* | [**delete_inventory_item**](docs/FbaInventoryApi.md#delete_inventory_item) | **DELETE** /fba/inventory/v1/items/{sellerSku} | 
 *AmzSpApi::FbaInventoryApiModel::FbaInventoryApi* | [**get_inventory_summaries**](docs/FbaInventoryApi.md#get_inventory_summaries) | **GET** /fba/inventory/v1/summaries | 
 
 ## Documentation for Models
 
+ - [AmzSpApi::FbaInventoryApiModel::AddInventoryRequest](docs/AddInventoryRequest.md)
+ - [AmzSpApi::FbaInventoryApiModel::AddInventoryResponse](docs/AddInventoryResponse.md)
+ - [AmzSpApi::FbaInventoryApiModel::CreateInventoryItemRequest](docs/CreateInventoryItemRequest.md)
+ - [AmzSpApi::FbaInventoryApiModel::CreateInventoryItemResponse](docs/CreateInventoryItemResponse.md)
+ - [AmzSpApi::FbaInventoryApiModel::DeleteInventoryItemResponse](docs/DeleteInventoryItemResponse.md)
  - [AmzSpApi::FbaInventoryApiModel::Error](docs/Error.md)
  - [AmzSpApi::FbaInventoryApiModel::ErrorList](docs/ErrorList.md)
  - [AmzSpApi::FbaInventoryApiModel::GetInventorySummariesResponse](docs/GetInventorySummariesResponse.md)
  - [AmzSpApi::FbaInventoryApiModel::GetInventorySummariesResult](docs/GetInventorySummariesResult.md)
  - [AmzSpApi::FbaInventoryApiModel::Granularity](docs/Granularity.md)
  - [AmzSpApi::FbaInventoryApiModel::InventoryDetails](docs/InventoryDetails.md)
+ - [AmzSpApi::FbaInventoryApiModel::InventoryItem](docs/InventoryItem.md)
+ - [AmzSpApi::FbaInventoryApiModel::InventoryItems](docs/InventoryItems.md)
  - [AmzSpApi::FbaInventoryApiModel::InventorySummaries](docs/InventorySummaries.md)
  - [AmzSpApi::FbaInventoryApiModel::InventorySummary](docs/InventorySummary.md)
  - [AmzSpApi::FbaInventoryApiModel::Pagination](docs/Pagination.md)
